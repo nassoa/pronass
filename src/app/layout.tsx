@@ -18,8 +18,8 @@ export async function generateMetadata() {
     title: home.title,
     description: home.description,
     openGraph: {
-      title: `${person.firstName}'s Portfolio`,
-      description: "Portfolio website showcasing my work.",
+      title: `${person.firstName}'s website`,
+      description: "Discover my projects and passion for front-end development",
       url: baseURL,
       siteName: `${person.firstName}'s Portfolio`,
       locale: "en_US",
@@ -98,7 +98,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           margin="0"
           padding="0"
         >
-          <Background
+          {/* <Background
             mask={{
               cursor: effects.mask.cursor,
               x: effects.mask.x,
@@ -144,7 +144,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               display: effects.lines.display,
               opacity: effects.lines.opacity as any,
             }}
-          />
+          /> */}
           <Flex fillWidth minHeight="16"></Flex>
           <Header />
           <Flex
