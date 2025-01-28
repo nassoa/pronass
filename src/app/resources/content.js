@@ -9,7 +9,7 @@ const person = {
   role: "Front-end Developer",
   avatar: "/images/avatar.png",
   location: "Indian/Antananarivo", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  languages: ["English", "Français"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -48,19 +48,25 @@ const social = [
   },
 ];
 
+const emailOnly = social.filter((item) => item.name === "Email");
+
 const home = {
   label: "Home",
   title: `${person.name}'s website`,
   description: `Personal portfolio highlighting my expertise as a ${person.role}`,
-  headline: <>Front-end developer and interface builder</>,
+  headline: <>Naso.</>,
   subline: (
     <>
-      I'm Nasoavina, a front-end developer dedicated to creating seamless and
-      responsive web experiences. <br /> By day, I collaborate with teams to
-      build user-friendly interfaces, and by night, I explore new ideas through
-      personal projects.
+      I'm Nasoavina, a front-end developer based in Madagascar dedicated to
+      creating seamless and responsive web experiences. By day, I collaborate
+      with teams to build user-friendly interfaces, and by night, I explore new
+      ideas through personal projects.
     </>
   ),
+  years: <>8+</>,
+  experience: <>Years of Front-end Development Experience</>,
+  projects: <>50+</>,
+  projectsDesc: <>Successful Projects Delivered</>,
 };
 
 const about = {
@@ -76,7 +82,7 @@ const about = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.com/nasoavina-manitriniaina-jo3qz1",
   },
   intro: {
     display: true,
@@ -289,4 +295,14 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export {
+  person,
+  social,
+  newsletter,
+  home,
+  about,
+  blog,
+  work,
+  gallery,
+  emailOnly,
+};

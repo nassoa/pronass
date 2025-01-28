@@ -6,7 +6,8 @@ import classNames from "classnames";
 import { Footer, Header, RouteGuard } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
 
-import { Inter } from "next/font/google";
+import { Syne } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import { Source_Code_Pro } from "next/font/google";
 
 import { person, home } from "@/app/resources/content";
@@ -39,7 +40,7 @@ export async function generateMetadata() {
   };
 }
 
-const primary = Inter({
+const primary = DM_Sans({
   variable: "--font-primary",
   subsets: ["latin"],
   display: "swap",
@@ -53,7 +54,12 @@ type FontConfig = {
 	Replace with code for secondary and tertiary fonts
 	from https://once-ui.com/customize
 */
-const secondary: FontConfig | undefined = undefined;
+// const secondary: FontConfig | undefined = undefined;
+const secondary = Syne({
+  variable: "--font-secondary",
+  subsets: ["latin"],
+  display: "swap",
+});
 const tertiary: FontConfig | undefined = undefined;
 /*
  */
