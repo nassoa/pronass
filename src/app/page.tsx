@@ -222,12 +222,11 @@ export default function Portfolio() {
               </p>
 
               <p className="text-gray-600 dark:text-gray-400">
-                <strong>Basé à Madagascar</strong>, je collabore avec des
-                équipes internationales en alliant rigueur technique (Redux,
-                GraphQL, tests automatisés) et agilité méthodologique. Mon
-                approche : une écoute active des besoins, une architecture
-                évolutive, des livraisons dans les délais, et une priorité
-                absolue à l’expérience utilisateur.
+                Basé à <strong>Madagascar</strong>, je collabore avec des
+                équipes internationales en alliant rigueur technique et agilité
+                méthodologique. Mon approche : une écoute active des besoins,
+                une architecture évolutive, des livraisons dans les délais, et
+                une priorité absolue à l’expérience utilisateur.
               </p>
             </div>
           </section>
