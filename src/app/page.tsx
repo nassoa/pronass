@@ -220,8 +220,8 @@ export default function Portfolio() {
 
               <p className="text-gray-600 dark:text-gray-400">
                 Spécialisé dans des applications <strong>scalables</strong>,
-                même pour des projets complexes (dashboards data, outils SaaS),
-                je mets l’accent sur la <strong>performance</strong> et l’
+                même pour des projets complexes (dashboards data, outils SaaS,
+                ...), je mets l’accent sur la <strong>performance</strong> et l’
                 <strong>accessibilité</strong> (WCAG) pour des résultats
                 durables.
               </p>
