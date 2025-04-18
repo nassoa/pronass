@@ -264,7 +264,23 @@ export default function Portfolio() {
                 link="https://neoshore.eu/"
               />
               <ExperienceCard
-                date="2017 - 2022"
+                date="2021 - 2022"
+                title="Développeur Front-End - CtrlWeb"
+                description="En tant que Développeur Front-End chez Ctrlweb, j’ai conçu et intégré des interfaces responsive et optimisées pour le SEO, en utilisant WordPress et les solutions web internes de l’agence. Collaboration étroite avec les équipes transverses (design, back-end) et respect des bonnes pratiques (HTML5 sémantique, Sass modulaire, JavaScript ES6+) en environnement agile"
+                tags={[
+                  "HTML5/CSS3",
+                  "Front-End",
+                  "Responsive Design",
+                  "WordPress",
+                  "CtrlWeb Solutions",
+                  "SEO",
+                  "Accessibilité",
+                  "Git",
+                ]}
+                link="https://ctrlweb.ca/"
+              />
+              <ExperienceCard
+                date="2017 - 2021"
                 title="Développeur Front-End - Freelance"
                 description="Intégration de maquettes responsive et mobile-first, en respectant les standards web. Développement d'applications React.js/Redux avec Gatsby.js pour des solutions performantes (JAMstack) et SEO-friendly, incluant la création de blogs dynamiques via GraphQL. Expertise en optimisation technique et accessibilité, alignée aux besoins clients pour des livrables sur mesure."
                 tags={[
