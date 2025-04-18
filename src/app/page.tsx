@@ -78,10 +78,10 @@ export default function Portfolio() {
               </div>
 
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                <h1 className="text-2xl font-extrabold text-gray-900 dark:text-white mb-2">
                   Manitriniaina <br /> Safidy Nasoavina
                 </h1>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 font-semibold">
+                <p className="text-gray-600 dark:text-gray-400 mb-4 font-bold">
                   Développeur Front-End
                 </p>
                 <p className="text-gray-600 dark:text-gray-400 max-w-xs">
@@ -210,23 +210,24 @@ export default function Portfolio() {
             </h2>
             <div className="space-y-4 pl-7">
               <p className="text-gray-600 dark:text-gray-400">
-                Passionné par le développement front-end depuis plus de{" "}
-                <strong>8 ans</strong>, je me spécialise dans la création
-                d'interfaces utilisateur modernes et réactives. Mon expertise en
-                React.js et Next.js me permet de construire des applications web
-                performantes et évolutives.
+                Développeur front-end passionné depuis plus de{" "}
+                <strong>8 ans</strong>, je conçois des interfaces performantes (
+                React.js, Next.js) et des solutions CMS ( WordPress, JAMstack)
+                alliant esthétique et fonctionnalité. Spécialisé dans des
+                applications <strong>scalables</strong>, même pour des projets
+                complexes (dashboards data, outils SaaS), je mets l’accent sur
+                la <strong>performance</strong> et l’
+                <strong>accessibilité</strong> (WCAG) pour des résultats
+                durables.
               </p>
+
               <p className="text-gray-600 dark:text-gray-400">
-                Basé à Madagascar, j'ai 38 ans et j'ai acquis une solide
-                expérience dans la conception et le développement d'applications
-                web complexes. Je suis constamment à l'affût des nouvelles
-                technologies et tendances pour améliorer mes compétences.
-              </p>
-              <p className="text-gray-600 dark:text-gray-400">
-                J'accorde une attention particulière à l'expérience utilisateur,
-                à l'accessibilité et aux bonnes pratiques de développement. Mon
-                approche minimaliste mais efficace garantit des interfaces
-                élégantes et fonctionnelles.
+                <strong>Basé à Madagascar</strong>, je collabore avec des
+                équipes internationales en alliant rigueur technique (Redux,
+                GraphQL, tests automatisés) et agilité méthodologique. Mon
+                approche : une écoute active des besoins, une architecture
+                évolutive, des livraisons dans les délais, et une priorité
+                absolue à l’expérience utilisateur.
               </p>
             </div>
           </section>
