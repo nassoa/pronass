@@ -334,7 +334,7 @@ export default function Portfolio() {
           <section id="projects" className="mb-16 max-w-2xl">
             <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-x-3">
               <Proportions className="h-5 w-5" />
-              <span>Projets récents</span>
+              <span>Projets</span>
               <span className="mt-1 block flex-grow h-[1px] bg-gray-300 dark:bg-slate-200"></span>
             </h2>
             <div className="space-y-2 pl-3">
