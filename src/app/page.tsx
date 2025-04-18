@@ -219,6 +219,14 @@ export default function Portfolio() {
               </p>
 
               <p className="text-gray-600 dark:text-gray-400">
+                Spécialisé dans des applications <strong>scalables</strong>,
+                même pour des projets complexes (dashboards data, outils SaaS),
+                je mets l’accent sur la <strong>performance</strong> et l’
+                <strong>accessibilité</strong> (WCAG) pour des résultats
+                durables.
+              </p>
+
+              <p className="text-gray-600 dark:text-gray-400">
                 Basé à <strong>Madagascar</strong>, je collabore avec des
                 équipes internationales en alliant rigueur technique et agilité
                 méthodologique. Mon approche : une écoute active des besoins,
