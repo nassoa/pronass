@@ -140,7 +140,7 @@ export default function Portfolio() {
                 >
                   <div className="flex items-center">
                     <span className="inline-block h-[1px] bg-current mr-2 transition-all duration-200 ease-in-out w-8 group-hover:w-10"></span>
-                    Projets
+                    Projets réalisés
                   </div>
                 </Link>
                 <Link
@@ -208,7 +208,7 @@ export default function Portfolio() {
               <span>À propos</span>
               <span className="mt-1 block flex-grow h-[1px] bg-gray-300 dark:bg-slate-200"></span>
             </h2>
-            <div className="space-y-4 pl-7">
+            <div className="space-y-4 pl-8">
               <p className="text-gray-600 dark:text-gray-400">
                 Développeur front-end passionné depuis plus de{" "}
                 <strong>8 ans</strong> , je conçois des interfaces performantes
@@ -335,7 +335,7 @@ export default function Portfolio() {
               <span>Compétences</span>
               <span className="mt-1 block flex-grow h-[1px] bg-gray-300 dark:bg-slate-200"></span>
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 pl-7">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 pl-8">
               <SkillBadge name="React.js" level={95} />
               <SkillBadge name="Next.js" level={90} />
               <SkillBadge name="TypeScript" level={85} />
@@ -358,7 +358,7 @@ export default function Portfolio() {
               <span>Projets</span>
               <span className="mt-1 block flex-grow h-[1px] bg-gray-300 dark:bg-slate-200"></span>
             </h2>
-            <div className="space-y-2 pl-3">
+            <div className="space-y-2 pl-4">
               <ProjectCard
                 title="Orthoflow - Correcteur d'orthographe et de grammaire"
                 description="Application web de correction et d’optimisation de textes en français"
@@ -410,7 +410,7 @@ export default function Portfolio() {
               <span>Contact</span>
               <span className="mt-1 block flex-grow h-[1px] bg-gray-300 dark:bg-slate-200"></span>
             </h2>
-            <div className="pl-7">
+            <div className="pl-8">
               <p className="text-gray-600 dark:text-gray-400 mb-6">
                 Vous avez un projet en tête ? N'hésitez pas à me contacter pour
                 discuter de vos besoins.
