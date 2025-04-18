@@ -211,14 +211,11 @@ export default function Portfolio() {
             <div className="space-y-4 pl-7">
               <p className="text-gray-600 dark:text-gray-400">
                 Développeur front-end passionné depuis plus de{" "}
-                <strong>8 ans</strong>, je conçois des interfaces performantes (
-                React.js, Next.js) et des solutions CMS ( WordPress, JAMstack)
-                alliant esthétique et fonctionnalité. Spécialisé dans des
-                applications <strong>scalables</strong>, même pour des projets
-                complexes (dashboards data, outils SaaS), je mets l’accent sur
-                la <strong>performance</strong> et l’
-                <strong>accessibilité</strong> (WCAG) pour des résultats
-                durables.
+                <strong>8 ans</strong> , je conçois des interfaces performantes
+                ( React.js, Next.js) et des <strong>solutions CMS</strong> – des
+                traditionnels (WordPress) aux headless (Strapi, Contentful) –
+                associées à des architectures <strong>JAMstack</strong>, pour
+                allier esthétique et fonctionnalité.
               </p>
 
               <p className="text-gray-600 dark:text-gray-400">
@@ -233,7 +230,7 @@ export default function Portfolio() {
 
           {/* Experiences Section */}
           <section id="experience" className="mb-16 max-w-2xl">
-            <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-x-3">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-x-3">
               <FolderKanban className="h-5 w-5" />
               <span>Expériences</span>
               <span className="mt-1 block flex-grow h-[1px] bg-gray-300 dark:bg-slate-200"></span>
