@@ -63,7 +63,7 @@ export default function Portfolio() {
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-200">
       <div className="flex flex-col lg:flex-row container mx-auto">
         {/* Sidebar - Fixed on desktop */}
-        <aside className="lg:fixed lg:w-[350px] lg:h-screen p-8 lg:p-12 lg:overflow-y-auto">
+        <aside className="lg:fixed lg:w-[350px] lg:h-screen py-8 lg:p-12 lg:overflow-y-auto">
           <div className="flex flex-col h-full justify-between">
             <div className="space-y-8">
               <div className="relative w-28 h-28 rounded-2xl overflow-hidden  dark:border-gray-800">
@@ -200,7 +200,7 @@ export default function Portfolio() {
         </aside>
 
         {/* Main Content - Scrollable */}
-        <main className="lg:ml-[350px] w-full p-8 lg:p-12">
+        <main className="lg:ml-[350px] w-full py-8 lg:p-12">
           {/* About Section */}
           <section id="about" className="mb-16 max-w-2xl">
             <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-x-3">
