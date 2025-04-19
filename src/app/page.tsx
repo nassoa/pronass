@@ -25,6 +25,8 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { SocialLinks } from "@/components/social-links";
 import { ExperienceCard } from "@/components/experience-card";
 import { FaWhatsapp } from "react-icons/fa";
+import { ProjectsSection } from "@/components/ui/projects-section";
+import { ExperiencesSection } from "@/components/ui/experiences-section";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("about");
@@ -238,82 +240,13 @@ export default function Portfolio() {
 
           {/* Experiences Section */}
           <section id="experience" className="mb-16 max-w-2xl">
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-x-3">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-x-3 mb-2">
               <FolderKanban className="h-5 w-5" />
               <span>Expériences</span>
               <span className="mt-1 block flex-grow h-[1px] bg-gray-300 dark:bg-slate-200"></span>
             </h2>
             <div className="space-y-2 pl-1">
-              <ExperienceCard
-                date="2022 - 2024"
-                title="Développeur Front-End - Feelin / Neoshore"
-                description="Conception d'interfaces dynamiques avec React.js, couplées à GraphQL pour une communication front-end/backend fluide (requêtes, mutations). Gestion d'état optimisée via Redux et GraphQL, assurant une synchronisation fiable des données. Performance renforcée par chargement différé, mise en cache et réduction des temps de chargement, pour une UX réactive. Engagement sur l'accessibilité, garantissant une application inclusive conforme aux normes en vigueur."
-                tags={[
-                  "React.js",
-                  "TypeScript",
-                  "Redux",
-                  "GraphQL (Apollo)",
-                  "Material UI",
-                  "Webpack",
-                  "React Hook Form",
-                  "React Router",
-                  "Jest",
-                  "Git",
-                  "CI/CD",
-                ]}
-                link="https://neoshore.eu/"
-              />
-              <ExperienceCard
-                date="2021 - 2022"
-                title="Développeur Front-End - CtrlWeb"
-                description="En tant que Développeur Front-End chez Ctrlweb, j’ai conçu et intégré des interfaces responsive et optimisées pour le SEO, en utilisant WordPress et les solutions web internes de l’agence. Collaboration étroite avec les équipes transverses (design, back-end) et respect des bonnes pratiques (HTML5 sémantique, Sass modulaire, JavaScript ES6+) en environnement agile"
-                tags={[
-                  "HTML5/CSS3",
-                  "Front-End",
-                  "Responsive Design",
-                  "WordPress",
-                  "CtrlWeb Solutions",
-                  "SEO",
-                  "Accessibilité",
-                  "Git",
-                ]}
-                link="https://ctrlweb.ca/"
-              />
-              <ExperienceCard
-                date="2017 - 2021"
-                title="Développeur Front-End - Freelance"
-                description="Intégration de maquettes responsive et mobile-first, en respectant les standards web. Développement d'applications React.js/Redux avec Gatsby.js pour des solutions performantes (JAMstack) et SEO-friendly, incluant la création de blogs dynamiques via GraphQL. Expertise en optimisation technique et accessibilité, alignée aux besoins clients pour des livrables sur mesure."
-                tags={[
-                  "React.js",
-                  "Next.js",
-                  "TypeScript",
-                  "Tailwind CSS",
-                  "Sass/CSS3",
-                  "Redux",
-                  "GraphQL",
-                  "Gatsby.js",
-                  "JAMstack",
-                  "Git",
-                ]}
-                link="#"
-              />
-              <ExperienceCard
-                date="2016 - 2017"
-                title="Développeur Front-End - Medialibs"
-                description="Conception et développement de sites web sous WordPress et solutions CMS sur mesure (medialibs), avec intégration front-end en HTML/CSS/JS/jQuery. Maintenance technique, optimisation continue et garantie de bon fonctionnement des plateformes"
-                tags={[
-                  "HTML5",
-                  "CSS3",
-                  "JavaScript",
-                  "jQuery",
-                  "PHP",
-                  "WordPress",
-                  "Responsive Design",
-                  "Medialibs Solutions",
-                  "Webo-facto",
-                ]}
-                link="https://www.medialibs.com/"
-              />
+              <ExperiencesSection />
             </div>
             <div className="flex justify-end mt-4">
               <Link
@@ -359,47 +292,7 @@ export default function Portfolio() {
               <span className="mt-1 block flex-grow h-[1px] bg-gray-300 dark:bg-slate-200"></span>
             </h2>
             <div className="space-y-2 pl-4">
-              <ProjectCard
-                title="Orthoflow - Correcteur d'orthographe et de grammaire"
-                description="Application web de correction et d’optimisation de textes en français"
-                tags={[
-                  "Next.js",
-                  "React",
-                  "TypeScript",
-                  "Tailwind CSS",
-                  "Radix UI",
-                  "Framer Motion",
-                ]}
-                link="https://orthoflow-nine.vercel.app/"
-              />
-              <ProjectCard
-                title="GitSkreen - Dashboard client-side d'analyse de repositories"
-                description="Dashboard Next.js 100% frontend analysant les repositories GitHub via leur API, avec visualisations interactives"
-                tags={[
-                  "React",
-                  "Next.js",
-                  "TypeScript",
-                  "Tailwind CSS",
-                  "Recharts",
-                  "Chart.js",
-                  "GitHub API",
-                ]}
-                link="https://gitskreen.vercel.app/"
-              />
-              <ProjectCard
-                title="Devisio - Générateur de devis pour Développeurs front-end"
-                description="Application web automatisant la génération de devis web (PDF) avec calculs dynamiques, validation type-safe et interface accessible pour freelances/professionnels"
-                tags={[
-                  "React",
-                  "Next.js",
-                  "TypeScript",
-                  "Tailwind CSS",
-                  "Radix UI",
-                  "Génération PDF",
-                  "Zod",
-                ]}
-                link="https://devisio.vercel.app/"
-              />
+              <ProjectsSection />
             </div>
           </section>
 

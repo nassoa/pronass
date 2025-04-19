@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-
 import { Badge } from "@/components/ui/badge";
 
 interface ExperienceCardProps {
@@ -11,6 +10,9 @@ interface ExperienceCardProps {
   description: string;
   tags: string[];
   link: string;
+  isHovering: boolean;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 export function ExperienceCard({
@@ -19,9 +21,18 @@ export function ExperienceCard({
   description,
   tags,
   link,
+  isHovering,
+  onMouseEnter,
+  onMouseLeave,
 }: ExperienceCardProps) {
   return (
-    <div className="group flex lg:flex-row flex-col gap-y-5 pl-7 transition-all duration-300 dark:hover:bg-slate-900 hover:bg-zinc-100  p-4">
+    <div
+      className={`group flex lg:flex-row flex-col gap-y-5 pl-7 transition-all duration-300 dark:hover:bg-slate-900 hover:bg-zinc-100 p-4 ${
+        isHovering ? "blur-sm opacity-70" : ""
+      }`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <div className="w-full lg:w-1/4 text-base font-medium text-gray-900 dark:text-white">
         {date}
       </div>
@@ -31,7 +42,7 @@ export function ExperienceCard({
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className=" dark:group-hover:text-yellow-400 transition-colors"
+            className="dark:group-hover:text-yellow-400 transition-colors"
           >
             {title}
             <ArrowUpRight className="inline-block ml-1 h-3.5 w-3.5 opacity-0 group-hover:opacity-100 dark:group-hover:text-yellow-400 group-hover:text-slate-600 transition-opacity" />
