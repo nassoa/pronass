@@ -42,10 +42,10 @@ export function ExperienceCard({
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="dark:group-hover:text-yellow-400 transition-colors"
+            className="dark:group-hover:text-yellow-400 group-hover:text-yellow-500 transition-colors"
           >
             {title}
-            <ArrowUpRight className="inline-block ml-1 h-3.5 w-3.5 opacity-0 group-hover:opacity-100 dark:group-hover:text-yellow-400 group-hover:text-slate-600 transition-opacity" />
+            <ArrowUpRight className="inline-block ml-1 h-3.5 w-3.5 opacity-0 group-hover:opacity-100 dark:group-hover:text-yellow-400 group-hover:text-yellow-500 transition-opacity" />
           </Link>
         </h3>
         <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">
