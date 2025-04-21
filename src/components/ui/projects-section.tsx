@@ -51,6 +51,22 @@ export function ProjectsSection() {
       ],
       link: "https://devisio.vercel.app/",
     },
+    {
+      title: "GlobalConverter - Convertisseur de Devises Universel",
+      description:
+        "Application web de conversion monétaire temps réel avec support des cryptomonnaies. Interface offrant des conversions instantanées entre devises traditionnelles avec gestion des préférences utilisateur.",
+      tags: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Radix UI",
+        "ExchangeRate-API",
+        "Crypto-monnaies",
+        "SPA",
+      ],
+      link: "https://globalconverter.vercel.app/",
+    },
   ];
 
   return (
