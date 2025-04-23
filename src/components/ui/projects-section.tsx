@@ -22,6 +22,23 @@ export function ProjectsSection() {
       link: "https://orthoflow-nine.vercel.app/",
     },
     {
+      title: "SEO-Analyzer – Analyseur SEO de sites web",
+      description:
+        "Application web permettant d'analyser les éléments SEO de sites web et d'obtenir des recommandations concrètes pour améliorer leur référencement. Elle permet également la comparaison de plusieurs sites afin d’identifier leurs forces et faiblesses en matière de SEO.",
+      tags: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Radix UI",
+        "Cheerio",
+        "Chart.js",
+        "Recharts",
+        "PageSpeed Insights API",
+      ],
+      link: "https://seoanalyzer-two.vercel.app/",
+    },
+    {
       title: "GitSkreen - Dashboard client-side d'analyse de repositories",
       description:
         "Dashboard Next.js 100% frontend analysant les repositories GitHub via leur API, avec visualisations interactives",
@@ -30,6 +47,7 @@ export function ProjectsSection() {
         "Next.js",
         "TypeScript",
         "Tailwind CSS",
+        "Radix UI",
         "Recharts",
         "Chart.js",
         "GitHub API",
