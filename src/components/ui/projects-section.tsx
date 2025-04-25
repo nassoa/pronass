@@ -106,12 +106,13 @@ export function ProjectsSection() {
   ];
 
   return (
-    <div>
+    <div className="snap-x snap-mandatory overflow-x-auto sm:overflow-visible flex sm:flex-wrap gap-4">
       {projects.map((project, index) => (
         <ProjectCard
           key={index}
           {...project}
           isHovering={hoveredIndex !== null && hoveredIndex !== index}
+          className="snap-center flex-shrink-0 sm:flex-shrink w-72 sm:w-auto"
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
         />
