@@ -85,6 +85,24 @@ export function ProjectsSection() {
       ],
       link: "https://globalconverter.vercel.app/",
     },
+    {
+      title: "Ai-cover – Générateur de Lettres de Motivation AI",
+      description:
+        "Application web qui génère automatiquement des lettres de motivation personnalisées en streaming à partir d’offres d’emploi et d’informations personnelles (nom, prénom, adresse, compétences clés).",
+      tags: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Headless UI",
+        "Heroicons",
+        "Lucide React",
+        "React Hook Form",
+        "React Hot Toast",
+        "Together AI (Mixtral 8x7B, Llama 3.1 8B)",
+      ],
+      link: "https://ai-cover-p3rj.vercel.app/",
+    },
   ];
 
   return (
