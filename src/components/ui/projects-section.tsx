@@ -106,7 +106,7 @@ export function ProjectsSection() {
   ];
 
   return (
-    <div className="snap-x snap-mandatory overflow-x-auto sm:overflow-visible flex sm:flex-wrap gap-4">
+    <div className="snap-x snap-mandatory overflow-x-auto sm:overflow-visible flex sm:flex-wrap">
       {projects.map((project, index) => (
         <ProjectCard
           key={index}
