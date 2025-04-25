@@ -75,7 +75,7 @@ export default function Portfolio() {
                   fill
                   sizes="(max-width: 640px) 112px, 112px"
                   className="object-cover"
-                  priority
+                  priority={true}
                 />
               </div>
 
