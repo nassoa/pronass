@@ -101,7 +101,7 @@ export function ProjectsSection() {
         "React Hot Toast",
         "Together AI (Mixtral 8x7B, Llama 3.1 8B)",
       ],
-      link: "https://ai-cover-p3rj.vercel.app/",
+      link: "https://ai-cover-gamma.vercel.app/",
     },
   ];
 
