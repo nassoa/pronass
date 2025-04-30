@@ -6,6 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from "@/app/GoogleAnalytics";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/next";
 
 const bakbak = Bakbak_One({
   weight: "400",
@@ -82,6 +83,7 @@ export default function RootLayout({
       <body className={`${bakbak.variable} ${balooBhai.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

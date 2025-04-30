@@ -8,7 +8,6 @@ export default function JsonLd() {
     jobTitle: "Développeur Front-End",
     sameAs: [
       "https://github.com/nassoa",
-      "https://linkedin.com/in/nassoa",
       // Autres profils...
     ],
     skills: ["React.js", "Next.js", "JavaScript", "TypeScript"],
