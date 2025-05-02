@@ -1,9 +1,18 @@
-import Link from "next/link"
-import { Github, Mail, Calendar } from "lucide-react"
+import Link from "next/link";
+import { Github, Mail, Calendar, Linkedin } from "lucide-react";
 
 export function SocialLinks() {
   return (
     <div className="flex gap-4">
+      <Link
+        href="https://www.linkedin.com/in/manitriniaina-safidy-nasoavina/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-400 dark:text-gray-500 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors"
+        aria-label="GitHub"
+      >
+        <Linkedin className="h-4 w-4" />
+      </Link>
       <Link
         href="https://github.com/nassoa"
         target="_blank"
@@ -30,5 +39,5 @@ export function SocialLinks() {
         <Calendar className="h-4 w-4" />
       </Link>
     </div>
-  )
+  );
 }

@@ -16,6 +16,7 @@ import {
   MessageSquareShare,
   FolderKanban,
   ArrowUpRight,
+  Linkedin,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -321,6 +322,24 @@ export default function Portfolio() {
                     <div className="flex items-center">
                       <FaWhatsapp className="h-3.5 w-3.5 mr-2" />
                       <span>WhatsApp</span>
+                      <span className="inline-block w-0 overflow-hidden transition-all duration-300 group-hover:w-4 group-hover:ml-1.5">
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </span>
+                    </div>
+                  </Button>
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/in/manitriniaina-safidy-nasoavina/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    variant="outline"
+                    className="w-full sm:w-auto text-gray-800 dark:text-gray-200 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 h-9 rounded-md text-sm group overflow-hidden"
+                  >
+                    <div className="flex items-center">
+                      <Linkedin className="h-3.5 w-3.5 mr-2" />
+                      <span>Linkedin</span>
                       <span className="inline-block w-0 overflow-hidden transition-all duration-300 group-hover:w-4 group-hover:ml-1.5">
                         <ArrowRight className="h-3.5 w-3.5" />
                       </span>
