@@ -27,7 +27,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div
-      className={`group transition-all duration-300 dark:hover:bg-slate-900 hover:bg-zinc-100 hover:cursor-pointer p-4 ${
+      className={`group transition-all w-full duration-300 dark:hover:bg-slate-900 hover:bg-zinc-100 hover:cursor-pointer p-4 ${
         isHovering ? "blur-sm opacity-70" : ""
       } ${className || ""}`}
       onMouseEnter={onMouseEnter}
