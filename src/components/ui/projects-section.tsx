@@ -8,6 +8,36 @@ export function ProjectsSection() {
 
   const projects = [
     {
+      title: "MovieSprint - Exploration TanStack Query",
+      description:
+        "Application Next.js pour découvrir les bonnes pratiques de gestion de données avec l'API TMDB",
+      tags: [
+        "Next.js",
+        "TanStack Query",
+        "TypeScript",
+        "Tailwind CSS",
+        "Radix UI",
+        "React Query",
+        "Infinite Scroll",
+      ],
+      link: "https://moviesprint.vercel.app/",
+    },
+    {
+      title: "Devisio - Générateur de devis pour Développeurs front-end",
+      description:
+        "Application web automatisant la génération de devis web (PDF) avec calculs dynamiques, validation type-safe et interface accessible pour freelances/professionnels",
+      tags: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Radix UI",
+        "Génération PDF",
+        "Zod",
+      ],
+      link: "https://devisio.vercel.app/",
+    },
+    {
       title: "Orthoflow - Correcteur d'orthographe et de grammaire",
       description:
         "Application web de correction et d'optimisation de textes en français",
@@ -53,21 +83,6 @@ export function ProjectsSection() {
         "GitHub API",
       ],
       link: "https://gitskreen.vercel.app/",
-    },
-    {
-      title: "Devisio - Générateur de devis pour Développeurs front-end",
-      description:
-        "Application web automatisant la génération de devis web (PDF) avec calculs dynamiques, validation type-safe et interface accessible pour freelances/professionnels",
-      tags: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Radix UI",
-        "Génération PDF",
-        "Zod",
-      ],
-      link: "https://devisio.vercel.app/",
     },
     {
       title: "GlobalConverter - Convertisseur de Devises Universel",
