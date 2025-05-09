@@ -8,21 +8,6 @@ export function ProjectsSection() {
 
   const projects = [
     {
-      title: "MovieSprint - Exploration TanStack Query",
-      description:
-        "Application Next.js pour découvrir les bonnes pratiques de gestion de données avec l'API TMDB",
-      tags: [
-        "Next.js",
-        "TanStack Query",
-        "TypeScript",
-        "Tailwind CSS",
-        "Radix UI",
-        "React Query",
-        "Infinite Scroll",
-      ],
-      link: "https://moviesprint.vercel.app/",
-    },
-    {
       title: "Devisio - Générateur de devis pour Développeurs front-end",
       description:
         "Application web automatisant la génération de devis web (PDF) avec calculs dynamiques, validation type-safe et interface accessible pour freelances/professionnels",
@@ -117,6 +102,21 @@ export function ProjectsSection() {
         "Together AI (Mixtral 8x7B, Llama 3.1 8B)",
       ],
       link: "https://ai-cover-gamma.vercel.app/",
+    },
+    {
+      title: "MovieSprint - Exploration TanStack Query",
+      description:
+        "Application Next.js pour découvrir les bonnes pratiques de gestion de données avec l'API TMDB",
+      tags: [
+        "Next.js",
+        "TanStack Query",
+        "TypeScript",
+        "Tailwind CSS",
+        "Radix UI",
+        "React Query",
+        "Infinite Scroll",
+      ],
+      link: "https://moviesprint.vercel.app/",
     },
   ];
 
