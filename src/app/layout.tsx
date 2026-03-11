@@ -22,9 +22,9 @@ const balooBhai = Baloo_Bhai_2({
 });
 
 export const metadata: Metadata = {
-  title: "Safidy Nasoavina | Développeur Front-End",
+  title: "Safidy Nasoavina | Développeur Front-End (React & Next.js)",
   description:
-    "Portfolio de Safidy Nasoavina, développeur front-end spécialisé en React.js et Next.js",
+    "Portfolio de Safidy Nasoavina, développeur front-end spécialisé en React.js et Next.js. Freelance basé à Madagascar.",
   keywords: [
     "développeur front-end",
     "React.js",
@@ -39,12 +39,12 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://www.nasoavina.site/",
     siteName: "Portfolio de Safidy Nasoavina",
-    title: "Safidy Nasoavina | Développeur Front-End",
+    title: "Safidy Nasoavina | Développeur Front-End (React & Next.js)",
     description:
-      "Portfolio de Safidy Nasoavina, développeur front-end spécialisé en React.js et Next.js",
+      "Portfolio de Safidy Nasoavina, développeur front-end spécialisé en React.js et Next.js. Freelance basé à Madagascar.",
     images: [
       {
-        url: "/images/profile.png",
+        url: "/images/profile.jpg",
         width: 1200,
         height: 630,
         alt: "Portfolio de Safidy Nasoavina",
@@ -53,10 +53,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Safidy Nasoavina | Développeur Front-End",
+    title: "Safidy Nasoavina | Développeur Front-End (React & Next.js)",
     description:
-      "Portfolio de Safidy Nasoavina, développeur front-end spécialisé en React.js et Next.js",
-    images: ["/images/profile.png"],
+      "Portfolio de Safidy Nasoavina, développeur front-end spécialisé en React.js et Next.js. Freelance basé à Madagascar.",
+    images: ["/images/profile.jpg"],
   },
   robots: {
     index: true,

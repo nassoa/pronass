@@ -37,9 +37,9 @@ export function ProjectsSection() {
       link: "https://orthoflow-nine.vercel.app/",
     },
     {
-      title: "SEO-Analyzer – Analyseur SEO de sites web",
+      title: "SEO-Analyzer - Analyseur SEO de sites web",
       description:
-        "Application web permettant d'analyser les éléments SEO de sites web et d'obtenir des recommandations concrètes pour améliorer leur référencement. Elle permet également la comparaison de plusieurs sites afin d’identifier leurs forces et faiblesses en matière de SEO.",
+        "Application web permettant d'analyser les éléments SEO de sites web et d'obtenir des recommandations concrètes pour améliorer leur référencement.",
       tags: [
         "React",
         "Next.js",
@@ -86,9 +86,9 @@ export function ProjectsSection() {
       link: "https://globalconverter.vercel.app/",
     },
     {
-      title: "Ai-cover – Générateur de Lettres de Motivation AI",
+      title: "AI-Cover - Générateur de Lettres de Motivation AI",
       description:
-        "Application web qui génère automatiquement des lettres de motivation personnalisées en streaming à partir d’offres d’emploi et d’informations personnelles (nom, prénom, adresse, compétences clés).",
+        "Application web qui génère automatiquement des lettres de motivation personnalisées en streaming à partir d’offres d’emploi et d'informations personnelles.",
       tags: [
         "React",
         "Next.js",

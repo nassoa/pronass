@@ -66,17 +66,19 @@ export default function Portfolio() {
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-200">
       <div className="flex flex-col lg:flex-row container mx-auto">
         {/* Sidebar - Fixed on desktop */}
-        <aside className="lg:fixed lg:w-[350px] lg:h-screen py-8 lg:p-12 lg:overflow-y-auto">
+        <aside className="lg:fixed lg:w-[420px] lg:h-screen py-8 lg:p-12 lg:overflow-y-auto">
           <div className="flex flex-col h-full justify-between">
             <div className="space-y-8">
-              <div className="relative w-28 h-28 rounded-2xl overflow-hidden  dark:border-gray-800">
+              <div className="relative w-[310px] h-[310px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800 flex items-center justify-center">
                 <Image
-                  src="/images/profile.png"
+                  src="/images/profile.jpg"
                   alt="Manitriniaina Safidy Nasoavina"
                   fill
-                  sizes="(max-width: 640px) 112px, 112px"
-                  className="object-cover"
+                  sizes="(max-width: 640px) 220px, 220px"
+                  className="object-cover scale-[1.6] origin-[60%_top]"
                   priority={true}
+                  quality={100}
+                  unoptimized={true}
                 />
               </div>
 
@@ -96,11 +98,10 @@ export default function Portfolio() {
               <nav className="space-y-4">
                 <Link
                   href="#about"
-                  className={`group block text-sm font-medium transition-colors ${
-                    activeSection === "about"
-                      ? "text-yellow-500 dark:text-yellow-400"
-                      : "text-gray-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400"
-                  }`}
+                  className={`group block text-sm font-medium transition-colors ${activeSection === "about"
+                    ? "text-yellow-500 dark:text-yellow-400"
+                    : "text-gray-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400"
+                    }`}
                 >
                   <div className="flex items-center">
                     <span className="inline-block h-[1px] bg-current mr-2 transition-all duration-200 ease-in-out w-8 group-hover:w-10"></span>
@@ -109,24 +110,22 @@ export default function Portfolio() {
                 </Link>
                 <Link
                   href="#experience"
-                  className={`group block text-sm font-medium transition-colors ${
-                    activeSection === "experience"
-                      ? "text-yellow-500 dark:text-yellow-400"
-                      : "text-gray-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400"
-                  }`}
+                  className={`group block text-sm font-medium transition-colors ${activeSection === "experience"
+                    ? "text-yellow-500 dark:text-yellow-400"
+                    : "text-gray-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400"
+                    }`}
                 >
                   <div className="flex items-center">
                     <span className="inline-block h-[1px] bg-current mr-2 transition-all duration-200 ease-in-out w-8 group-hover:w-10"></span>
-                    Experiences
+                    Expériences
                   </div>
                 </Link>
                 <Link
                   href="#skills"
-                  className={`group block text-sm font-medium transition-colors ${
-                    activeSection === "skills"
-                      ? "text-yellow-500 dark:text-yellow-400"
-                      : "text-gray-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400"
-                  }`}
+                  className={`group block text-sm font-medium transition-colors ${activeSection === "skills"
+                    ? "text-yellow-500 dark:text-yellow-400"
+                    : "text-gray-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400"
+                    }`}
                 >
                   <div className="flex items-center">
                     <span className="inline-block h-[1px] bg-current mr-2 transition-all duration-200 ease-in-out w-8 group-hover:w-10"></span>
@@ -135,24 +134,22 @@ export default function Portfolio() {
                 </Link>
                 <Link
                   href="#projects"
-                  className={`group block text-sm font-medium transition-colors ${
-                    activeSection === "projects"
-                      ? "text-yellow-500 dark:text-yellow-400"
-                      : "text-gray-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400"
-                  }`}
+                  className={`group block text-sm font-medium transition-colors ${activeSection === "projects"
+                    ? "text-yellow-500 dark:text-yellow-400"
+                    : "text-gray-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400"
+                    }`}
                 >
                   <div className="flex items-center">
                     <span className="inline-block h-[1px] bg-current mr-2 transition-all duration-200 ease-in-out w-8 group-hover:w-10"></span>
-                    Projets réalisés
+                    Projets
                   </div>
                 </Link>
                 <Link
                   href="#contact"
-                  className={`group block text-sm font-medium transition-colors ${
-                    activeSection === "contact"
-                      ? "text-yellow-500 dark:text-yellow-400"
-                      : "text-gray-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400"
-                  }`}
+                  className={`group block text-sm font-medium transition-colors ${activeSection === "contact"
+                    ? "text-yellow-500 dark:text-yellow-400"
+                    : "text-gray-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400"
+                    }`}
                 >
                   <div className="flex items-center">
                     <span className="inline-block h-[1px] bg-current mr-2 transition-all duration-200 ease-in-out w-8 group-hover:w-10"></span>
@@ -203,7 +200,7 @@ export default function Portfolio() {
         </aside>
 
         {/* Main Content - Scrollable */}
-        <main className="lg:ml-[350px] w-full py-8 lg:p-12">
+        <main className="lg:ml-[420px] w-full py-8 lg:p-12">
           {/* About Section */}
           <section id="about" className="mb-16 max-w-2xl">
             <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-x-3">
@@ -214,18 +211,17 @@ export default function Portfolio() {
             <div className="space-y-4 pl-8">
               <p className="text-gray-600 dark:text-gray-400">
                 Développeur front-end passionné depuis plus de{" "}
-                <strong>8 ans</strong> , je conçois des interfaces performantes
-                ( React.js, Next.js) et des <strong>solutions CMS</strong> – des
-                traditionnels (WordPress) aux headless (Strapi, Contentful) –
-                associées à des architectures <strong>JAMstack</strong>, pour
+                <strong>10 ans</strong>, je conçois des interfaces sur mesure
+                ( React.js, Next.js), des
+                traditionnels aux headless (Strapi, Contentful) associées à des architectures <strong>JAMstack</strong>, pour
                 allier esthétique et fonctionnalité.
               </p>
 
               <p className="text-gray-600 dark:text-gray-400">
-                Spécialisé dans des applications <strong>scalables</strong>,
+                J'optimise des applications <strong>scalables</strong>,
                 même pour des projets complexes (dashboards data, outils SaaS,
-                ...), je mets l’accent sur la <strong>performance</strong> et l’
-                <strong>accessibilité</strong> (WCAG) pour des résultats
+                ...), en mettant l’accent sur la <strong>performance</strong> et
+                l'<strong>accessibilité</strong> (WCAG) pour des résultats
                 durables.
               </p>
 
