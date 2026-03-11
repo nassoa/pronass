@@ -211,10 +211,12 @@ export default function Portfolio() {
             <div className="space-y-4 pl-8">
               <p className="text-gray-600 dark:text-gray-400">
                 Développeur front-end passionné depuis plus de{" "}
-                <strong>10 ans</strong>, je conçois des interfaces sur mesure
-                ( React.js, Next.js), des
-                traditionnels aux headless (Strapi, Contentful) associées à des architectures <strong>JAMstack</strong>, pour
-                allier esthétique et fonctionnalité.
+                <strong>8 ans</strong>, je conçois des interfaces modernes et
+                évolutives avec <strong>React.js</strong> et{" "}
+                <strong>Next.js</strong>, en intégrant des solutions{" "}
+                <strong>CMS headless</strong> (Strapi, Contentful) et des
+                architectures <strong>JAMstack</strong> pour allier esthétique
+                et fonctionnalité.
               </p>
 
               <p className="text-gray-600 dark:text-gray-400">
@@ -265,19 +267,60 @@ export default function Portfolio() {
               <span>Compétences</span>
               <span className="mt-1 block flex-grow h-[1px] bg-gray-300 dark:bg-slate-200"></span>
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 pl-8">
-              <SkillBadge name="React.js" level={95} />
-              <SkillBadge name="Next.js" level={90} />
-              <SkillBadge name="TypeScript" level={85} />
-              <SkillBadge name="Tailwind CSS" level={90} />
-              <SkillBadge name="JavaScript" level={95} />
-              <SkillBadge name="HTML/CSS" level={95} />
-              <SkillBadge name="Redux" level={80} />
-              <SkillBadge name="GraphQL" level={75} />
-              <SkillBadge name="Framer Motion" level={70} />
-              <SkillBadge name="Jest" level={75} />
-              <SkillBadge name="Webpack" level={70} />
-              <SkillBadge name="Git" level={85} />
+            <div className="space-y-8 pl-8">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-1 h-4 rounded-full bg-yellow-400 dark:bg-yellow-500"></span>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">Core & Frameworks</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <SkillBadge name="React.js" />
+                  <SkillBadge name="Next.js (App Router)" />
+                  <SkillBadge name="TypeScript" />
+                  <SkillBadge name="JavaScript (ES6+)" />
+                  <SkillBadge name="HTML5 / CSS3" />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-1 h-4 rounded-full bg-yellow-400 dark:bg-yellow-500"></span>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">State & Data</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <SkillBadge name="Zustand / Redux" />
+                  <SkillBadge name="React Query" />
+                  <SkillBadge name="GraphQL / Apollo" />
+                  <SkillBadge name="API REST" />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-1 h-4 rounded-full bg-yellow-400 dark:bg-yellow-500"></span>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">Styling & UI</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <SkillBadge name="Tailwind CSS" />
+                  <SkillBadge name="Design Systems" />
+                  <SkillBadge name="Framer Motion" />
+                  <SkillBadge name="Radix UI" />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-1 h-4 rounded-full bg-yellow-400 dark:bg-yellow-500"></span>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">Outils, Qualité & Perf</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <SkillBadge name="Git / GitHub" />
+                  <SkillBadge name="Jest / Tests" />
+                  <SkillBadge name="Core Web Vitals" />
+                  <SkillBadge name="Accessibilité (A11y)" />
+                  <SkillBadge name="CI/CD Vercel" />
+                </div>
+              </div>
             </div>
           </section>
 
