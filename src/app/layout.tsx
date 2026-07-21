@@ -1,25 +1,11 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Bakbak_One, Baloo_Bhai_2 } from "next/font/google";
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from "@/app/GoogleAnalytics";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
-
-const bakbak = Bakbak_One({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-bakbak",
-  display: "swap",
-});
-
-const balooBhai = Baloo_Bhai_2({
-  subsets: ["latin"],
-  variable: "--font-baloo-bhai",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Safidy Nasoavina | Développeur Front-End (React & Next.js)",
@@ -37,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://www.nasoavina.site/",
+    url: "https://www.nasoavina.com/",
     siteName: "Portfolio de Safidy Nasoavina",
     title: "Safidy Nasoavina | Développeur Front-End (React & Next.js)",
     description:
@@ -66,7 +52,7 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     apple: "/apple-icon.png",
   },
-  metadataBase: new URL("https://www.nasoavina.site/"),
+  metadataBase: new URL("https://www.nasoavina.com/"),
 };
 
 export default function RootLayout({
@@ -77,10 +63,21 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        {/* Cabinet Grotesk — headlines, display */}
+        {/* Satoshi — body text */}
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500,600,700,800,900&f[]=satoshi@300,400,500,600,700&display=swap"
+          rel="stylesheet"
+        />
+        {/* DM Mono — code, labels, monospace */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
         <JsonLd />
         <GoogleAnalytics measurementId="G-PTBTRS6KVX" />
       </head>
-      <body className={`${bakbak.variable} ${balooBhai.variable} font-sans`}>
+      <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
           <Analytics />

@@ -19,6 +19,9 @@ const config = {
     },
     extend: {
       fontFamily: {
+        sans: ["var(--sans)"],
+        display: ["var(--display)"],
+        mono: ["var(--mono)"],
         bakbak: ["var(--font-bakbak)"],
         baloo: ["var(--font-baloo-bhai)"],
       },

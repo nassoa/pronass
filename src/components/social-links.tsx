@@ -23,7 +23,7 @@ export function SocialLinks() {
         <Github className="h-4 w-4" />
       </Link>
       <Link
-        href="mailto:hello@nasoavina.site"
+        href="mailto:hello@nasoavina.com"
         className="text-gray-400 dark:text-gray-500 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors"
         aria-label="Email"
       >

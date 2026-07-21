@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       // Disallow: '/admin/', // Ajoutez ici les chemins à exclure si nécessaire
     },
-    sitemap: "https://www.nasoavina.site/sitemap.xml",
+    sitemap: "https://www.nasoavina.com/sitemap.xml",
   };
 }
