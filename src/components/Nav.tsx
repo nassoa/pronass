@@ -1,39 +1,28 @@
 "use client";
-import { useState, useEffect } from "react";
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <nav id={scrolled ? "nav" : "nav"}>
-      <div className="w nav-i">
+    <nav id="nav">
+      <div className="shell nav-i">
         <ul className="nav-links">
           <li>
-            <a href="#work">Work</a>
-          </li>
-          <li>
-            <a href="#skills">Skills</a>
+            <a href="#services">Services</a>
           </li>
           <li>
             <a href="#experience">Parcours</a>
           </li>
           <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#contact" className="nav-cta">
-              Me contacter
-            </a>
+            <a href="#about">À propos</a>
           </li>
         </ul>
+        <a
+          href="https://cal.com/nasoavina-manitriniaina-jo3qz1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-cta"
+        >
+          Prendre RDV
+        </a>
       </div>
     </nav>
   );

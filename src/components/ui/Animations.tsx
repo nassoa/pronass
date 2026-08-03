@@ -14,9 +14,11 @@ export default function Animations() {
     ───────────────────────────────────────────── */
     const nav = document.getElementById("nav");
     const handleNavScroll = () => {
-      nav?.classList.toggle("on", window.scrollY > 30);
+      nav?.classList.toggle("on", window.scrollY > 24);
     };
+    handleNavScroll();
     window.addEventListener("scroll", handleNavScroll, { passive: true });
+    window.addEventListener("resize", handleNavScroll, { passive: true });
 
     /* ─────────────────────────────────────────────
        NAV ACTIVE LINK
@@ -90,6 +92,7 @@ export default function Animations() {
     ───────────────────────────────────────────── */
     return () => {
       window.removeEventListener("scroll", handleNavScroll);
+      window.removeEventListener("resize", handleNavScroll);
       navObs.disconnect();
       revealObs.disconnect();
       mutObs.disconnect();

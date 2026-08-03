@@ -1,91 +1,92 @@
 "use client";
 
-import Image from "next/image";
+import { Handshake, Sparkles, FileCheck } from "lucide-react";
 
 export default function About() {
   return (
-    <section id="about">
+    <section id="about" className="section">
       <div className="w">
         <div className="about-grid">
-          <div className="about-photo-frame rv">
+          <aside className="about-left rv">
             <div className="about-photo">
               <img
                 src="/pro-nas-2.jpg"
-                alt="Safidy Nasoavina — Développeur Front-End"
+                alt="Safidy Nasoavina, lead technique indépendant"
               />
-              <div className="about-photo-fade"></div>
-              <div className="about-badge">
-                <div className="about-badge-dot"></div>
-                <span>Open to work · Remote</span>
-              </div>
             </div>
-            <div className="about-exp-card">
-              <div className="about-exp-num">8</div>
-              <div className="about-exp-label">Ans d'exp.</div>
+            <div className="about-photo-meta">
+              <span>Lead technique</span>
+              <span>10+ ans</span>
             </div>
-          </div>
+          </aside>
 
           <div className="about-right">
             <p className="sec-label rv-left">À propos</p>
-            <h2 className="sec-title" style={{ margin: "10px 0 24px" }}>
-              Développeur par métier,
+            <h2 className="sec-title">
+              D&apos;un poste de développeur
               <br />
-              <span style={{ color: "var(--a)", fontWeight: "300" }}>
-                designer
-              </span>{" "}
-              par instinct
+              à une vraie autonomie.
             </h2>
             <p className="about-bio rv">
-              Je construis des interfaces depuis <strong>8 ans</strong> —
-              d'abord en freelance, puis au sein d'équipes agiles en Europe et
-              en Amérique du Nord. Je soigne l'intersection entre{" "}
-              <strong>performance et esthétique</strong>, convaincu qu'un bon
-              code et un bon design sont la même discipline.
+              Pendant longtemps, j&apos;ai été « le développeur front-end » de
+              l&apos;équipe : on me donnait des specs, je livrais
+              l&apos;interface. Aujourd&apos;hui je préfère être impliqué plus
+              tôt, sur le cadrage, les priorités et les choix techniques, et
+              rester responsable jusqu&apos;à la mise en prod.
               <br />
               <br />
-              Basé à <strong>Madagascar</strong>, je collabore à distance avec
-              des équipes internationales. Mon approche : écoute active,
-              architecture évolutive, livraisons dans les délais,{" "}
-              <strong>expérience utilisateur en priorité absolue.</strong>
+              Avec les outils actuels, à peu près n&apos;importe qui peut sortir
+              un bout de code qui marche. Ce qui fait la différence, de mon
+              point de vue, c&apos;est de savoir ce qu&apos;il faut construire,
+              et de tenir la structure propre une fois que le prototype a fait
+              ses preuves.
+              <br />
+              <br />
+              Je suis basé à Madagascar et je travaille à distance,
+              principalement avec des clients en Europe et au Canada.
             </p>
-            <div className="beliefs rv d1">
-              <div className="belief">
-                <span className="belief-n">01</span>
+            <ul className="beliefs rv d1">
+              <li className="belief">
+                <div className="belief-n" aria-hidden="true">
+                  <Handshake size={18} strokeWidth={1.75} />
+                </div>
                 <div>
-                  <div className="belief-title">
-                    La rapidité est une fonctionnalité
-                  </div>
+                  <div className="belief-title">Un seul interlocuteur</div>
                   <p className="belief-desc">
-                    Un site rapide n'est pas un luxe — c'est du respect pour le
-                    temps de l'utilisateur.
+                    Vous me parlez directement, pas à un intermédiaire qui
+                    relaie vos messages à quelqu&apos;un d&apos;autre.
                   </p>
                 </div>
-              </div>
-              <div className="belief">
-                <span className="belief-n">02</span>
+              </li>
+              <li className="belief">
+                <div className="belief-n" aria-hidden="true">
+                  <Sparkles size={18} strokeWidth={1.75} />
+                </div>
                 <div>
                   <div className="belief-title">
-                    L'accessibilité n'est pas optionnelle
+                    Les outils IA, oui, mais encadrés
                   </div>
                   <p className="belief-desc">
-                    Chaque interface que je construis est conforme WCAG pour
-                    tous les utilisateurs.
+                    J&apos;utilise Cursor, Claude et consorts au quotidien, mais
+                    je ne saute pas l&apos;étape d&apos;architecture. C&apos;est
+                    justement ce qui distingue un prototype d&apos;un produit
+                    qui tient.
                   </p>
                 </div>
-              </div>
-              <div className="belief">
-                <span className="belief-n">03</span>
+              </li>
+              <li className="belief">
+                <div className="belief-n" aria-hidden="true">
+                  <FileCheck size={18} strokeWidth={1.75} />
+                </div>
                 <div>
-                  <div className="belief-title">
-                    Design et code : une seule discipline
-                  </div>
+                  <div className="belief-title">Des produits qui durent</div>
                   <p className="belief-desc">
-                    Je ferme le fossé entre Figma et le navigateur.
-                    Pixel-perfect, à chaque livraison.
+                    Code lisible, documenté, repris par votre équipe ou un autre
+                    prestataire sans friction.
                   </p>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

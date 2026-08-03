@@ -1,22 +1,37 @@
 import type React from "react";
 import type { Metadata } from "next";
+import { Instrument_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from "@/app/GoogleAnalytics";
-
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
 
+const instrument = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500"],
+});
+
 export const metadata: Metadata = {
-  title: "Safidy Nasoavina | Développeur Front-End (React & Next.js)",
+  title: "Safidy Nasoavina | Lead technique & développeur full-stack indépendant",
   description:
-    "Portfolio de Safidy Nasoavina, développeur front-end spécialisé en React.js et Next.js. Freelance basé à Madagascar.",
+    "Je transforme vos idées en produits qui tournent. Lead technique et développeur full-stack indépendant, plus de 10 ans d'expérience. Basé à Madagascar, en remote.",
   keywords: [
-    "développeur front-end",
-    "React.js",
+    "lead technique",
+    "CTO freelance",
+    "développeur full-stack",
     "Next.js",
-    "développeur web",
-    "JavaScript",
+    "React Native",
+    "consultant technique",
   ],
   authors: [{ name: "Safidy Nasoavina" }],
   creator: "Safidy Nasoavina",
@@ -24,24 +39,26 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     url: "https://www.nasoavina.com/",
-    siteName: "Portfolio de Safidy Nasoavina",
-    title: "Safidy Nasoavina | Développeur Front-End (React & Next.js)",
+    siteName: "Safidy Nasoavina",
+    title:
+      "Safidy Nasoavina | Lead technique & développeur full-stack indépendant",
     description:
-      "Portfolio de Safidy Nasoavina, développeur front-end spécialisé en React.js et Next.js. Freelance basé à Madagascar.",
+      "Je transforme vos idées en produits qui tournent. Lead technique et développeur full-stack indépendant, plus de 10 ans d'expérience. Basé à Madagascar, en remote.",
     images: [
       {
         url: "/images/profile.jpg",
         width: 1200,
         height: 630,
-        alt: "Portfolio de Safidy Nasoavina",
+        alt: "Safidy Nasoavina, lead technique indépendant",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Safidy Nasoavina | Développeur Front-End (React & Next.js)",
+    title:
+      "Safidy Nasoavina | Lead technique & développeur full-stack indépendant",
     description:
-      "Portfolio de Safidy Nasoavina, développeur front-end spécialisé en React.js et Next.js. Freelance basé à Madagascar.",
+      "Je transforme vos idées en produits qui tournent. Lead technique et développeur full-stack indépendant, plus de 10 ans d'expérience.",
     images: ["/images/profile.jpg"],
   },
   robots: {
@@ -61,23 +78,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="fr"
+      className={`scroll-smooth ${instrument.variable} ${dmMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
-        {/* Cabinet Grotesk — headlines, display */}
-        {/* Satoshi — body text */}
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500,600,700,800,900&f[]=satoshi@300,400,500,600,700&display=swap"
-          rel="stylesheet"
-        />
-        {/* DM Mono — code, labels, monospace */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
         <JsonLd />
         <GoogleAnalytics measurementId="G-PTBTRS6KVX" />
       </head>
-      <body className="font-sans">
+      <body>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
           <Analytics />

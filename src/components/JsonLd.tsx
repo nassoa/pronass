@@ -5,12 +5,15 @@ export default function JsonLd() {
     name: "Safidy Nasoavina",
     url: "https://www.nasoavina.com",
     image: "https://www.nasoavina.com/images/profile.png",
-    jobTitle: "Développeur Front-End",
-    sameAs: [
-      "https://github.com/nassoa",
-      // Autres profils...
+    jobTitle: "Lead technique & développeur full-stack indépendant",
+    sameAs: ["https://github.com/nassoa"],
+    knowsAbout: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "React Native",
+      "Architecture logicielle",
     ],
-    skills: ["React.js", "Next.js", "JavaScript", "TypeScript"],
   };
 
   return (
