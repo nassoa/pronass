@@ -27,11 +27,6 @@ export default function Experience() {
               <p className="exp-desc">
                 Interfaces SPA/SSR avec Next.js App Router. Architecture
                 monorepo, Design System Storybook à l&apos;échelle.
-                <strong>
-                  {" "}
-                  Migration d&apos;applications vers Next.js, dashboards data
-                  D3.js, collaborations pixel-perfect.
-                </strong>
               </p>
               <div className="exp-tags">
                 <span className="exp-tag">Next.js</span>
@@ -59,13 +54,8 @@ export default function Experience() {
             <div>
               <div className="exp-role">Développeur Front-End (Feelin)</div>
               <p className="exp-desc">
-                Interfaces React + GraphQL/Apollo, optimisation performance avec
-                <strong>
-                  {" "}
-                  chargement différé, mise en cache, réduction des temps de
-                  chargement.
-                </strong>{" "}
-                Conformité WCAG sur applications à fort trafic.
+                Interfaces React + GraphQL/Apollo, optimisation performance,
+                conformité WCAG sur applications à fort trafic.
               </p>
               <div className="exp-tags">
                 <span className="exp-tag">React.js</span>
@@ -93,10 +83,8 @@ export default function Experience() {
             <div>
               <div className="exp-role">Développeur Front-End</div>
               <p className="exp-desc">
-                Interfaces responsives SEO-optimisées,
-                <strong> environnement agile canadien.</strong> HTML5
-                sémantique, Sass modulaire, collaboration transverse
-                design/back-end.
+                Interfaces responsives SEO-optimisées, environnement agile
+                canadien.
               </p>
               <div className="exp-tags">
                 <span className="exp-tag">HTML5/CSS3</span>
@@ -115,9 +103,8 @@ export default function Experience() {
             <div>
               <div className="exp-role">Développeur Front-End Indépendant</div>
               <p className="exp-desc">
-                Applications React/Gatsby JAMstack, intégrations GraphQL.
-                <strong> Clients internationaux</strong>, mobile-first,
-                SEO-friendly, accessibilité.
+                Applications React/Gatsby JAMstack, intégrations GraphQL pour
+                clients internationaux.
               </p>
               <div className="exp-tags">
                 <span className="exp-tag">React.js</span>
@@ -144,9 +131,8 @@ export default function Experience() {
             <div>
               <div className="exp-role">Développeur Front-End Junior</div>
               <p className="exp-desc">
-                Développement et maintenance sites WordPress et CMS sur mesure.
-                <strong> Première expérience en équipe</strong> :
-                HTML/CSS/JS/jQuery, optimisation continue.
+                Développement et maintenance de sites WordPress et CMS sur
+                mesure.
               </p>
               <div className="exp-tags">
                 <span className="exp-tag">HTML5</span>

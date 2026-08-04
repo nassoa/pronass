@@ -7,9 +7,7 @@ const serviceMeta: Record<string, { label: string }> = {
   cto: { label: "Architecture" },
   audit: { label: "Audit" },
   "ai-ship": { label: "IA & livraison" },
-  integrations: { label: "Connexions" },
   mobile: { label: "Mobile" },
-  team: { label: "Équipe" },
 };
 
 const ink = {
@@ -96,23 +94,6 @@ function ServiceArt({ id }: { id: string }) {
         </svg>
       );
 
-    case "integrations":
-      /* Nœuds API / flux */
-      return (
-        <svg viewBox="0 0 88 64" className="svc-art" aria-hidden>
-          <circle cx="10" cy="18" r="7" {...ink} className="svc-ink" />
-          <circle cx="62" cy="14" r="6" {...ink} className="svc-ink" />
-          <circle cx="56" cy="46" r="7" {...ink} className="svc-ink" />
-          <circle cx="16" cy="48" r="5" {...ink} className="svc-ink" />
-          <path
-            {...ink}
-            d="M16 22c10 2 28-4 40-6M54 20c2 8 0 16-4 20M22 44c10-2 20-2 28 0M14 25c0 8 0 16 4 18"
-            className="svc-ink"
-          />
-          <circle cx="10" cy="18" r="3" className="svc-accent" />
-        </svg>
-      );
-
     case "mobile":
       /* Smartphone + UI */
       return (
@@ -122,17 +103,6 @@ function ServiceArt({ id }: { id: string }) {
           <rect x="8" y="16" width="20" height="12" rx="1.5" {...ink} className="svc-ink" />
           <path {...ink} d="M8 36h20M8 42h14M8 48h17" className="svc-ink" />
           <circle cx="18" cy="56" r="2" className="svc-accent" />
-        </svg>
-      );
-
-    case "team":
-      /* Trois cercles — collaboration */
-      return (
-        <svg viewBox="0 0 72 64" className="svc-art" aria-hidden>
-          <circle cx="22" cy="22" r="16" {...ink} className="svc-ink" />
-          <circle cx="42" cy="22" r="16" {...ink} className="svc-ink" />
-          <circle cx="32" cy="40" r="16" {...ink} className="svc-ink" />
-          <circle cx="32" cy="28" r="3.5" className="svc-accent" />
         </svg>
       );
 
@@ -152,12 +122,11 @@ export default function Services() {
         <div className="sec-head rv">
           <p className="sec-label rv-left">Services</p>
           <h2 className="sec-title">
-            Un seul contact, du premier brief au résultat.
+            Cinq façons de faire avancer un projet technique.
           </h2>
           <p className="sec-lead">
-            Vous n&apos;avez pas à gérer plusieurs prestataires ni à traduire
-            vos besoins en specs techniques. Je prends le projet en main et
-            j&apos;en reste responsable jusqu&apos;au bout.
+            Du premier brief à la mise en production, en passant par
+            l&apos;audit d&apos;un projet existant ou le pilotage à distance.
           </p>
         </div>
 

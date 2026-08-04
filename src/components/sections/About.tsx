@@ -23,16 +23,11 @@ export default function About() {
           <div className="about-right">
             <p className="sec-label rv-left">À propos</p>
             <h2 className="sec-title">
-              D&apos;un poste de développeur
-              <br />
-              à une vraie autonomie.
+              Lead technique, développement de bout en bout.
             </h2>
             <p className="about-bio rv">
-              Pendant longtemps, j&apos;ai été « le développeur front-end » de
-              l&apos;équipe : on me donnait des specs, je livrais
-              l&apos;interface. Aujourd&apos;hui je préfère être impliqué plus
-              tôt, sur le cadrage, les priorités et les choix techniques, et
-              rester responsable jusqu&apos;à la mise en prod.
+              Le rôle couvre le cadrage, les priorités et les choix techniques,
+              avec une responsabilité qui va jusqu&apos;à la mise en production.
               <br />
               <br />
               Avec les outils actuels, à peu près n&apos;importe qui peut sortir
