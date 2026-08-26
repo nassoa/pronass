@@ -10,9 +10,8 @@ export default function Pricing() {
           <p className="sec-label rv-left">Tarifs</p>
           <h2 className="sec-title">Une structure claire</h2>
           <p className="sec-lead">
-            Je n&apos;affiche pas de prix fixes ici : chaque mission est cadrée
-            avec vous avant de démarrer, pour un devis qui correspond vraiment
-            au besoin.
+            Pas de grille tarifaire ici : je préfère cadrer avec vous avant de
+            donner un chiffre.
           </p>
         </div>
 

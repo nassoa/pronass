@@ -36,7 +36,7 @@ export default function Cursor() {
     };
 
     const SELECTOR =
-      "a, button, .pc, .belief, .sk-item, .cl, .exp-row, .nav-cta, .btn, .btn-contact, .btn-contact-ghost";
+      "a, button, .pc, .sk-item, .cl, .exp-row, .nav-cta, .btn, .btn-contact, .btn-contact-ghost";
 
     document.querySelectorAll(SELECTOR).forEach(bindEl);
 

@@ -1062,30 +1062,21 @@ a.exp-co:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 12%;
+  transform: scale(1.12) translateY(6%);
   transition: transform 0.6s var(--ease);
 }
 
 .about-photo:hover img {
-  transform: scale(1.03);
-}
-
-.about-photo-meta {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 14px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--faint);
+  transform: scale(1.16) translateY(6%);
 }
 
 .about-bio {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--muted);
   line-height: 1.8;
-  margin: 24px 0 36px;
+  margin: 24px 0 0;
+  max-width: 38em;
 }
 
 .about-bio strong {
@@ -1093,53 +1084,57 @@ a.exp-co:hover {
   font-weight: 600;
 }
 
-.beliefs {
+.about-facts {
   list-style: none;
+  display: grid;
+  gap: 20px;
+  margin-top: 36px;
+  padding-top: 0;
+}
+
+@media (min-width: 560px) {
+  .about-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .about-fact + .about-fact {
+    border-left: 1px solid var(--line);
+    padding-left: 28px;
+  }
+}
+
+.about-fact {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 0;
 }
 
-.belief {
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: 14px;
-  padding: 18px 16px;
-  background: var(--surface);
-  border-radius: 14px;
-  transition:
-    transform 0.2s var(--ease),
-    background 0.2s;
-}
-
-.belief:hover {
-  transform: translateX(4px);
-  background: var(--accent-soft);
-}
-
-.belief-n {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--accent-soft);
-  color: var(--accent);
-  flex-shrink: 0;
-}
-
-.belief-title {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  margin-bottom: 4px;
-}
-
-.belief-desc {
+.about-fact-label {
+  display: block;
   font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.about-fact-value {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.about-fact-detail {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.35;
 }
 
 /* ── CONTACT ── */

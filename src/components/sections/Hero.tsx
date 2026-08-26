@@ -18,14 +18,13 @@ export default function Hero() {
 
           <h1 className="hero-title">
             <span className="hero-line">
-              Plus de 10 ans à livrer des produits en production.
+              10 ans à livrer des produits qui doivent tenir en production.
             </span>
           </h1>
 
           <p className="hero-sub">
-            Lead technique et développeur full-stack indépendant. Je
-            m&apos;occupe du projet du premier brief jusqu&apos;à la mise en
-            prod. Basé à Madagascar, en remote.
+            Lead technique et développeur full-stack indépendant. Du brief à la
+            mise en ligne. Basé à Madagascar, en remote.
           </p>
 
           <div className="hero-actions">

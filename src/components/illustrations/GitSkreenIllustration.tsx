@@ -16,7 +16,7 @@ export function GitSkreenIllustration() {
       <text x="255" y="26" fontFamily="'DM Mono',monospace" fontSize="7.5" fill="#56D364" textAnchor="middle" fontWeight="500">847 commits</text>
 
       {/* Label */}
-      <text x="16" y="52" fontFamily="'DM Mono',monospace" fontSize="6.5" fill="#484F58" letterSpacing=".07em">CONTRIBUTIONS — 12 MONTHS</text>
+      <text x="16" y="52" fontFamily="'DM Mono',monospace" fontSize="6.5" fill="#484F58" letterSpacing=".07em">CONTRIBUTIONS · 12 MONTHS</text>
 
       {/* HEATMAP - Sample pattern */}
       <rect x="16" y="62" width="6" height="6" rx="1.5" fill="#006D32" fillOpacity=".9"/>

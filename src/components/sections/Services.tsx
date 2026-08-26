@@ -125,8 +125,8 @@ export default function Services() {
             Cinq façons de faire avancer un projet technique.
           </h2>
           <p className="sec-lead">
-            Du premier brief à la mise en production, en passant par
-            l&apos;audit d&apos;un projet existant ou le pilotage à distance.
+            Cinq entrées possibles selon où en est votre projet : du premier
+            brief à la reprise d&apos;un code difficile à maintenir.
           </p>
         </div>
 

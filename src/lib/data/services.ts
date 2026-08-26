@@ -12,28 +12,28 @@ export const services: Service[] = [
     number: "01",
     title: "Développement produit de A à Z",
     description:
-      "Du cadrage à la mise en production, en passant par les intégrations nécessaires — paiements, API tierces, automatisation de workflows.",
+      "Cadrage, développement et intégrations (paiement, API tierces, automatisations), jusqu'à la mise en production.",
   },
   {
     id: "cto",
     number: "02",
     title: "Lead technique / CTO à temps partiel",
     description:
-      "Architecture, choix de stack, priorités techniques — et, si besoin, montage et supervision d'une petite équipe autour du projet.",
+      "Choix de stack, architecture et priorités techniques. Si le projet grossit, possibilité de monter et piloter une petite équipe.",
   },
   {
     id: "audit",
     number: "03",
     title: "Audit & remise en état de projets existants",
     description:
-      "Un projet technique qui a pris du retard, du code devenu difficile à maintenir : j'interviens pour auditer, sécuriser et remettre à plat.",
+      "Pour un projet en retard ou un code devenu difficile à maintenir : audit, remise à plat, et recommandations claires sur la suite.",
   },
   {
     id: "ai-ship",
     number: "04",
     title: 'Accompagnement "shipper avec l\'IA"',
     description:
-      "Pour les porteurs de projet qui avancent avec des outils comme Cursor, v0 ou Claude, mais bloquent sur la mise en prod ou la sécurité. Je prends le relais pour finir le travail proprement.",
+      "Vous avez avancé avec Cursor, v0 ou Claude, mais la mise en production ou la sécurité bloque. Je peux prendre le relais pour finaliser.",
     featured: true,
   },
   {
@@ -41,6 +41,6 @@ export const services: Service[] = [
     number: "05",
     title: "Applications mobiles (React Native / Expo)",
     description:
-      "De la conception jusqu'à la mise en ligne sur TestFlight et le Play Store, de bout en bout.",
+      "React Native / Expo, de la conception jusqu'au Play Store et TestFlight, y compris certificats, builds et validation Apple/Google.",
   },
 ];

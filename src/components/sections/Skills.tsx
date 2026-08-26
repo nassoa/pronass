@@ -18,7 +18,7 @@ export default function Skills() {
             <div className="sk-num">01</div>
             <div className="sk-title">Core stack</div>
             <p className="sk-desc">
-              Technologies en production au quotidien — pas des tutoriels, des
+              Technologies en production au quotidien. Pas des tutoriels : des
               projets réels livrés.
             </p>
             <div className="sk-list">
@@ -79,8 +79,8 @@ export default function Skills() {
             <div className="sk-num">02</div>
             <div className="sk-title">Craft & Qualité</div>
             <p className="sk-desc">
-              Le travail invisible qui distingue une bonne UI d'une excellente —
-              mesurable, durable.
+              Le travail invisible qui distingue une bonne UI d'une excellente.
+              Mesurable, durable.
             </p>
             <div className="sk-list">
               <div className="sk-item">
@@ -155,7 +155,7 @@ export default function Skills() {
                 </div>
               </div>
               <div className="sk-item">
-                Headless CMS — Strapi, Contentful
+                Headless CMS (Strapi, Contentful)
                 <div className="sk-dots">
                   <div className="sd on"></div>
                   <div className="sd on"></div>

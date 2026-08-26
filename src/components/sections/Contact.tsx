@@ -15,9 +15,8 @@ export default function Contact() {
               votre projet.
             </h2>
             <p className="contact-sub">
-              30 minutes, gratuites, pour qu&apos;on comprenne le besoin
-              ensemble et qu&apos;on voie si ça peut coller. Je réponds sous 24h
-              en général.
+              30 minutes, gratuites. On regarde le besoin, et si ça peut coller
+              entre nous. Je réponds sous 24h en général.
             </p>
             <div className="contact-btns">
               <a
