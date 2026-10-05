@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Download } from "lucide-react";
+import { useStepTrack } from "@/lib/useStepTrack";
 
 type Job = {
   period: string;
@@ -59,55 +60,14 @@ const jobs: Job[] = [
   },
 ];
 
-// Le défilement par étapes n'est actif que sur grand écran et si l'utilisateur
-// accepte les animations ; sinon la liste reste une timeline classique.
-const STEP_QUERY =
-  "(min-width: 900px) and (prefers-reduced-motion: no-preference)";
-
+// Parcours en mode étapes : la piste commune (useStepTrack) plus le
+// décalage de la liste qui centre l'expérience active dans sa fenêtre.
 function useScrollSteps(count: number) {
-  const trackRef = useRef<HTMLDivElement>(null);
+  const { trackRef, enabled, active, goTo } = useStepTrack(count);
   const viewportRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
-  const [enabled, setEnabled] = useState(false);
-  const [active, setActive] = useState(0);
   const [offset, setOffset] = useState(0);
 
-  useEffect(() => {
-    const mq = window.matchMedia(STEP_QUERY);
-    const update = () => setEnabled(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-
-  // Étape courante d'après la position de scroll dans la piste.
-  useEffect(() => {
-    if (!enabled) return;
-    let frame = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const track = trackRef.current;
-        if (!track) return;
-        const scrollable = track.offsetHeight - window.innerHeight;
-        const progress = Math.min(
-          1,
-          Math.max(0, -track.getBoundingClientRect().top / scrollable),
-        );
-        setActive(Math.min(count - 1, Math.floor(progress * count)));
-      });
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [enabled, count]);
-
-  // Décale la liste pour centrer l'expérience active dans la fenêtre.
   useEffect(() => {
     if (!enabled) return;
     const measure = () => {
@@ -124,19 +84,6 @@ function useScrollSteps(count: number) {
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, [enabled, active]);
-
-  // Fait défiler la page jusqu'au milieu de l'étape demandée.
-  const goTo = (index: number) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const scrollable = track.offsetHeight - window.innerHeight;
-    const top = track.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({
-      // mêmes positions que le défilement par étapes (cf. Animations)
-      top: top + (index / Math.max(1, count - 1)) * scrollable,
-      behavior: "smooth",
-    });
-  };
 
   return { trackRef, viewportRef, itemRefs, enabled, active, offset, goTo };
 }
@@ -197,12 +144,12 @@ export default function Experience() {
   return (
     <section
       id="parcours"
-      className={`has-pat ${enabled ? "exp-steps" : "section"}`}
+      className={`has-pat ${enabled ? "stepped exp-steps" : "section"}`}
       style={{ ["--steps" as string]: jobs.length }}
       data-steps={enabled ? jobs.length : undefined}
     >
-      <div ref={trackRef} className="exp-track">
-        <div className="exp-sticky">
+      <div ref={trackRef} className="step-track">
+        <div className="step-sticky">
           {/* Motif dans le bloc collé : en mode étapes il reste immobile avec
               le contenu, au lieu de défiler seul (on croyait que le scroll
               n'avait rien fait) */}

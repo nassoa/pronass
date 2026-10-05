@@ -207,7 +207,7 @@ ol {
   }
   #nav.on {
     opacity: 0;
-    translate: 0 -16px;
+    translate: 0 -10px;
     pointer-events: none;
   }
 }
@@ -478,10 +478,13 @@ ol {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* photo recadrée : zoomée et descendue un peu dans son cadre
-     (le décalage reste sous la marge créée par le zoom, pas de bord vide) */
-  scale: 1.15;
-  translate: 0 4%;
+  /* le sujet est un peu à droite dans la photo d'origine (paysage) :
+     57 % le ramène au centre du cadre portrait */
+  object-position: 57% 50%;
+  /* photo recadrée : zoomée et descendue dans son cadre (le décalage reste
+     sous la marge créée par le zoom, (1,5 − 1) / 2 = 25 %, pas de bord vide) */
+  scale: 1.5;
+  translate: 0 24%;
 }
 .ok {
   color: var(--green);
@@ -826,7 +829,7 @@ ol {
   margin-top: 6px;
   padding-top: 18px;
   border-top: 1px solid var(--line);
-  font-size: 14px;
+  font-size: 12px;
   color: var(--soft);
 }
 .svc-checks li {
@@ -940,6 +943,192 @@ ol {
   justify-content: center;
 }
 
+/* ── Services sur grand écran : liste à gauche, détail à droite ── */
+.svc-split {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+  width: 100%;
+}
+.svc-side .sec-head {
+  margin-bottom: 0;
+}
+/* Liste des services, sans filets : le service affiché passe en blanc
+   avec son numéro en orange */
+.svc-index {
+  margin-top: 28px;
+}
+.svc-index button {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: left;
+  color: var(--faint);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+.svc-index button:hover {
+  color: var(--ink);
+}
+.svc-index button.on {
+  color: #fff;
+}
+.svc-index button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.svc-index-num {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--faint);
+  transition: color 0.25s ease;
+}
+.svc-index button.on .svc-index-num {
+  color: var(--accent);
+}
+/* Pile de cartes en diagonale : toutes dans la même case de grille (même
+   hauteur). data-pos = écart avec le service affiché : 0 devant, 1 à 4
+   derrière, chacune décalée de 6 px vers le haut et la droite ; past =
+   déjà vues, sorties vers le bas à gauche ; hidden = au-delà, invisibles.
+   Les cartes restent opaques (une carte translucide laisserait voir les
+   bords de celles de derrière) : on les estompe en assombrissant leur fond
+   et leur bordure. */
+.svc-deck {
+  display: grid;
+  padding: 24px 24px 0 0; /* place pour les cartes qui dépassent */
+}
+.svc-card {
+  grid-area: 1 / 1;
+  padding: 32px;
+  transition:
+    translate 0.6s var(--ease),
+    opacity 0.45s ease,
+    background-color 0.45s ease,
+    border-color 0.45s ease;
+}
+.svc-card[data-pos="0"] {
+  z-index: 4;
+}
+.svc-card[data-pos="1"] {
+  z-index: 3;
+  translate: 6px -6px;
+  background: #101013;
+}
+.svc-card[data-pos="2"] {
+  z-index: 2;
+  translate: 12px -12px;
+  background: #0e0e11;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+.svc-card[data-pos="3"] {
+  z-index: 1;
+  translate: 18px -18px;
+  background: #0d0d0f;
+  border-color: rgba(255, 255, 255, 0.045);
+}
+.svc-card[data-pos="4"] {
+  z-index: 0;
+  translate: 24px -24px;
+  background: #0c0c0e;
+  border-color: rgba(255, 255, 255, 0.03);
+}
+.svc-card[data-pos="hidden"] {
+  z-index: 0;
+  translate: 24px -24px;
+  opacity: 0;
+}
+.svc-card[data-pos="past"] {
+  z-index: 5;
+  translate: -40px 40px;
+  opacity: 0;
+  pointer-events: none;
+}
+/* contenu visible seulement sur la carte de devant ; derrière, on ne
+   voit que le bord des cartes */
+.svc-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.svc-card[data-pos="0"] .svc-card-body {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.15s;
+}
+.svc-card-body .card-title {
+  font-size: 28px;
+}
+.svc-card-body .text-link {
+  margin-top: 4px;
+}
+/* même cadre d'illustration pour les cinq services */
+.svc-detail-art {
+  display: flex;
+  flex-direction: column;
+  height: 210px;
+  margin-bottom: 8px;
+}
+.svc-detail-art > * {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-bottom: 0;
+  justify-content: center;
+}
+/* fenêtre de code IA : sans le bloc lint/tests/build pour tenir dans le cadre */
+.svc-detail-art .win--diff .win-status {
+  display: none;
+}
+
+/* Détails en plus des illustrations : seulement dans le grand cadre de la
+   pile (grand écran), pas dans les petites cartes du carrousel mobile */
+.svc-art .art-more {
+  display: none;
+}
+.art-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint);
+}
+.steps .art-meta {
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.step-meta {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint);
+}
+.step--done .step-meta {
+  color: var(--green);
+}
+/* fenêtres avec en-tête (audit, mobile) */
+.art-win {
+  display: flex;
+  flex-direction: column;
+}
+.art-win .win-pad {
+  flex: 1;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
 /* Illustration — parcours produit */
 /* même cadre que les autres illustrations (fond, bordure, coins) */
 .steps {
@@ -981,7 +1170,8 @@ ol {
 /* Illustration — architecture */
 .arch {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 14px;
   margin-bottom: 8px;
   padding: 16px 12px;
   border-radius: 12px;
@@ -990,6 +1180,14 @@ ol {
   font-family: var(--mono);
   font-size: 9px;
   line-height: 1.3;
+}
+.arch-flow {
+  display: flex;
+  align-items: center;
+}
+.arch-stack {
+  color: var(--faint);
+  text-align: center;
 }
 .arch-col {
   display: flex;
@@ -1228,11 +1426,12 @@ ol {
 }
 
 /* Parcours : défilement par étapes (grand écran, animations autorisées) */
-.exp-steps .exp-track {
+/* Section à étapes (Parcours, Services) : piste haute, contenu collé */
+.stepped .step-track {
   /* une hauteur d'écran + ~65vh de scroll par expérience */
   height: calc(100vh + (var(--steps) - 1) * 65vh);
 }
-.exp-steps .exp-sticky {
+.stepped .step-sticky {
   position: sticky;
   top: 0;
   height: 100vh;
@@ -1380,6 +1579,11 @@ ol {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* sujet légèrement à droite dans la photo d'origine : 58 % le recentre */
+  object-position: 58% 50%;
+  /* zoom 1,5 : la photo peut descendre jusqu'à 25 % sans bord vide */
+  scale: 1.5;
+  translate: 0 22%;
 }
 .about-text {
   display: flex;
