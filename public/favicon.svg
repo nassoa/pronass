@@ -1,7 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#0f766e"/>
+  <!-- Nouveau design : fond sombre du site, « N » en orange d'accent -->
+  <rect width="32" height="32" rx="8" fill="#09090b"/>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" stroke="#ffffff" stroke-opacity="0.12"/>
   <path
-    fill="#f8fcfb"
+    fill="#ff7a2f"
     d="M9 24V8h3.2l7.1 11.2V8H23v16h-3.2L12.7 12.8V24H9z"
   />
 </svg>

@@ -566,7 +566,7 @@ ol {
   mask-image: radial-gradient(ellipse 55% 60% at 70% 50%, #000 10%, transparent 70%);
 }
 .pat-cols {
-  background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 96px);
+  background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.028) 0 1px, transparent 1px 96px);
   -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 10%, transparent 72%);
   mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 10%, transparent 72%);
 }
@@ -627,11 +627,10 @@ ol {
     grid-column: auto;
   }
 }
-/* Services et Tarifs en responsive : les cartes défilent à l'horizontale,
+/* Services en responsive : les cartes défilent à l'horizontale,
    une par une (scroll snap), et débordent jusqu'aux bords de l'écran */
 @media (max-width: 900px) {
-  #services .bento,
-  #tarifs .bento {
+  #services .bento {
     display: flex;
     gap: 12px;
     margin: 0 calc(-1 * var(--px));
@@ -643,12 +642,10 @@ ol {
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
-  #services .bento::-webkit-scrollbar,
-  #tarifs .bento::-webkit-scrollbar {
+  #services .bento::-webkit-scrollbar {
     display: none;
   }
-  #services .bento > .card,
-  #tarifs .bento > .card {
+  #services .bento > .card {
     flex: 0 0 min(85%, 420px);
     min-width: 0; /* la grille de la carte IA ne doit pas l'élargir */
     scroll-snap-align: start;
@@ -752,8 +749,7 @@ ol {
 /* Dans les carrousels horizontaux, pas d'apparition au défilement : la
    carte suivante surgirait du bas en entrant dans l'écran */
 @media (max-width: 900px) {
-  #services .bento > .rv,
-  #tarifs .bento > .rv {
+  #services .bento > .rv {
     opacity: 1;
     transform: none;
     transition: none;
@@ -1057,11 +1053,11 @@ ol {
   grid-area: 1 / 1;
   padding: 32px;
   transition:
-    translate 0.6s var(--ease),
+    translate 0.3s var(--ease),
     /* même rythme que l'apparition du contenu de la carte de devant :
        la carte qui réapparaît au fond et la nouvelle carte de devant
        apparaissent ensemble */
-    opacity 0.4s ease 0.15s,
+    opacity 0.2s ease,
     background-color 0.45s ease,
     border-color 0.45s ease;
 }
@@ -1097,8 +1093,8 @@ ol {
   translate: -24px 24px;
   opacity: 0;
   transition:
-    translate 0.35s ease-in,
-    opacity 0.3s ease-in;
+    translate 0.12s ease-in,
+    opacity 0.12s ease-in;
 }
 /* …puis se place au fond sans transition, invisible, avant d'y apparaître */
 .svc-card.is-snap {
@@ -1123,7 +1119,7 @@ ol {
 }
 .svc-card[data-pos="0"] .svc-card-body {
   opacity: 1;
-  transition: opacity 0.4s ease 0.15s;
+  transition: opacity 0.2s ease;
 }
 .svc-card-body .card-title {
   font-size: 28px;
@@ -1596,27 +1592,197 @@ ol {
 }
 
 /* ── TARIFS ── */
-.price-card--free {
-  border-color: var(--accent-border);
-}
-.price-card--free .card-desc {
-  flex-grow: 1;
-}
-.price-card--wide {
-  flex-direction: row;
+/* Tarifs : situations à gauche, formule conseillée à droite */
+.price-head {
+  display: flex;
   flex-wrap: wrap;
+  align-items: flex-end;
   justify-content: space-between;
-  align-items: center;
-  gap: 12px 24px;
-  padding: 24px 28px;
+  gap: 12px 40px;
+  margin-bottom: clamp(24px, 4vh, 44px);
 }
-.price-card--wide .card-title {
-  font-size: 20px;
-}
-.price-card--wide > div {
+.price-head-title {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 10px;
+}
+.price-head .sec-title {
+  font-size: clamp(30px, 3.4vw, 46px);
+}
+.price-head-lead {
+  max-width: 380px;
+  font-size: 15px;
+  color: var(--muted);
+}
+.price-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 32px clamp(40px, 5vw, 80px);
+  align-items: stretch;
+}
+.price-situations {
+  display: flex;
+  flex-direction: column;
+}
+/* numéro et flèche calés en haut, sur la première ligne de la situation */
+.price-situations button {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  padding: clamp(12px, 2vh, 20px) 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  color: var(--faint);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.price-situations button:hover {
+  color: var(--ink);
+}
+.price-situations button.on {
+  color: #fff;
+}
+.price-situations button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.price-sit-num {
+  flex-shrink: 0;
+  width: 28px;
+  font-family: var(--mono);
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+.price-situations button.on .price-sit-num {
+  color: var(--accent);
+}
+.price-sit-q {
+  flex: 1;
+  min-width: 0;
+  font-size: clamp(20px, 2vw, 30px);
+  line-height: 1.05;
+  font-weight: 600;
+  font-stretch: 112%;
+  letter-spacing: -0.03em;
+}
+.price-sit-arrow {
+  flex-shrink: 0;
+  opacity: 0;
+  translate: -6px 0;
+  transition:
+    opacity 0.2s ease,
+    translate 0.2s ease;
+}
+.price-situations button.on .price-sit-arrow {
+  opacity: 1;
+  translate: 0 0;
+  color: var(--accent);
+}
+.price-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  padding-left: clamp(0px, 2vw, 32px);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+.price-panel-stack {
+  display: grid;
+}
+.price-panel-body {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  visibility: hidden;
+  opacity: 0;
+}
+.price-panel-body.is-on {
+  visibility: visible;
+  opacity: 1;
+  animation: price-in 0.35s var(--ease);
+}
+@keyframes price-in {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+  }
+}
+.price-panel-kicker {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--faint);
+}
+.price-panel-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+}
+.price-panel-title h3 {
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.05;
+  font-weight: 600;
+  font-stretch: 112%;
+  letter-spacing: -0.03em;
+}
+.price-panel-billing {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+}
+.price-panel-why {
+  font-size: 16px;
+  color: var(--muted);
+}
+.price-panel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+.price-panel-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--soft);
+}
+.price-panel-list svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+.price-panel-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.price-panel-cta .btn-primary {
+  align-self: flex-start;
+}
+.price-panel-note {
+  font-size: 13px;
+  color: var(--faint);
+}
+@media (max-width: 900px) {
+  .price-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .price-panel {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .price-panel-body {
+    animation: none;
+  }
 }
 
 /* ── À PROPOS ── */

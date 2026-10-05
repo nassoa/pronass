@@ -282,7 +282,7 @@ const artFor = (id: Service["id"]) => (id === "ai-ship" ? DiffWindow : art[id]);
 // - fond → devant (service précédent) : elle arrive du bas à gauche.
 // Retourne le service affiché par la pile (en retard sur `active` pendant la
 // sortie) et la phase des cartes concernées.
-const LEAVE_MS = 350;
+const LEAVE_MS = 120;
 type Phase = "leave" | "snap" | "enter";
 
 function useStackPhases(active: number, count: number) {
