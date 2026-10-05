@@ -1,6 +1,16 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+// logos pleins (Font Awesome via react-icons), pas les pictos au trait de lucide
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
+const socials = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/manitriniaina-safidy-nasoavina/",
+    icon: FaLinkedin,
+  },
+  { label: "GitHub", href: "https://github.com/nassoa", icon: FaGithub },
+];
 
 export default function Nav() {
   return (
@@ -21,17 +31,20 @@ export default function Nav() {
               <a href="#apropos">À propos</a>
             </li>
           </ul>
-          <a
-            href="https://cal.com/nasoavina-manitriniaina-jo3qz1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary btn-sm"
-          >
-            Prendre RDV
-            <span className="chip" aria-hidden="true">
-              <ArrowRight size={15} strokeWidth={2.2} />
-            </span>
-          </a>
+          <ul className="nav-social">
+            {socials.map(({ label, href, icon: Icon }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                >
+                  <Icon size={19} aria-hidden />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </nav>

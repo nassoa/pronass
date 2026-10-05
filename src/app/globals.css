@@ -238,8 +238,29 @@ ol {
 .nav-links a.on {
   color: #fff;
 }
-.nav-i .btn-primary {
+/* LinkedIn et GitHub, à droite du menu */
+.nav-social {
+  display: flex;
+  gap: 4px;
   margin-left: auto;
+  margin-right: -10px; /* l'icône s'aligne sur le bord du contenu */
+}
+.nav-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+.nav-social a:hover {
+  color: #fff;
+}
+.nav-social a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+  border-radius: 10px;
 }
 
 /* ── NAVIGATION LATÉRALE ── */
@@ -409,6 +430,25 @@ ol {
   font-size: 13px;
   color: var(--soft);
 }
+/* mobile : la ligne « Disponible · Antananarivo » remonte sur la ligne du
+   menu, à gauche des icônes LinkedIn / GitHub (18 + 8 + 22 px) */
+@media (max-width: 899px) {
+  #hero .hero-status {
+    position: absolute;
+    top: 48px;
+    left: var(--px);
+    right: calc(var(--px) + 88px); /* place des deux icônes */
+    translate: 0 -50%;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    z-index: 51; /* au-dessus du menu, transparent */
+  }
+}
+@media (max-width: 419px) {
+  .hero-utc {
+    display: none;
+  }
+}
 .hero-status-badge {
   display: inline-flex;
   align-items: center;
@@ -466,6 +506,12 @@ ol {
   justify-self: center;
   width: 100%;
   max-width: 440px;
+}
+/* grand écran : photo calée à droite, alignée sur le bord du contenu */
+@media (min-width: 900px) {
+  .hero-visual {
+    justify-self: end;
+  }
 }
 .hero-media {
   aspect-ratio: 4 / 5;
@@ -1431,10 +1477,14 @@ ol {
   font-size: 11px;
   color: var(--soft);
 }
+/* technos teintées en violet (couleur des libellés de section) pour
+   ressortir sur le texte gris des expériences */
 .exp-tag {
   padding: 3px 8px;
   border-radius: 6px;
-  background: var(--chip);
+  border: 1px solid rgba(169, 156, 255, 0.2);
+  background: rgba(169, 156, 255, 0.1);
+  color: #c9c2ff;
 }
 
 /* Parcours : défilement par étapes (grand écran, animations autorisées) */

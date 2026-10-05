@@ -37,7 +37,8 @@ export default function Hero() {
           <p className="hero-status">
             <span className="hero-status-badge">Disponible</span>
             <span>
-              Antananarivo{time ? ` · ${time}` : ""} (UTC+3)
+              Antananarivo{time ? ` · ${time}` : ""}
+              <span className="hero-utc"> (UTC+3)</span>
             </span>
           </p>
 
