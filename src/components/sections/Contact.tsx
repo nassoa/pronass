@@ -1,27 +1,40 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight, Download, Mail } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Download,
+  FileText,
+  Github,
+  Linkedin,
+  Mail,
+  MessageCircle,
+} from "lucide-react";
 
 const links = [
   {
     name: "LinkedIn",
     handle: "in/manitriniaina-safidy-nasoavina",
     href: "https://www.linkedin.com/in/manitriniaina-safidy-nasoavina/",
+    icon: Linkedin,
   },
   {
     name: "GitHub",
     handle: "github.com/nassoa",
     href: "https://github.com/nassoa",
+    icon: Github,
   },
   {
     name: "WhatsApp",
     handle: "+261 32 89 533 96",
     href: "https://wa.me/261328953396",
+    icon: MessageCircle,
   },
   {
     name: "Curriculum vitæ",
     handle: "Télécharger le PDF",
     href: "https://pronass.vercel.app/cv/Nasoavina-CV.pdf",
+    icon: FileText,
     download: true,
   },
 ];
@@ -58,35 +71,45 @@ export default function Contact() {
             </div>
           </div>
 
-          <ul className="contact-links rv d2">
-            {links.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cl"
-                >
-                  <span>
-                    <span className="cl-name">{link.name}</span>
-                    <br />
-                    <span className="cl-handle">{link.handle}</span>
-                  </span>
-                  {link.download ? (
-                    <Download size={18} strokeWidth={2} aria-hidden />
-                  ) : (
-                    <ArrowUpRight size={18} strokeWidth={2} aria-hidden />
-                  )}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className="contact-card rv d2">
+            <p className="contact-card-head">Me retrouver</p>
+            <ul className="contact-links">
+              {links.map(({ name, handle, href, icon: Icon, download }) => (
+                <li key={name}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`cl${download ? " cl--cv" : ""}`}
+                  >
+                    <span className="cl-icon" aria-hidden="true">
+                      <Icon size={17} strokeWidth={1.9} />
+                    </span>
+                    <span className="cl-text">
+                      <span className="cl-name">{name}</span>
+                      <span className="cl-handle">{handle}</span>
+                    </span>
+                    {download ? (
+                      <Download
+                        className="cl-arrow"
+                        size={17}
+                        strokeWidth={2}
+                        aria-hidden
+                      />
+                    ) : (
+                      <ArrowUpRight
+                        className="cl-arrow"
+                        size={17}
+                        strokeWidth={2}
+                        aria-hidden
+                      />
+                    )}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-
-        <footer className="footer-i">
-          <span>© 2026 Manitriniaina Safidy Nasoavina</span>
-          <span>Disponible en remote</span>
-        </footer>
       </div>
     </section>
   );
