@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+
 import {
   ArrowRight,
   BadgeCheck,
@@ -272,8 +274,75 @@ const artFor = (id: Service["id"]) => (id === "ai-ship" ? DiffWindow : art[id]);
    molette passe au service suivant, un clic dans la liste y va directement.
    Tout tient dans un écran, sans défilement interne. */
 
+// Une carte qui change de bout de pile ne doit pas la traverser :
+// - devant → fond (service suivant) : elle sort d'abord par le bas à gauche
+//   pendant que le reste de la pile attend ; ensuite seulement la pile avance,
+//   et la carte réapparaît au fond en même temps que la nouvelle carte de
+//   devant apparaît (mêmes durées, cf. globals.css) ;
+// - fond → devant (service précédent) : elle arrive du bas à gauche.
+// Retourne le service affiché par la pile (en retard sur `active` pendant la
+// sortie) et la phase des cartes concernées.
+const LEAVE_MS = 350;
+type Phase = "leave" | "snap" | "enter";
+
+function useStackPhases(active: number, count: number) {
+  const previous = useRef(active);
+  const [shown, setShown] = useState(active);
+  const [phase, setPhase] = useState<Record<number, Phase>>({});
+
+  useEffect(() => {
+    const before = previous.current;
+    previous.current = active;
+    if (before === active) return;
+    const depth = (i: number, a: number) => (i - a + count) % count;
+    const all = Array.from({ length: count }, (_, i) => i);
+    // saut de plus d'un cran = passage d'un bout à l'autre de la pile
+    const toBack = all.filter((i) => depth(i, active) - depth(i, before) > 1);
+    const toFront = all.filter((i) => depth(i, before) - depth(i, active) > 1);
+    const set = (ids: number[], p: Phase | null) =>
+      setPhase((cur) => {
+        const next = { ...cur };
+        ids.forEach((i) => (p ? (next[i] = p) : delete next[i]));
+        return next;
+      });
+    const frames: number[] = [];
+    // applique l'état de départ sans transition, puis le retire au
+    // rendu suivant pour lancer la transition
+    const release = (ids: number[]) => {
+      frames.push(
+        requestAnimationFrame(() => {
+          frames.push(requestAnimationFrame(() => set(ids, null)));
+        }),
+      );
+    };
+
+    let timer = 0;
+    if (toBack.length) {
+      set(toBack, "leave");
+      timer = window.setTimeout(() => {
+        setShown(active);
+        set(toBack, "snap");
+        release(toBack);
+      }, LEAVE_MS);
+    } else {
+      setShown(active);
+      set(toFront, "enter");
+      release(toFront);
+    }
+    return () => {
+      window.clearTimeout(timer);
+      frames.forEach(cancelAnimationFrame);
+      setPhase({});
+      setShown(active);
+    };
+  }, [active, count]);
+
+  return { shown, phase };
+}
+
 function ServicesSteps() {
   const { trackRef, active, goTo } = useStepTrack(services.length);
+  const { shown, phase } = useStackPhases(active, services.length);
 
   return (
     <div ref={trackRef} className="step-track">
@@ -302,18 +371,20 @@ function ServicesSteps() {
           </div>
 
           {/* Pile de cartes : la carte du service affiché devant, toutes les
-              suivantes dépassent derrière, au-dessus ; les précédentes sont
-              sorties par le bas. Changer de service fait avancer la pile. */}
+              autres restent derrière, au-dessus : une carte quittée repasse
+              en fond de pile. Changer de service fait avancer la pile. */}
           <div className="svc-deck rv d2">
             {services.map((service, i) => {
               const Art = artFor(service.id);
-              const depth = i - active;
-              const pos =
-                depth < 0 ? "past" : depth > 4 ? "hidden" : String(depth);
+              // pile circulaire : les cartes déjà vues repassent derrière
+              const depth = (i - shown + services.length) % services.length;
+              const pos = String(depth);
               return (
                 <article
                   key={service.id}
-                  className="card svc-card"
+                  className={`card svc-card${
+                    phase[i] ? ` is-${phase[i]}` : ""
+                  }`}
                   data-pos={pos}
                   aria-hidden={depth !== 0}
                 >

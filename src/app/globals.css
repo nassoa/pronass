@@ -961,10 +961,9 @@ ol {
 }
 .svc-index button {
   position: relative;
-  display: flex;
+  display: inline-flex; /* zone cliquable limitée au numéro et au texte */
   align-items: baseline;
   gap: 14px;
-  width: 100%;
   min-height: 48px;
   padding: 12px 0;
   border: 0;
@@ -999,8 +998,8 @@ ol {
 }
 /* Pile de cartes en diagonale : toutes dans la même case de grille (même
    hauteur). data-pos = écart avec le service affiché : 0 devant, 1 à 4
-   derrière, chacune décalée de 6 px vers le haut et la droite ; past =
-   déjà vues, sorties vers le bas à gauche ; hidden = au-delà, invisibles.
+   derrière, chacune décalée de 6 px vers le haut et la droite. La pile est
+   circulaire : la carte qu'on quitte repasse en fond de pile.
    Les cartes restent opaques (une carte translucide laisserait voir les
    bords de celles de derrière) : on les estompe en assombrissant leur fond
    et leur bordure. */
@@ -1013,7 +1012,10 @@ ol {
   padding: 32px;
   transition:
     translate 0.6s var(--ease),
-    opacity 0.45s ease,
+    /* même rythme que l'apparition du contenu de la carte de devant :
+       la carte qui réapparaît au fond et la nouvelle carte de devant
+       apparaissent ensemble */
+    opacity 0.4s ease 0.15s,
     background-color 0.45s ease,
     border-color 0.45s ease;
 }
@@ -1043,16 +1045,26 @@ ol {
   background: #0c0c0e;
   border-color: rgba(255, 255, 255, 0.03);
 }
-.svc-card[data-pos="hidden"] {
-  z-index: 0;
-  translate: 24px -24px;
+/* carte qui passe au fond : elle sort d'abord par le bas à gauche… */
+.svc-card.is-leave {
+  z-index: 6;
+  translate: -24px 24px;
   opacity: 0;
+  transition:
+    translate 0.35s ease-in,
+    opacity 0.3s ease-in;
 }
-.svc-card[data-pos="past"] {
-  z-index: 5;
-  translate: -40px 40px;
+/* …puis se place au fond sans transition, invisible, avant d'y apparaître */
+.svc-card.is-snap {
   opacity: 0;
-  pointer-events: none;
+  transition: none;
+}
+/* carte qui revient devant (service précédent) : part du bas à gauche */
+.svc-card.is-enter {
+  z-index: 6;
+  translate: -24px 24px;
+  opacity: 0;
+  transition: none;
 }
 /* contenu visible seulement sur la carte de devant ; derrière, on ne
    voit que le bord des cartes */
