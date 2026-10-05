@@ -194,7 +194,9 @@ export default function Services() {
             const Art = art[service.id];
             return (
               <li key={service.id} className={`card s2 rv d${i + 1}`}>
-                <Art />
+                <div className="svc-art">
+                  <Art />
+                </div>
                 <span className="card-meta">{service.label}</span>
                 <h3 className="card-title">{service.title}</h3>
                 <p className="card-desc">{service.description}</p>
