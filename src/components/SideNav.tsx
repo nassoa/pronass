@@ -16,20 +16,12 @@ const items = [
 ];
 
 // Navigation latérale : prend le relais du menu du haut, qui s'efface dès
-// qu'on quitte le haut de page. Un trait par section, le libellé de la
-// section courante reste visible, les autres apparaissent au survol.
+// qu'on quitte le haut de page. Un trait par section (orange pour la section
+// courante, avec son libellé) ; les autres libellés n'apparaissent qu'au
+// survol de leur trait.
 export default function SideNav() {
   const [visible, setVisible] = useState(false);
   const [active, setActive] = useState("hero");
-  // Après un clic, on replie les libellés tout de suite (le survol les
-  // gardait affichés) ; ils pourront réapparaître une fois la souris sortie.
-  const [collapsed, setCollapsed] = useState(false);
-
-  const onItemClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    setCollapsed(true);
-    // clic souris : on retire le focus pour que :focus-within ne les réaffiche pas
-    if (event.detail > 0) event.currentTarget.blur();
-  };
 
   useEffect(() => {
     let frame = 0;
@@ -59,29 +51,20 @@ export default function SideNav() {
 
   return (
     <nav
-      className={`side-nav${visible ? " is-visible" : ""}${
-        collapsed ? " is-collapsed" : ""
-      }`}
+      className={`side-nav${visible ? " is-visible" : ""}`}
       aria-label="Navigation par section"
-      onMouseLeave={() => setCollapsed(false)}
       aria-hidden={!visible}
     >
       <ol className="side-nav-list">
-        {items.map(({ id, label }, i) => (
+        {items.map(({ id, label }) => (
           <li key={id}>
             <a
               href={`#${id}`}
               className={id === active ? "on" : undefined}
               aria-current={id === active ? "location" : undefined}
               tabIndex={visible ? undefined : -1}
-              onClick={onItemClick}
             >
-              <span className="side-nav-label">
-                <span className="side-nav-num">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {label}
-              </span>
+              <span className="side-nav-label">{label}</span>
               <span className="side-nav-tick" aria-hidden="true" />
             </a>
           </li>

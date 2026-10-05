@@ -285,11 +285,6 @@ ol {
     translate 0.35s var(--ease),
     color 0.2s ease;
 }
-.side-nav-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--faint);
-}
 .side-nav-tick {
   width: 14px;
   height: 2px;
@@ -299,20 +294,13 @@ ol {
     width 0.35s var(--ease),
     background 0.25s ease;
 }
-/* survol de la liste : tous les libellés des sections apparaissent ;
-   le bouton RDV, lui, ne montre le sien qu'à son propre survol */
-.side-nav-list:hover .side-nav-label,
-.side-nav-list:focus-within .side-nav-label,
+/* libellé visible pour la section courante ; les autres n'apparaissent
+   qu'au survol (ou au focus clavier) de leur ligne */
 .side-nav a.on .side-nav-label,
-.side-nav-cta:hover .side-nav-label,
-.side-nav-cta:focus-visible .side-nav-label {
+.side-nav a:hover .side-nav-label,
+.side-nav a:focus-visible .side-nav-label {
   opacity: 1;
   translate: 0 0;
-}
-/* juste après un clic : seule la section courante garde son libellé */
-.side-nav.is-collapsed a:not(.on) .side-nav-label {
-  opacity: 0;
-  translate: 6px 0;
 }
 .side-nav a:hover,
 .side-nav a:focus-visible {
@@ -355,18 +343,6 @@ ol {
 }
 .side-nav-cta:hover .side-nav-cta-icon {
   background: color-mix(in srgb, var(--accent) 88%, #fff);
-}
-/* le libellé courant ne reste affiché que s'il a la place à côté du contenu */
-@media (max-width: 1359px) {
-  .side-nav a.on .side-nav-label {
-    opacity: 0;
-    translate: 6px 0;
-  }
-  .side-nav-list:hover a.on .side-nav-label,
-  .side-nav-list:focus-within a.on .side-nav-label {
-    opacity: 1;
-    translate: 0 0;
-  }
 }
 @media (max-width: 899px) {
   .side-nav {
@@ -430,10 +406,6 @@ ol {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 6px 14px 6px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
   font-size: 13px;
   color: var(--soft);
 }
@@ -506,33 +478,13 @@ ol {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.hero-deploy {
-  position: absolute;
-  left: -28px;
-  bottom: 40px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #0e0e12;
-  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.7);
-  font-family: var(--mono);
-  font-size: 12px;
-  line-height: 1.7;
-  color: var(--muted);
-}
-.hero-deploy b {
-  font-weight: 400;
-  color: var(--ink);
+  /* photo recadrée : zoomée et descendue un peu dans son cadre
+     (le décalage reste sous la marge créée par le zoom, pas de bord vide) */
+  scale: 1.15;
+  translate: 0 4%;
 }
 .ok {
   color: var(--green);
-}
-@media (max-width: 600px) {
-  .hero-deploy {
-    left: 12px;
-    bottom: 12px;
-  }
 }
 
 /* ── STACK ── */
@@ -624,6 +576,174 @@ ol {
   .s3,
   .s4 {
     grid-column: auto;
+  }
+}
+/* Services et Tarifs en responsive : les cartes défilent à l'horizontale,
+   une par une (scroll snap), et débordent jusqu'aux bords de l'écran */
+@media (max-width: 900px) {
+  #services .bento,
+  #tarifs .bento {
+    display: flex;
+    gap: 12px;
+    margin: 0 calc(-1 * var(--px));
+    padding: 0 var(--px) 4px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--px);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  #services .bento::-webkit-scrollbar,
+  #tarifs .bento::-webkit-scrollbar {
+    display: none;
+  }
+  #services .bento > .card,
+  #tarifs .bento > .card {
+    flex: 0 0 min(85%, 420px);
+    min-width: 0; /* la grille de la carte IA ne doit pas l'élargir */
+    scroll-snap-align: start;
+  }
+  /* carte « IA & livraison » : version compacte de la fenêtre de code,
+     en tête de carte et à la même hauteur que les autres illustrations
+     (150 px + même écart), pour que les titres s'alignent */
+  #services .svc-feature {
+    gap: 22px;
+  }
+  #services .win--diff {
+    order: -1;
+    flex: 0 0 100%; /* la carte est une ligne flex qui passe à la ligne */
+    height: 150px;
+  }
+  #services .win--diff .win-status {
+    display: none;
+  }
+  /* en-tête sur une ligne : le libellé « prototype → prod » passait à la
+     ligne et poussait le code hors du cadre */
+  #services .win--diff .win-head span + span {
+    display: none;
+  }
+  /* la ligne libellé + pastille fait la même hauteur que le libellé seul
+     des autres cartes, pour aligner les titres au pixel près */
+  #services .svc-feature-head {
+    height: 21px;
+  }
+  /* liste des points couverts (sécurité, erreurs, CI/CD…) masquée */
+  #services .svc-checks {
+    display: none;
+  }
+}
+/* Parcours en responsive : les expériences défilent à l'horizontale ;
+   la ligne de temps et ses points passent au-dessus des contenus */
+@media (max-width: 900px) {
+  #parcours .exp-list {
+    flex-direction: row;
+    gap: 0;
+    margin: 0 calc(-1 * var(--px));
+    padding: 0 var(--px) 4px;
+    border-left: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--px);
+    scrollbar-width: none;
+  }
+  #parcours .exp-list::-webkit-scrollbar {
+    display: none;
+  }
+  #parcours .exp-row {
+    flex: 0 0 min(80%, 360px);
+    min-width: 0;
+    padding: 30px 24px 0 0;
+    scroll-snap-align: start;
+  }
+  /* segment de ligne de chaque expérience : bout à bout, ils forment
+     une ligne continue */
+  #parcours .exp-row::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  #parcours .exp-row::before {
+    z-index: 1;
+    left: 0;
+    top: 1px;
+  }
+  #parcours .exp-row.is-current::before {
+    left: -1px;
+    top: 0;
+  }
+  /* comme sur grand écran : l'expérience courante est pleinement visible,
+     les autres atténuées ; les points déjà passés restent orange */
+  #parcours .exp-list > .exp-row {
+    opacity: 0.3;
+    transition: opacity 0.4s var(--ease);
+    transition-delay: 0s; /* pas le décalage en cascade des .d1…d5 */
+  }
+  #parcours .exp-list > .exp-row.is-past {
+    opacity: 0.45;
+  }
+  #parcours .exp-list > .exp-row.is-current {
+    opacity: 1;
+  }
+  #parcours .exp-row::before {
+    transition:
+      background 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  #parcours .exp-row.is-past::before {
+    background: var(--accent);
+  }
+}
+
+/* Dans les carrousels horizontaux, pas d'apparition au défilement : la
+   carte suivante surgirait du bas en entrant dans l'écran */
+@media (max-width: 900px) {
+  #services .bento > .rv,
+  #tarifs .bento > .rv {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  /* Parcours : pas de montée, l'opacité suit l'expérience courante */
+  #parcours .exp-list > .rv {
+    transform: none;
+  }
+}
+
+/* Méthode en responsive : même carrousel horizontal, chaque principe
+   devient une carte à part entière (préfixe #methode : ces règles sont
+   placées avant les styles de base de .method-list) */
+@media (max-width: 900px) {
+  #methode .method-list {
+    display: flex;
+    gap: 12px;
+    margin: 0 calc(-1 * var(--px));
+    padding: 0 var(--px) 4px;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--px);
+    scrollbar-width: none;
+  }
+  #methode .method-list::-webkit-scrollbar {
+    display: none;
+  }
+  #methode .method-item {
+    flex: 0 0 min(85%, 420px);
+    min-width: 0;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--surface);
+    scroll-snap-align: start;
   }
 }
 .card {
@@ -740,7 +860,7 @@ ol {
   border: 1px solid var(--line);
   background: var(--surface-2);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1.8;
   overflow: hidden;
 }
@@ -821,17 +941,21 @@ ol {
 }
 
 /* Illustration — parcours produit */
+/* même cadre que les autres illustrations (fond, bordure, coins) */
 .steps {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 8px;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
 }
 .step {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--soft);
 }
 .step-dot {
@@ -850,7 +974,7 @@ ol {
 .step-line {
   margin-left: 3px;
   width: 1px;
-  height: 12px;
+  height: 8px;
   background: rgba(255, 255, 255, 0.15);
 }
 
@@ -864,7 +988,7 @@ ol {
   border: 1px solid var(--line);
   background-color: var(--surface-2);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 9px;
   line-height: 1.3;
 }
 .arch-col {
@@ -908,7 +1032,7 @@ ol {
   justify-content: space-between;
   gap: 12px;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11px;
 }
 .audit-row span:first-child {
   color: var(--soft);
@@ -1460,21 +1584,18 @@ ol {
 .cl-arrow {
   flex: none;
   color: var(--faint);
-  transition:
-    color 0.2s ease,
-    translate 0.25s var(--ease);
+  transition: color 0.2s ease;
 }
-/* survol : le texte s'éclaire et la flèche avance, sans fond */
+/* survol : le texte s'éclaire et la flèche prend la couleur de la ligne,
+   sans fond ni déplacement */
 .cl:hover .cl-name {
   color: #fff;
 }
 .cl:hover .cl-arrow {
   color: var(--violet);
-  translate: 2px -2px;
 }
 .cl--cv:hover .cl-arrow {
   color: var(--accent);
-  translate: 0 2px;
 }
 .cl:focus-visible {
   outline: 2px solid #fff;
@@ -1540,8 +1661,14 @@ ol {
 }
 
 /* Une section par écran (classe posée en JS) */
+/* pas de « tirer pour rafraîchir » ni de rebond : c'est le JS qui défile */
+html.fullpage,
+html.fullpage body {
+  overscroll-behavior-y: none;
+}
 .fullpage main > section {
   min-height: 100vh;
+  min-height: 100svh; /* mobile : hauteur visible, barre d'adresse comprise */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1562,7 +1689,11 @@ ol {
   flex: 1;
   width: 100%;
   align-content: center;
-  padding-top: calc(clamp(56px, 8vw, 104px) + 72px);
+  /* juste la place du menu en haut : le hero doit tenir dans l'écran,
+     sinon il dépasse de quelques pixels et le premier scroll ne fait que
+     ça (ou la hauteur bouge au chargement des polices) */
+  padding-top: 96px;
+  padding-bottom: 48px;
 }
 /* sortie : le contenu s'efface en glissant dans le sens du scroll */
 .fullpage main > section[data-fp^="out"] {

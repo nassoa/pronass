@@ -84,14 +84,6 @@ export default function Hero() {
               alt="Safidy Nasoavina, lead technique indépendant"
             />
           </div>
-          <div className="hero-deploy" aria-hidden="true">
-            <div>
-              <span className="ok">✓</span> build passed
-            </div>
-            <div>
-              <span className="ok">✓</span> deployed to <b>production</b>
-            </div>
-          </div>
         </div>
       </div>
     </section>

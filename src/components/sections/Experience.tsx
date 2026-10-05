@@ -132,7 +132,8 @@ function useScrollSteps(count: number) {
     const scrollable = track.offsetHeight - window.innerHeight;
     const top = track.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({
-      top: top + ((index + 0.5) / count) * scrollable,
+      // mêmes positions que le défilement par étapes (cf. Animations)
+      top: top + (index / Math.max(1, count - 1)) * scrollable,
       behavior: "smooth",
     });
   };
@@ -140,21 +141,72 @@ function useScrollSteps(count: number) {
   return { trackRef, viewportRef, itemRefs, enabled, active, offset, goTo };
 }
 
+// Liste horizontale (mobile) : l'expérience courante est celle dont le
+// bord gauche est le plus proche du début de la liste après défilement.
+function useSwipeActive(
+  itemRefs: React.MutableRefObject<(HTMLLIElement | null)[]>,
+  enabled: boolean,
+) {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const list = itemRefs.current[0]?.parentElement;
+    if (!enabled || !list) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const start =
+        list.getBoundingClientRect().left +
+        parseFloat(getComputedStyle(list).paddingLeft);
+      let best = 0;
+      let bestDistance = Infinity;
+      itemRefs.current.forEach((item, i) => {
+        if (!item) return;
+        const distance = Math.abs(item.getBoundingClientRect().left - start);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = i;
+        }
+      });
+      setActive(best);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    list.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      list.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [enabled, itemRefs]);
+
+  return active;
+}
+
 const pad = (n: number) => String(n).padStart(2, "0");
 
 export default function Experience() {
   const { trackRef, viewportRef, itemRefs, enabled, active, offset, goTo } =
     useScrollSteps(jobs.length);
+  const swipeActive = useSwipeActive(itemRefs, !enabled);
+  const current = enabled ? active : swipeActive;
 
   return (
     <section
       id="parcours"
       className={`has-pat ${enabled ? "exp-steps" : "section"}`}
       style={{ ["--steps" as string]: jobs.length }}
+      data-steps={enabled ? jobs.length : undefined}
     >
-      <div className="pat pat-lines" aria-hidden="true" />
       <div ref={trackRef} className="exp-track">
         <div className="exp-sticky">
+          {/* Motif dans le bloc collé : en mode étapes il reste immobile avec
+              le contenu, au lieu de défiler seul (on croyait que le scroll
+              n'avait rien fait) */}
+          <div className="pat pat-lines" aria-hidden="true" />
           <div className="w exp-layout">
             <div className="exp-intro rv">
               <p className="sec-label">Parcours</p>
@@ -195,7 +247,12 @@ export default function Experience() {
               )}
             </div>
 
-            <div ref={viewportRef} className="exp-viewport">
+            {/* En mode étapes, les lignes ont déjà leurs propres transitions
+                (opacité, échelle) : l'apparition se fait sur la liste entière */}
+            <div
+              ref={viewportRef}
+              className={`exp-viewport${enabled ? " rv d2" : ""}`}
+            >
               <ol
                 className="exp-list"
                 style={
@@ -205,12 +262,11 @@ export default function Experience() {
                 }
               >
                 {jobs.map((job, i) => {
-                  const current = enabled ? i === active : i === 0;
                   const classes = [
                     "exp-row",
                     enabled ? "" : `rv d${i + 1}`,
-                    current ? "is-current" : "",
-                    enabled && i < active ? "is-past" : "",
+                    i === current ? "is-current" : "",
+                    i < current ? "is-past" : "",
                   ];
                   return (
                     <li

@@ -1,9 +1,29 @@
 "use client";
 
-import { ArrowRight, Check, Database } from "lucide-react";
+import {
+  ArrowRight,
+  CreditCard,
+  Database,
+  FlaskConical,
+  Gauge,
+  GitMerge,
+  ShieldCheck,
+  TriangleAlert,
+  type LucideIcon,
+} from "lucide-react";
 import { aiShipChecks, services, type Service } from "@/lib/data/services";
 
 const CAL_URL = "https://cal.com/nasoavina-manitriniaina-jo3qz1";
+
+// Une icône par point couvert (même ordre que aiShipChecks)
+const checkIcons: LucideIcon[] = [
+  ShieldCheck, // Sécurité & secrets
+  CreditCard, // Auth & paiements
+  TriangleAlert, // Gestion des erreurs
+  FlaskConical, // Tests essentiels
+  GitMerge, // CI/CD & déploiement
+  Gauge, // Performance
+];
 
 /* ── Illustrations ─────────────────────────────── */
 
@@ -169,12 +189,15 @@ export default function Services() {
                     <h3 className="card-title">{service.title}</h3>
                     <p className="card-desc">{service.description}</p>
                     <ul className="svc-checks">
-                      {aiShipChecks.map((item) => (
-                        <li key={item}>
-                          <Check size={15} strokeWidth={2.4} aria-hidden />
-                          {item}
-                        </li>
-                      ))}
+                      {aiShipChecks.map((item, j) => {
+                        const Icon = checkIcons[j] ?? ShieldCheck;
+                        return (
+                          <li key={item}>
+                            <Icon size={15} strokeWidth={2} aria-hidden />
+                            {item}
+                          </li>
+                        );
+                      })}
                     </ul>
                     <a
                       href={CAL_URL}
