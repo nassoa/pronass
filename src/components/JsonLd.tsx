@@ -4,15 +4,22 @@ export default function JsonLd() {
     "@type": "Person",
     name: "Safidy Nasoavina",
     url: "https://www.nasoavina.com",
-    image: "https://www.nasoavina.com/images/profile.png",
-    jobTitle: "Lead technique & développeur full-stack indépendant",
-    sameAs: ["https://github.com/nassoa"],
+    image: "https://www.nasoavina.com/images/profile.jpg",
+    jobTitle:
+      "Partenaire technique indépendant : développement web et mobile, IA et direction technique",
+    sameAs: [
+      "https://github.com/nassoa",
+      "https://www.linkedin.com/in/manitriniaina-safidy-nasoavina/",
+    ],
     knowsAbout: [
       "Next.js",
       "React",
       "TypeScript",
       "React Native",
       "Architecture logicielle",
+      "Intégration de l'IA",
+      "Automatisation de processus",
+      "Direction technique",
     ],
   };
 

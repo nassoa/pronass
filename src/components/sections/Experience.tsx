@@ -3,59 +3,45 @@
 import { useEffect, useRef, useState } from "react";
 import { Download } from "lucide-react";
 import { useStepTrack } from "@/lib/useStepTrack";
+import { format, useI18n } from "@/i18n/I18nProvider";
 
+// Données fixes ici ; période, poste et description sont traduits
+// (experience.jobs.<key> dans les fichiers de langue)
 type Job = {
-  period: string;
+  key: "fluentech" | "neoshore" | "ctrlweb" | "freelance" | "medialibs";
   company: string;
   url?: string;
-  role: string;
-  description: string;
   tags: string[];
 };
 
 const jobs: Job[] = [
   {
-    period: "2025 — aujourd'hui",
+    key: "fluentech",
     company: "Fluentech",
     url: "https://www.fluentech-group.com/",
-    role: "Développeur front-end senior",
-    description:
-      "Interfaces SPA/SSR avec Next.js App Router. Architecture monorepo, design system Storybook à l'échelle.",
     tags: ["Next.js", "TypeScript", "Tailwind", "Zustand", "GraphQL", "Storybook"],
   },
   {
-    period: "2022 — 2025",
+    key: "neoshore",
     company: "Neoshore",
     url: "https://neoshore.eu/",
-    role: "Développeur front-end (Feelin)",
-    description:
-      "Interfaces React + GraphQL/Apollo, optimisation des performances, conformité WCAG sur des applications à fort trafic.",
     tags: ["React", "TypeScript", "GraphQL", "Redux", "Material UI", "Jest"],
   },
   {
-    period: "2021 — 2022",
+    key: "ctrlweb",
     company: "CtrlWeb",
     url: "https://ctrlweb.ca/",
-    role: "Développeur front-end",
-    description:
-      "Interfaces responsives optimisées pour le SEO, dans une équipe agile au Canada.",
     tags: ["HTML/CSS", "JavaScript", "WordPress", "SEO"],
   },
   {
-    period: "2017 — 2021",
+    key: "freelance",
     company: "Freelance",
-    role: "Développeur front-end indépendant",
-    description:
-      "Applications React/Gatsby en JAMstack, intégrations GraphQL pour des clients internationaux.",
     tags: ["React", "Gatsby", "GraphQL", "JAMstack", "Sass"],
   },
   {
-    period: "2016 — 2017",
+    key: "medialibs",
     company: "Medialibs",
     url: "https://www.medialibs.com/",
-    role: "Développeur front-end junior",
-    description:
-      "Développement et maintenance de sites WordPress et de CMS sur mesure.",
     tags: ["HTML/CSS", "jQuery", "WordPress", "PHP"],
   },
 ];
@@ -138,6 +124,8 @@ const pad = (n: number) => String(n).padStart(2, "0");
 export default function Experience() {
   const { trackRef, viewportRef, itemRefs, enabled, active, offset, goTo } =
     useScrollSteps(jobs.length);
+  const { dict } = useI18n();
+  const t = dict.experience;
   const swipeActive = useSwipeActive(itemRefs, !enabled);
   const current = enabled ? active : swipeActive;
 
@@ -156,12 +144,9 @@ export default function Experience() {
           <div className="pat pat-lines" aria-hidden="true" />
           <div className="w exp-layout">
             <div className="exp-intro rv">
-              <p className="sec-label">Parcours</p>
-              <h2 className="sec-title">Expériences.</h2>
-              <p className="sec-lead">
-                Dix ans entre agences, produits et missions en freelance, en
-                Europe et au Canada.
-              </p>
+              <p className="sec-label">{t.label}</p>
+              <h2 className="sec-title">{t.title}</h2>
+              <p className="sec-lead">{t.lead}</p>
               <a
                 href="https://pronass.vercel.app/cv/Nasoavina-CV.pdf"
                 target="_blank"
@@ -169,7 +154,7 @@ export default function Experience() {
                 className="btn-ghost btn-sm"
               >
                 <Download size={16} strokeWidth={2} aria-hidden />
-                Télécharger le CV
+                <span className="btn-label">{t.cv}</span>
               </a>
 
               {enabled && (
@@ -184,7 +169,7 @@ export default function Experience() {
                         key={job.company}
                         type="button"
                         className={i === active ? "on" : undefined}
-                        aria-label={`Voir ${job.company}`}
+                        aria-label={format(t.see, { company: job.company })}
                         aria-current={i === active ? "step" : undefined}
                         onClick={() => goTo(i)}
                       />
@@ -223,7 +208,7 @@ export default function Experience() {
                       }}
                       className={classes.filter(Boolean).join(" ")}
                     >
-                      <span className="exp-period">{job.period}</span>
+                      <span className="exp-period">{t.jobs[job.key].period}</span>
                       <h3 className="exp-head">
                         {job.url ? (
                           <a
@@ -236,9 +221,9 @@ export default function Experience() {
                         ) : (
                           job.company
                         )}{" "}
-                        <span className="exp-role">· {job.role}</span>
+                        <span className="exp-role">· {t.jobs[job.key].role}</span>
                       </h3>
-                      <p className="exp-desc">{job.description}</p>
+                      <p className="exp-desc">{t.jobs[job.key].description}</p>
                       <div className="exp-tags">
                         {job.tags.map((tag) => (
                           <span key={tag} className="exp-tag">

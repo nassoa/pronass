@@ -9,14 +9,23 @@ import Pricing from "@/components/sections/Pricing";
 import Experience from "@/components/sections/Experience";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
+import Partners from "@/components/sections/Partners";
 import Animations from "@/components/ui/Animations";
+import { I18nProvider, useI18n } from "@/i18n/I18nProvider";
+
+function SkipLink() {
+  const { dict } = useI18n();
+  return (
+    <a href="#hero" className="skip-link">
+      {dict.meta.skip}
+    </a>
+  );
+}
 
 export default function Home() {
   return (
-    <>
-      <a href="#hero" className="skip-link">
-        Aller au contenu
-      </a>
+    <I18nProvider>
+      <SkipLink />
       <Animations />
       <Nav />
       <SideNav />
@@ -24,11 +33,12 @@ export default function Home() {
         <Hero />
         <Services />
         <HowIWork />
-        <Experience />
         <Pricing />
+        <Partners />
+        <Experience />
         <About />
         <Contact />
       </main>
-    </>
+    </I18nProvider>
   );
 }

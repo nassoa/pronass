@@ -1,20 +1,21 @@
 "use client";
 
-import { principles } from "@/lib/data/principles";
+import { useI18n, type Dictionary } from "@/i18n/I18nProvider";
+
+type ArtText = Dictionary["method"]["art"];
 
 /* ── Illustrations ─────────────────────────────── */
 
 // Cadrage : les questions du brief, toutes répondues avant de coder
-function BriefArt() {
-  const questions = ["Pour qui ?", "Quel problème ?", "Priorité n°1 ?"];
+function BriefArt({ t }: { t: ArtText }) {
   return (
     <div className="win method-art" aria-hidden="true">
       <div className="win-head">
         <span>brief.md</span>
-        <span>cadrage</span>
+        <span>{t.briefTag}</span>
       </div>
       <div className="art-body">
-        {questions.map((q) => (
+        {t.briefQuestions.map((q) => (
           <div key={q} className="art-row">
             <span>
               <span className="art-q">?</span> {q}
@@ -24,71 +25,71 @@ function BriefArt() {
         ))}
       </div>
       <div className="art-foot">
-        <span className="ok">→</span> prêt à développer
+        <span className="ok">→</span> {t.briefReady}
       </div>
     </div>
   );
 }
 
 // Choix techniques : une décision documentée (ADR), avec l'option écartée
-function DecisionArt() {
+function DecisionArt({ t }: { t: ArtText }) {
   return (
     <div className="win method-art" aria-hidden="true">
       <div className="win-head">
         <span>ADR-004</span>
-        <span className="art-pill">accepté</span>
+        <span className="art-pill">{t.adrStatus}</span>
       </div>
       <div className="art-body">
         <div className="art-row">
           <span className="art-strong">✓ PostgreSQL</span>
-          <span className="art-dim">retenu</span>
+          <span className="art-dim">{t.adrKept}</span>
         </div>
         <div className="art-row">
           <span className="art-strike">MongoDB</span>
-          <span className="art-dim">écarté</span>
+          <span className="art-dim">{t.adrDropped}</span>
         </div>
       </div>
       <div className="art-foot">
-        <span className="art-q">#</span> raison : transactions
+        <span className="art-q">#</span> {t.adrReason}
       </div>
     </div>
   );
 }
 
 // Communication : le point d'avancement envoyé chaque semaine
-function UpdateArt() {
+function UpdateArt({ t }: { t: ArtText }) {
   return (
     <div className="win method-art" aria-hidden="true">
       <div className="win-head">
-        <span>Point hebdo</span>
-        <span>lun. 09:00</span>
+        <span>{t.weeklyHead}</span>
+        <span>{t.weeklyWhen}</span>
       </div>
       <div className="art-body">
         <div className="art-row">
           <span>
-            <span className="ok">✓</span> Paiement livré
+            <span className="ok">✓</span> {t.weeklyDone}
           </span>
         </div>
         <div className="art-row">
           <span>
-            <span className="art-q">●</span> Auth en cours
+            <span className="art-q">●</span> {t.weeklyDoing}
           </span>
         </div>
         <div className="art-row">
           <span>
-            <span className="warn">!</span> Accès API attendu
+            <span className="warn">!</span> {t.weeklyWaiting}
           </span>
         </div>
       </div>
       <div className="art-foot">
-        <span className="art-dim">prochain point : lun.</span>
+        <span className="art-dim">{t.weeklyNext}</span>
       </div>
     </div>
   );
 }
 
 // Code maintenable : un dépôt documenté et testé
-function RepoArt() {
+function RepoArt({ t }: { t: ArtText }) {
   const files: [string, string, string][] = [
     ["├", "README.md", "✓"],
     ["├", "docs/", "✓"],
@@ -114,7 +115,7 @@ function RepoArt() {
         <span className="art-bar">
           <span style={{ width: "94%" }} />
         </span>
-        <span className="art-dim">couverture</span>
+        <span className="art-dim">{t.repoCoverage}</span>
       </div>
     </div>
   );
@@ -125,27 +126,31 @@ const art = [BriefArt, DecisionArt, UpdateArt, RepoArt];
 /* ── Section ───────────────────────────────────── */
 
 export default function HowIWork() {
+  const { dict } = useI18n();
+  const t = dict.method;
+
   return (
     <section id="methode" className="section has-pat">
       <div className="pat pat-hatch" aria-hidden="true" />
       <div className="w">
         <div className="sec-head rv">
-          <p className="sec-label">Méthode</p>
-          <h2 className="sec-title">Comment je travaille.</h2>
+          <p className="sec-label">{t.label}</p>
+          <h2 className="sec-title">{t.title}</h2>
         </div>
 
         <ul className="method-list rv">
-          {principles.map((principle, i) => {
+          {t.items.map((principle, i) => {
             const Art = art[i] ?? BriefArt;
             return (
-              <li key={principle.number} className="method-item">
-                <Art />
+              <li key={i} className="method-item">
+                <Art t={t.art} />
                 <h3 className="method-title">{principle.title}</h3>
                 <p className="method-desc">{principle.description}</p>
               </li>
             );
           })}
         </ul>
+        <p className="method-pilot rv d2">{t.pilot}</p>
       </div>
     </section>
   );

@@ -29,6 +29,8 @@
   --mono: var(--font-mono), ui-monospace, monospace;
 
   --max: 1200px;
+  /* taille unique de tous les titres de section (H2) */
+  --h2-size: clamp(28px, 3.2vw, 42px);
   --px: 20px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -238,11 +240,110 @@ ol {
 .nav-links a.on {
   color: #fff;
 }
+/* mobile : icônes un peu plus serrées pour laisser la place à la ligne
+   « Disponible · Antananarivo » */
+@media (max-width: 899px) {
+  .nav-social a {
+    width: 40px;
+  }
+}
+/* Interrupteur de langue FR / EN : une pastille orange glisse sous la
+   langue active. Zone cliquable de 44 px de haut autour de la piste. */
+.nav-lang {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  margin-left: auto;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.nav-lang-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 58px;
+  height: 26px;
+  padding: 2px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  transition: border-color 0.2s ease;
+}
+.nav-lang:hover .nav-lang-track {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.nav-lang-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(50% - 2px);
+  height: calc(100% - 4px);
+  border-radius: 999px;
+  background: var(--accent);
+  transition: translate 0.3s var(--ease);
+}
+.nav-lang.is-en .nav-lang-knob {
+  translate: 100% 0;
+}
+.nav-lang-opt {
+  position: relative; /* au-dessus de la pastille */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+  transition: color 0.3s ease;
+}
+/* langue active : texte sombre sur la pastille orange (classes dédiées :
+   :first-of-type visait la pastille, qui est aussi un span) */
+.nav-lang.is-fr .nav-lang-fr,
+.nav-lang.is-en .nav-lang-en {
+  color: #0b0b0e;
+  font-weight: 600;
+}
+.nav-lang:focus-visible .nav-lang-track {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+/* Changement de langue : seuls les textes s'effacent puis réapparaissent ;
+   les fonds, cartes, images et illustrations restent en place.
+   lang-anim (pendant tout le changement) pose la transition, lang-fading
+   (pendant la sortie) met les textes à 0. Classes posées par I18nProvider. */
+html.lang-anim
+  :is(
+    main h1, main h2, main h3, main p, main dt, main dd,
+    .btn-label, .text-link, .hero-status > span, .card-meta, .pill,
+    .svc-cat-btn, .svc-sheet-pos, .svc-sheet-list li,
+    .exp-period, .price-sit-q, .price-panel-billing, .price-panel-list li,
+    .price-panel-note, .cl-text, .win-head span, .art-row, .art-foot,
+    .partners-steps button, .partners-roles li, .partners-who,
+    .price-panel-for-label, .price-panel-for li,
+    .nav-links a, .lang-text
+  ) {
+  transition: opacity 0.18s ease !important;
+}
+html.lang-fading
+  :is(
+    main h1, main h2, main h3, main p, main dt, main dd,
+    .btn-label, .text-link, .hero-status > span, .card-meta, .pill,
+    .svc-cat-btn, .svc-sheet-pos, .svc-sheet-list li,
+    .exp-period, .price-sit-q, .price-panel-billing, .price-panel-list li,
+    .price-panel-note, .cl-text, .win-head span, .art-row, .art-foot,
+    .partners-steps button, .partners-roles li, .partners-who,
+    .price-panel-for-label, .price-panel-for li,
+    .nav-links a, .lang-text
+  ) {
+  opacity: 0 !important;
+}
 /* LinkedIn et GitHub, à droite du menu */
 .nav-social {
   display: flex;
   gap: 4px;
-  margin-left: auto;
   margin-right: -10px; /* l'icône s'aligne sur le bord du contenu */
 }
 .nav-social a {
@@ -437,15 +538,19 @@ ol {
     position: absolute;
     top: 48px;
     left: var(--px);
-    right: calc(var(--px) + 88px); /* place des deux icônes */
+    right: calc(var(--px) + 154px); /* interrupteur de langue + deux icônes */
+    gap: 8px;
+    font-size: 12px;
     translate: 0 -50%;
     flex-wrap: nowrap;
     white-space: nowrap;
     z-index: 51; /* au-dessus du menu, transparent */
   }
 }
-@media (max-width: 419px) {
-  .hero-utc {
+/* téléphones étroits : on garde « Disponible · Antananarivo », l'heure
+   n'a pas la place à côté du bouton de langue et des icônes */
+@media (max-width: 459px) {
+  .hero-time {
     display: none;
   }
 }
@@ -591,7 +696,7 @@ ol {
   color: var(--violet);
 }
 .sec-title {
-  font-size: clamp(34px, 4.2vw, 52px);
+  font-size: var(--h2-size);
   line-height: 1.05;
   font-weight: 600;
   font-stretch: 112%;
@@ -627,6 +732,32 @@ ol {
     grid-column: auto;
   }
 }
+/* écrans d'ordinateur peu hauts : fiches Services resserrées pour que la
+   pile tienne sous le menu (préfixe #services : ces règles sont placées
+   avant les styles de base des fiches) */
+@media (min-width: 900px) and (max-height: 860px) {
+  #services .svc-card {
+    padding: 22px 26px;
+  }
+  #services .svc-card-body {
+    gap: 10px;
+  }
+  #services .svc-card-body .card-title,
+  #formules .price-panel-title {
+    font-size: 21px;
+  }
+  #services .svc-sheet-fields {
+    gap: 14px;
+    padding-top: 12px;
+  }
+  #services .svc-sheet-fields dd,
+  #services .svc-sheet-promise {
+    font-size: 14px;
+  }
+  #services .svc-sheet-extra {
+    font-size: 12px;
+  }
+}
 /* Services en responsive : les cartes défilent à l'horizontale,
    une par une (scroll snap), et débordent jusqu'aux bords de l'écran */
 @media (max-width: 900px) {
@@ -650,34 +781,9 @@ ol {
     min-width: 0; /* la grille de la carte IA ne doit pas l'élargir */
     scroll-snap-align: start;
   }
-  /* carte « IA & livraison » : version compacte de la fenêtre de code,
-     en tête de carte et à la même hauteur que les autres illustrations
-     (150 px + même écart), pour que les titres s'alignent */
-  #services .svc-feature {
-    gap: 22px;
-  }
-  #services .win--diff {
-    order: -1;
-    flex: 0 0 100%; /* la carte est une ligne flex qui passe à la ligne */
-    height: 150px;
-  }
-  #services .win--diff .win-status {
-    display: none;
-  }
-  /* en-tête sur une ligne : le libellé « prototype → prod » passait à la
-     ligne et poussait le code hors du cadre */
-  #services .win--diff .win-head span + span {
-    display: none;
-  }
-  /* la ligne libellé + pastille fait la même hauteur que le libellé seul
-     des autres cartes, pour aligner les titres au pixel près */
-  #services .svc-feature-head {
-    height: 21px;
-  }
-  /* liste des points couverts (sécurité, erreurs, CI/CD…) masquée */
-  #services .svc-checks {
-    display: none;
-  }
+}
+.svc-mcard {
+  gap: 14px;
 }
 /* Parcours en responsive : les expériences défilent à l'horizontale ;
    la ligne de temps et ses points passent au-dessus des contenus */
@@ -838,51 +944,6 @@ ol {
   color: var(--soft);
 }
 
-/* Services — carte IA */
-.svc-feature {
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 28px;
-}
-.svc-feature-text {
-  flex: 1 1 260px;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.svc-feature-text .card-title {
-  font-size: 26px;
-  line-height: 1.15;
-}
-.svc-feature-text .card-desc {
-  font-size: 16px;
-}
-.svc-feature-head {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.svc-checks {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 16px;
-  margin-top: 6px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-  font-size: 12px;
-  color: var(--soft);
-}
-.svc-checks li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.svc-checks svg {
-  color: var(--accent);
-  flex-shrink: 0;
-}
 .text-link {
   align-self: flex-start;
   display: inline-flex;
@@ -909,12 +970,6 @@ ol {
   line-height: 1.8;
   overflow: hidden;
 }
-.win--diff {
-  flex: 1 1 280px;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
 .win-head {
   display: flex;
   justify-content: space-between;
@@ -926,65 +981,6 @@ ol {
 .win-body {
   padding: 10px 0;
 }
-.diff-del,
-.diff-add {
-  padding: 0 14px;
-}
-.diff-del {
-  background: var(--red-soft);
-  color: #fca5a5;
-}
-.diff-add {
-  background: rgba(74, 222, 128, 0.08);
-  color: #86efac;
-}
-.win-status {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.02);
-  color: var(--muted);
-}
-.win-status div {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-}
-.win-status .dim {
-  color: var(--faint);
-}
-.win-status .live {
-  color: var(--green);
-}
-.win-status .strong {
-  color: var(--ink);
-}
-.win-pad {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 14px;
-  margin-bottom: 8px;
-  color: var(--muted);
-}
-
-/* Cadre commun des illustrations des petites cartes : même hauteur
-   partout pour que titres et textes s'alignent d'une carte à l'autre */
-.svc-art {
-  display: flex;
-  flex-direction: column;
-  height: 150px;
-  margin-bottom: 8px;
-}
-.svc-art > * {
-  flex: 1;
-  margin-bottom: 0;
-  justify-content: center;
-}
-
 /* ── Services sur grand écran : liste à gauche, détail à droite ── */
 .svc-split {
   display: grid;
@@ -996,47 +992,119 @@ ol {
 .svc-side .sec-head {
   margin-bottom: 0;
 }
-/* Liste des services, sans filets : le service affiché passe en blanc
-   avec son numéro en orange */
-.svc-index {
+/* Pôles : celui affiché passe en blanc, avec son numéro en orange */
+.svc-cats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   margin-top: 28px;
 }
-.svc-index button {
-  position: relative;
-  display: inline-flex; /* zone cliquable limitée au numéro et au texte */
+.svc-cat-btn {
+  display: inline-flex;
   align-items: baseline;
   gap: 14px;
-  min-height: 48px;
-  padding: 12px 0;
+  min-height: 44px;
+  padding: 10px 0;
   border: 0;
   background: none;
   font: inherit;
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: 112%;
+  letter-spacing: -0.01em;
   text-align: left;
+  /* pôles non affichés : comme les formules non choisies (gris, opacité 0,5) */
   color: var(--faint);
+  opacity: 0.5;
   cursor: pointer;
-  transition: color 0.25s ease;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
 }
-.svc-index button:hover {
+.svc-cat-btn:hover {
   color: var(--ink);
+  opacity: 0.8;
 }
-.svc-index button.on {
+.svc-cat.is-open .svc-cat-btn {
   color: #fff;
+  opacity: 1;
 }
-.svc-index button:focus-visible {
+.svc-cat-num {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--faint);
+}
+.svc-cat.is-open .svc-cat-num {
+  color: var(--accent);
+}
+.svc-cat-btn:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 2px;
   border-radius: 4px;
 }
-.svc-index-num {
+/* Fiche d'une prestation (pile sur grand écran, carrousel sur mobile) */
+.svc-sheet-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.svc-sheet-pos {
+  flex-shrink: 0;
+}
+.svc-sheet-promise {
+  margin-top: -4px;
+  font-size: 15px;
+  color: var(--muted);
+}
+.svc-sheet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.svc-sheet-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.svc-sheet-list li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  translate: 0 -2px;
+  background: var(--violet);
+}
+.svc-sheet-pos {
   font-family: var(--mono);
   font-size: 12px;
   color: var(--faint);
-  transition: color 0.25s ease;
 }
-.svc-index button.on .svc-index-num {
-  color: var(--accent);
+.svc-sheet-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 22px; /* espace entre « Utile si », « Prestations », « Vous recevez » */
+  margin-top: 4px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.svc-sheet-fields dt {
+  margin-bottom: 2px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--violet);
+}
+.svc-sheet-fields dd {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--soft);
+}
+.svc-sheet-extra {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
 }
 /* Pile de cartes en diagonale : toutes dans la même case de grille (même
    hauteur). data-pos = écart avec le service affiché : 0 devant, 1 à 4
@@ -1088,6 +1156,12 @@ ol {
   border-color: rgba(255, 255, 255, 0.03);
 }
 /* carte qui passe au fond : elle sort d'abord par le bas à gauche… */
+.svc-card[data-pos="hidden"] {
+  z-index: 0;
+  translate: 24px -24px;
+  opacity: 0;
+  pointer-events: none;
+}
 .svc-card.is-leave {
   z-index: 6;
   translate: -24px 24px;
@@ -1111,6 +1185,7 @@ ol {
 /* contenu visible seulement sur la carte de devant ; derrière, on ne
    voit que le bord des cartes */
 .svc-card-body {
+  flex: 1; /* toute la hauteur de la carte : le bouton peut aller en bas */
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -1122,172 +1197,11 @@ ol {
   transition: opacity 0.2s ease;
 }
 .svc-card-body .card-title {
-  font-size: 28px;
+  font-size: 24px;
 }
-.svc-card-body .text-link {
-  margin-top: 4px;
-}
-/* même cadre d'illustration pour les cinq services */
-.svc-detail-art {
-  display: flex;
-  flex-direction: column;
-  height: 210px;
-  margin-bottom: 8px;
-}
-.svc-detail-art > * {
-  flex: 1 1 auto;
-  min-height: 0;
-  margin-bottom: 0;
-  justify-content: center;
-}
-/* fenêtre de code IA : sans le bloc lint/tests/build pour tenir dans le cadre */
-.svc-detail-art .win--diff .win-status {
-  display: none;
-}
-
-/* Détails en plus des illustrations : seulement dans le grand cadre de la
-   pile (grand écran), pas dans les petites cartes du carrousel mobile */
-.svc-art .art-more {
-  display: none;
-}
-.art-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--faint);
-}
-.steps .art-meta {
-  padding-bottom: 8px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-.step-meta {
-  margin-left: auto;
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--faint);
-}
-.step--done .step-meta {
-  color: var(--green);
-}
-/* fenêtres avec en-tête (audit, mobile) */
-.art-win {
-  display: flex;
-  flex-direction: column;
-}
-.art-win .win-pad {
-  flex: 1;
-  justify-content: center;
-  margin-bottom: 0;
-}
-
-/* Illustration — parcours produit */
-/* même cadre que les autres illustrations (fond, bordure, coins) */
-.steps {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background: var(--surface-2);
-}
-.step {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--soft);
-}
-.step-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--violet);
-}
-.step--done {
-  color: #fff;
-}
-.step--done .step-dot {
-  background: var(--green);
-  box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.15);
-}
-.step-line {
-  margin-left: 3px;
-  width: 1px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-/* Illustration — architecture */
-.arch {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 8px;
-  padding: 16px 12px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background-color: var(--surface-2);
-  font-family: var(--mono);
-  font-size: 9px;
-  line-height: 1.3;
-}
-.arch-flow {
-  display: flex;
-  align-items: center;
-}
-.arch-stack {
-  color: var(--faint);
-  text-align: center;
-}
-.arch-col {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.arch-node {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: #141418;
-}
-.arch-node--main {
-  padding: 8px 12px;
-  border-radius: 10px;
-  border-color: rgba(169, 156, 255, 0.7);
-  background: #1a1726;
-  font-weight: 500;
-}
-.arch-merge {
-  width: 8px;
-  height: 30px;
-  border: 1px solid var(--violet-line);
-  border-left: none;
-  border-radius: 0 6px 6px 0;
-}
-.arch-link {
-  flex: 1 1 10px;
-  min-width: 8px;
-  height: 1px;
-  background: var(--violet-line);
-}
-
-/* Illustration — audit */
-.audit-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  font-family: var(--sans);
-  font-size: 11px;
-}
-.audit-row span:first-child {
-  color: var(--soft);
+/* bouton tout en bas de la fiche */
+.svc-sheet-cta {
+  margin-top: auto;
 }
 .warn {
   color: #fb923c;
@@ -1312,11 +1226,34 @@ ol {
 .method-item:last-child {
   border-right: none;
 }
-/* Illustrations des cartes Méthode (même famille que celles des Services) */
+/* écrans d'ordinateur peu hauts : Méthode se resserre pour tenir dans
+   l'écran (sinon défilement interne avant de changer de section) */
+@media (min-width: 900px) and (max-height: 860px) {
+  #methode .sec-head {
+    margin-bottom: 28px;
+  }
+  #methode .method-item {
+    padding: 22px;
+  }
+  #methode .method-art {
+    height: 134px;
+  }
+  #methode .method-pilot {
+    margin-top: 12px;
+  }
+}
+/* projets IA : possibilité d'un pilote, sous les étapes */
+.method-pilot {
+  max-width: 720px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--muted);
+}
+/* Illustrations des cartes Méthode */
 .method-art {
   display: flex;
   flex-direction: column;
-  height: 150px; /* même hauteur que les illustrations des Services */
+  height: 150px;
   margin-bottom: 10px;
 }
 .art-body {
@@ -1595,30 +1532,25 @@ ol {
 /* Tarifs : situations à gauche, formule conseillée à droite */
 .price-head {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 12px 40px;
-  margin-bottom: clamp(24px, 4vh, 44px);
-}
-.price-head-title {
-  display: flex;
   flex-direction: column;
   gap: 10px;
-}
-.price-head .sec-title {
-  font-size: clamp(30px, 3.4vw, 46px);
-}
-.price-head-lead {
-  max-width: 380px;
-  font-size: 15px;
-  color: var(--muted);
+  margin-bottom: 8px;
 }
 .price-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   gap: 32px clamp(40px, 5vw, 80px);
-  align-items: stretch;
+  align-items: center; /* les deux colonnes centrées l'une par rapport à l'autre */
+}
+.price-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.price-left-lead {
+  max-width: 440px;
+  font-size: 15px;
+  color: var(--muted);
 }
 .price-situations {
   display: flex;
@@ -1635,15 +1567,22 @@ ol {
   background: none;
   font: inherit;
   text-align: left;
+  /* situations non choisies : grises et à moitié transparentes, pour que
+     la choisie ressorte */
   color: var(--faint);
+  opacity: 0.5;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
 }
 .price-situations button:hover {
   color: var(--ink);
+  opacity: 0.8;
 }
 .price-situations button.on {
   color: #fff;
+  opacity: 1;
 }
 .price-situations button:focus-visible {
   outline: 2px solid #fff;
@@ -1654,7 +1593,7 @@ ol {
   flex-shrink: 0;
   width: 28px;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12px;
   transition: color 0.2s ease;
 }
 .price-situations button.on .price-sit-num {
@@ -1663,7 +1602,7 @@ ol {
 .price-sit-q {
   flex: 1;
   min-width: 0;
-  font-size: clamp(20px, 2vw, 30px);
+  font-size: 18px; /* même taille que la liste des pôles de Services */
   line-height: 1.05;
   font-weight: 600;
   font-stretch: 112%;
@@ -1688,7 +1627,6 @@ ol {
   justify-content: space-between;
   gap: 20px;
   padding-left: clamp(0px, 2vw, 32px);
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
 }
 .price-panel-stack {
   display: grid;
@@ -1712,28 +1650,46 @@ ol {
     translate: 0 6px;
   }
 }
-.price-panel-kicker {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--faint);
-}
 .price-panel-title {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px 14px;
-}
-.price-panel-title h3 {
-  font-size: clamp(26px, 2.4vw, 34px);
+  font-size: 24px; /* même taille que les titres des fiches Services */
   line-height: 1.05;
   font-weight: 600;
   font-stretch: 112%;
   letter-spacing: -0.03em;
 }
+/* mode de facturation : étiquette violette en tête de fiche */
 .price-panel-billing {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(169, 156, 255, 0.25);
+  background: rgba(169, 156, 255, 0.12);
   font-family: var(--mono);
-  font-size: 13px;
-  color: var(--accent);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--violet);
+}
+.price-panel-for {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.price-panel-for-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--faint);
+}
+.price-panel-for ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.price-panel-for li {
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-size: 12px;
+  color: var(--soft);
 }
 .price-panel-why {
   font-size: 16px;
@@ -1749,19 +1705,24 @@ ol {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--soft);
 }
-.price-panel-list svg {
+/* puces : simples points ronds violets, comme l'étiquette de facturation
+   (l'orange reste réservé au bouton et à la sélection dans la liste) */
+.price-panel-list li::before {
+  content: "";
   flex-shrink: 0;
-  color: var(--accent);
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--violet);
 }
 .price-panel-cta {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 .price-panel-cta .btn-primary {
   align-self: flex-start;
@@ -1770,18 +1731,247 @@ ol {
   font-size: 13px;
   color: var(--faint);
 }
+/* frais d'API, abonnements et hébergement : à part des honoraires */
+.price-panel-ai {
+  max-width: 460px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--faint);
+}
 @media (max-width: 900px) {
   .price-layout {
     grid-template-columns: minmax(0, 1fr);
   }
   .price-panel {
     padding-left: 0;
-    border-left: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .price-panel-body {
     animation: none;
+  }
+}
+
+/* ── PARTENARIATS ── */
+.partners-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 40px clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+.partners-head {
+  margin-bottom: 0;
+}
+/* le chemin vers un partenariat durable, sous l'introduction */
+.partners-path {
+  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+  font-size: 15px;
+  color: var(--soft);
+}
+.partners-head .btn-primary {
+  align-self: flex-start;
+  margin-top: 12px;
+}
+.partners-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+/* Les trois formes, comme les étapes d'un chemin : reliées par un trait,
+   la forme choisie avec son numéro en orange */
+.partners-steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+/* trait qui relie une étape à la suivante, avec un écart de chaque côté
+   des numéros (il part après le numéro et s'arrête avant le suivant) */
+.partners-steps button:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 38px;
+  right: -10px;
+  height: 1px;
+  background: var(--line-strong);
+}
+.partners-steps button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: none;
+  font: inherit;
+  text-align: left;
+  color: var(--faint);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+.partners-steps button:hover {
+  color: var(--ink);
+}
+.partners-steps button.on {
+  color: #fff;
+}
+.partners-steps button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+/* calé à gauche, aligné avec le texte */
+.partners-step-num {
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.partners-steps button.on .partners-step-num {
+  color: var(--accent);
+}
+.partners-step-title {
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 600;
+  font-stretch: 112%;
+  letter-spacing: -0.01em;
+}
+.partners-step-duration {
+  font-size: 12px;
+  color: var(--faint);
+}
+/* les trois vues empilées dans la même case (hauteur stable) */
+.partners-stack {
+  display: grid;
+}
+.partners-view {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  visibility: hidden;
+  opacity: 0;
+}
+.partners-view.is-on {
+  visibility: visible;
+  opacity: 1;
+  animation: price-in 0.35s var(--ease);
+}
+.partners-desc {
+  font-size: 15px;
+  color: var(--muted);
+}
+/* illustrations : même famille que celles de Méthode */
+.partners-art .art-body {
+  padding: 10px 0;
+}
+.partners-status {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 999px;
+  border: 1px solid var(--faint);
+  vertical-align: 1px;
+}
+.partners-status.is-done {
+  border-color: var(--green);
+  background: var(--green);
+}
+.partners-status.is-doing {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+/* qui fait l'étape : couleur seule, violet pour vous, orange pour moi */
+.partners-who {
+  color: var(--violet);
+}
+.partners-who.is-me {
+  color: var(--accent);
+}
+.partners-timeline .art-row {
+  position: relative;
+}
+.partners-tl-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 999px;
+  background: var(--violet);
+  vertical-align: 1px;
+}
+/* ce que vous gardez ↔ ce que je prends en charge */
+.partners-roles {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: stretch; /* les deux encadrés à la même hauteur */
+}
+.partners-roles > div {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+.partners-roles > div.is-me {
+  border-color: var(--accent-border);
+  background: rgba(255, 122, 47, 0.04);
+}
+.partners-roles-sep {
+  align-self: center;
+  color: var(--faint);
+}
+.partners-role-label {
+  margin-bottom: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--faint);
+}
+.partners-roles > div.is-me .partners-role-label {
+  color: var(--accent);
+}
+.partners-roles ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--soft);
+}
+.partners-note {
+  font-size: 13px;
+  color: var(--muted);
+}
+@media (max-width: 860px) {
+  .partners-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .partners-panel {
+    padding: 16px;
+  }
+  .partners-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .partners-steps button::after {
+    display: none;
+  }
+  .partners-roles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .partners-roles-sep {
+    justify-self: center;
+    rotate: 90deg;
   }
 }
 
@@ -1819,9 +2009,6 @@ ol {
   gap: 20px;
   max-width: 600px;
 }
-.about-text .sec-title {
-  font-size: clamp(34px, 4.2vw, 52px);
-}
 .about-lead {
   font-size: 19px;
   line-height: 1.5;
@@ -1836,12 +2023,10 @@ ol {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 16px;
-  border-top: 1px solid var(--line);
 }
 .about-fact {
   display: flex;
-  flex-direction: column-reverse; /* valeur au-dessus, libellé dessous (dt reste avant dd) */
-  justify-content: flex-end;
+  flex-direction: column; /* libellé au-dessus, puis la valeur */
   gap: 4px;
   padding: 22px 20px 0;
   border-left: 1px solid var(--line);
@@ -1925,7 +2110,7 @@ ol {
   gap: 22px;
 }
 .contact-title {
-  font-size: clamp(40px, 5.4vw, 68px);
+  font-size: var(--h2-size);
   line-height: 1;
   font-weight: 600;
   font-stretch: 112%;
@@ -2107,6 +2292,14 @@ html.fullpage body {
   transition:
     opacity 0.5s ease,
     translate 0.6s var(--ease);
+}
+/* Une section par écran : le contenu est déjà centré verticalement, les
+   grandes marges haut / bas ne servent plus et faisaient dépasser certaines
+   sections (Méthode) de l'écran, d'où un défilement interne avant de passer
+   à la section suivante. On garde juste la place du menu en haut. */
+.fullpage main > section.section {
+  padding-top: 88px;
+  padding-bottom: 40px;
 }
 /* .w a des marges auto : dans une colonne flex, il se rétrécirait à la
    taille de son contenu et les grilles passeraient sur une seule colonne */

@@ -1,0 +1,399 @@
+{
+  "meta": {
+    "skip": "Aller au contenu",
+    "switchLabel": "Passer le site en anglais",
+    "switchCode": "EN"
+  },
+  "nav": {
+    "aria": "Navigation principale",
+    "services": "Services",
+    "formules": "Formules",
+    "partenariats": "Partenariats",
+    "apropos": "À propos"
+  },
+  "side": {
+    "aria": "Navigation par section",
+    "hero": "Accueil",
+    "services": "Services",
+    "methode": "Méthode",
+    "formules": "Formules",
+    "partenariats": "Partenariats",
+    "parcours": "Parcours",
+    "apropos": "À propos",
+    "contact": "Contact",
+    "cta": "Discuter de votre projet"
+  },
+  "hero": {
+    "available": "Disponible",
+    "city": "Antananarivo",
+    "timeLocale": "fr-FR",
+    "promise": "Votre partenaire technique pour créer vos applications et intégrer l'IA à votre activité.",
+    "sub": "Je conçois des produits web et mobiles, j'automatise vos processus avec l'IA et j'accompagne vos décisions techniques. Dix ans d'expérience, du cadrage à la mise en production, en remote avec l'Europe et le Canada.",
+    "cta": "Discuter de votre projet",
+    "secondary": "Découvrir les services",
+    "photoAlt": "Safidy Nasoavina, partenaire technique indépendant"
+  },
+  "services": {
+    "label": "Services",
+    "title": "Des solutions techniques pour vos produits et votre activité.",
+    "lead": "Applications web et mobile, outils IA, automatisation et accompagnement technique. J'interviens selon votre besoin, du cadrage à la mise en production.",
+    "polesAria": "Pôles de services",
+    "fields": {
+      "useful": "Utile si",
+      "items": "Prestations",
+      "receive": "Vous recevez"
+    },
+    "poles": [
+      {
+        "id": "creer",
+        "need": "Créer une application ou un outil IA",
+        "promise": "Créer et faire évoluer vos produits numériques et vos outils internes.",
+        "useful": "vous lancez un produit, ou votre équipe a besoin d'un outil adapté à sa façon de travailler.",
+        "items": [
+          "Applications web et SaaS",
+          "Applications mobiles React Native / Expo",
+          "Outils internes sur mesure, avec l'IA quand elle est utile",
+          "Assistants sur vos documents internes, avec sources et gestion des accès"
+        ],
+        "receive": "un produit en production, son code source et la documentation pour le faire évoluer.",
+        "note": "Un outil IA assiste une personne. Il recherche, résume ou propose, et c'est elle qui décide.",
+        "cta": "Discuter de votre projet"
+      },
+      {
+        "id": "automatiser",
+        "need": "Automatiser un processus métier",
+        "promise": "Réduire les tâches répétitives et fluidifier vos processus.",
+        "useful": "des tâches répétitives mobilisent votre équipe entre plusieurs logiciels.",
+        "items": [
+          "Connexion de vos logiciels et circulation des données",
+          "Traitement automatique des demandes et des documents",
+          "Agents IA aux actions encadrées, avec validation humaine si nécessaire"
+        ],
+        "receive": "des automatisations documentées, que vous pouvez suivre et ajuster.",
+        "note": "Une automatisation enchaîne des étapes à votre place, selon des règles définies ensemble.",
+        "cta": "Discuter de votre processus"
+      },
+      {
+        "id": "debloquer",
+        "need": "Débloquer un projet existant",
+        "promise": "Remettre un projet sur les rails et rendre une application exploitable.",
+        "useful": "le projet prend du retard, le code est difficile à faire évoluer, ou un prototype ne passe pas en production.",
+        "items": [
+          "Audit technique et plan de correction",
+          "Reprise et évolution d'une application existante",
+          "Finalisation de prototypes créés avec Claude, Cursor ou v0",
+          "Mise en production et transmission"
+        ],
+        "receive": "un diagnostic clair, un plan de correction priorisé et, si besoin, sa mise en œuvre.",
+        "note": "",
+        "cta": "Faire le point sur votre projet"
+      },
+      {
+        "id": "accompagner",
+        "need": "Vous accompagner dans la durée",
+        "promise": "Structurer vos décisions techniques et accompagner votre équipe.",
+        "useful": "vous avez besoin d'un référent technique sur la durée, sans recruter à plein temps.",
+        "items": [
+          "Lead technique, pour l'architecture, la qualité du code et l'accompagnement des développeurs",
+          "CTO à temps partagé, pour la feuille de route, les priorités et les arbitrages techniques",
+          "Cadrage des projets IA et choix des solutions",
+          "Maintenance et amélioration continue, selon un périmètre convenu"
+        ],
+        "receive": "un interlocuteur technique régulier, des décisions argumentées et un suivi dans un cadre défini.",
+        "note": "",
+        "cta": "Discuter d'un accompagnement"
+      }
+    ]
+  },
+  "method": {
+    "label": "Méthode",
+    "title": "Comment se déroule un projet.",
+    "items": [
+      {
+        "title": "Comprendre le besoin",
+        "description": "Échanger sur vos objectifs et vos contraintes, puis définir le périmètre ensemble."
+      },
+      {
+        "title": "Proposer une solution",
+        "description": "Une approche, des livrables clairs et un chiffrage, avant de commencer."
+      },
+      {
+        "title": "Réaliser",
+        "description": "Le travail avance par étapes, avec des points de suivi réguliers."
+      },
+      {
+        "title": "Valider, livrer et transmettre",
+        "description": "Vous validez, je livre, puis je vous transmets le code, la documentation et les accès pour la suite."
+      }
+    ],
+    "pilot": "Pour un projet IA, on peut commencer par un pilote sur un périmètre limité, pour mesurer l'utilité, la qualité des résultats et les coûts avant un déploiement plus large.",
+    "art": {
+      "briefTag": "cadrage",
+      "briefQuestions": [
+        "Pour qui ?",
+        "Quel problème ?",
+        "Priorité n°1 ?"
+      ],
+      "briefReady": "prêt à développer",
+      "adrStatus": "accepté",
+      "adrKept": "retenu",
+      "adrDropped": "écarté",
+      "adrReason": "raison : transactions",
+      "weeklyHead": "Point hebdo",
+      "weeklyWhen": "lun. 09:00",
+      "weeklyDone": "Paiement livré",
+      "weeklyDoing": "Auth en cours",
+      "weeklyWaiting": "Accès API attendu",
+      "weeklyNext": "prochain point : lun.",
+      "repoCoverage": "couverture"
+    }
+  },
+  "experience": {
+    "label": "Parcours",
+    "title": "Expériences.",
+    "lead": "Dix ans entre agences, produits et missions en freelance, en Europe et au Canada.",
+    "cv": "Télécharger le CV",
+    "see": "Voir {company}",
+    "jobs": {
+      "fluentech": {
+        "period": "2025 — aujourd'hui",
+        "role": "Développeur front-end senior",
+        "description": "Interfaces SPA/SSR avec Next.js App Router. Architecture monorepo, design system Storybook à l'échelle."
+      },
+      "neoshore": {
+        "period": "2022 — 2025",
+        "role": "Développeur front-end (Feelin)",
+        "description": "Interfaces React + GraphQL/Apollo, optimisation des performances, conformité WCAG sur des applications à fort trafic."
+      },
+      "ctrlweb": {
+        "period": "2021 — 2022",
+        "role": "Développeur front-end",
+        "description": "Interfaces responsives optimisées pour le SEO, dans une équipe agile au Canada."
+      },
+      "freelance": {
+        "period": "2017 — 2021",
+        "role": "Développeur front-end indépendant",
+        "description": "Applications React/Gatsby en JAMstack, intégrations GraphQL pour des clients internationaux."
+      },
+      "medialibs": {
+        "period": "2016 — 2017",
+        "role": "Développeur front-end junior",
+        "description": "Développement et maintenance de sites WordPress et de CMS sur mesure."
+      }
+    }
+  },
+  "formulas": {
+    "label": "Formules",
+    "title": "Formules de collaboration",
+    "lead": "Pas de grille figée. Chaque formule est chiffrée après un premier échange, une fois le périmètre clair.",
+    "tablist": "Formules de collaboration",
+    "forLabel": "Besoins concernés",
+    "aiNote": "Pour les prestations IA, les éventuels frais d'API, abonnements et hébergement sont distincts de mes honoraires et vous sont présentés séparément.",
+    "cta": "Discuter de votre projet · 30 min gratuites",
+    "note": "Le prix se fixe après l'échange, une fois le périmètre clair.",
+    "items": [
+      {
+        "name": "Diagnostic / audit",
+        "billing": "Forfait selon le périmètre",
+        "for": [
+          "Débloquer un projet existant",
+          "Accompagnement dans la durée"
+        ],
+        "when": "Pour faire le point sur un projet, un code existant ou un usage de l'IA avant d'aller plus loin.",
+        "includes": [
+          "Analyse de l'existant",
+          "Rapport et recommandations priorisées",
+          "Restitution lors d'un échange"
+        ]
+      },
+      {
+        "name": "Projet ou pilote",
+        "billing": "Forfait, avec paiements par étapes",
+        "for": [
+          "Créer une application ou un outil IA",
+          "Automatiser un processus métier",
+          "Débloquer un projet existant"
+        ],
+        "when": "Pour réaliser une application, une fonctionnalité, une automatisation ou un pilote IA sur un périmètre défini.",
+        "includes": [
+          "Périmètre et livrables définis ensemble",
+          "Paiements répartis par étapes",
+          "Livraison et transmission"
+        ]
+      },
+      {
+        "name": "Renfort ponctuel",
+        "billing": "À la journée, tarif sur demande",
+        "for": [
+          "Tous les besoins"
+        ],
+        "when": "Pour renforcer votre équipe ou votre agence sur une période donnée.",
+        "includes": [
+          "Intégration à votre équipe et à vos outils",
+          "Facturation selon un tarif journalier moyen (TJM) convenu",
+          "Durée adaptée à votre besoin"
+        ]
+      },
+      {
+        "name": "Accompagnement régulier / CTO à temps partagé",
+        "billing": "Forfait mensuel",
+        "for": [
+          "Accompagnement dans la durée"
+        ],
+        "when": "Pour un lead technique ou un CTO à temps partagé sur la durée.",
+        "includes": [
+          "Un périmètre et un nombre de jours convenus chaque mois",
+          "Feuille de route et arbitrages techniques",
+          "Engagement ajustable"
+        ]
+      }
+    ]
+  },
+  "partners": {
+    "label": "Partenariats",
+    "title": "Vous cherchez un partenaire technique ?",
+    "lead": "Vous êtes une agence, un designer, un consultant ou un entrepreneur. Vous portez la relation client ou la vision produit, et il vous faut un interlocuteur fiable pour la partie technique.",
+    "path": "On peut commencer par un renfort ou un projet, puis construire un partenariat dans la durée.",
+    "cta": "Discuter d'une collaboration",
+    "formsAria": "Formes de collaboration",
+    "youLabel": "Vous gardez",
+    "meLabel": "Je prends en charge",
+    "forms": [
+      {
+        "title": "Renfort",
+        "duration": "Quelques semaines",
+        "description": "Je rejoins votre équipe sur une période donnée, pour absorber une charge de travail ou apporter une compétence.",
+        "you": [
+          "La relation client",
+          "Le pilotage du projet",
+          "Vos outils et vos méthodes"
+        ],
+        "me": [
+          "Du développement au sein de votre équipe",
+          "Une prise en main rapide du projet",
+          "Une durée définie ensemble"
+        ],
+        "note": "",
+        "art": {
+          "head": "sprint en cours",
+          "tag": "+1 développeur",
+          "rows": [
+            [
+              "Formulaire de paiement",
+              "livré"
+            ],
+            [
+              "API de devis",
+              "en cours"
+            ],
+            [
+              "Tests de bout en bout",
+              "à faire"
+            ]
+          ],
+          "foot": "renfort · durée définie"
+        }
+      },
+      {
+        "title": "Réalisation technique",
+        "duration": "Le temps d'un projet",
+        "description": "Vous gardez la relation client et la conception. Je m'occupe du développement, de la maquette à la mise en ligne.",
+        "you": [
+          "La relation client",
+          "La conception et les maquettes",
+          "La présentation au client"
+        ],
+        "me": [
+          "Le développement complet",
+          "Les intégrations et la mise en ligne",
+          "La documentation et la transmission"
+        ],
+        "note": "",
+        "art": {
+          "head": "qui fait quoi, étape par étape",
+          "tag": "vous ↔ moi",
+          "rows": [
+            [
+              "Maquettes validées par votre client",
+              "vous"
+            ],
+            [
+              "Développement et intégrations",
+              "moi"
+            ],
+            [
+              "Mise en ligne",
+              "moi"
+            ]
+          ],
+          "foot": "présentation finale au client, par vous"
+        }
+      },
+      {
+        "title": "Accompagnement durable",
+        "duration": "Sur la durée",
+        "description": "Un interlocuteur technique sur la durée, pour conseiller, relire et intervenir sur vos projets.",
+        "you": [
+          "Vos projets et vos priorités",
+          "La relation avec vos clients",
+          "Les décisions finales"
+        ],
+        "me": [
+          "Conseil et choix techniques",
+          "Relecture de code",
+          "Interventions selon un périmètre convenu"
+        ],
+        "note": "Avec le temps, je connais vos projets, vos outils et vos exigences, et chaque nouvelle mission démarre plus vite.",
+        "art": {
+          "head": "partenariat · suivi",
+          "tag": "régulier",
+          "rows": [
+            [
+              "Audit de l'existant",
+              "mois 1"
+            ],
+            [
+              "Nouvelle fonctionnalité",
+              "mois 3"
+            ],
+            [
+              "Relecture de code",
+              "mois 6"
+            ]
+          ],
+          "foot": "un interlocuteur technique attitré"
+        }
+      }
+    ]
+  },
+  "about": {
+    "label": "À propos",
+    "title": "Un interlocuteur direct, du cadrage à la livraison.",
+    "lead": "Je m'implique sur toute la partie technique, de la compréhension du besoin à la transmission, en passant par le choix des solutions et la réalisation.",
+    "bio": "Selon le projet, j'interviens comme développeur, comme lead technique auprès d'une équipe ou comme CTO à temps partagé. Je reste votre interlocuteur direct, et je documente les choix pour que le projet ne dépende pas de moi.",
+    "photoAlt": "Safidy Nasoavina, partenaire technique indépendant",
+    "facts": [
+      {
+        "label": "Basé à",
+        "value": "Madagascar"
+      },
+      {
+        "label": "Expérience",
+        "value": "10+ ans"
+      },
+      {
+        "label": "Clients en",
+        "value": "Europe · Canada"
+      }
+    ]
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Parlons de votre projet.",
+    "sub": "30 minutes, gratuites. On regarde le besoin, et si ça peut coller entre nous. Je réponds en général sous 24 h.",
+    "cta": "Discuter de votre projet",
+    "cardHead": "Me retrouver",
+    "cvName": "Curriculum vitæ",
+    "cvHandle": "Télécharger le PDF"
+  }
+}

@@ -2,16 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { useI18n } from "@/i18n/I18nProvider";
 
 const CAL_URL = "https://cal.com/nasoavina-manitriniaina-jo3qz1";
 
-function useLocalTime() {
+function useLocalTime(locale: string) {
   // null au premier rendu pour éviter un écart d'hydratation serveur / client
   const [time, setTime] = useState<string | null>(null);
 
   useEffect(() => {
     const format = () =>
-      new Intl.DateTimeFormat("fr-FR", {
+      new Intl.DateTimeFormat(locale, {
         hour: "2-digit",
         minute: "2-digit",
         timeZone: "Indian/Antananarivo",
@@ -19,13 +20,15 @@ function useLocalTime() {
     setTime(format());
     const id = window.setInterval(() => setTime(format()), 30_000);
     return () => window.clearInterval(id);
-  }, []);
+  }, [locale]);
 
   return time;
 }
 
 export default function Hero() {
-  const time = useLocalTime();
+  const { dict } = useI18n();
+  const t = dict.hero;
+  const time = useLocalTime(t.timeLocale);
 
   return (
     <section id="hero">
@@ -35,10 +38,13 @@ export default function Hero() {
       <div className="w hero-layout">
         <div className="hero-content">
           <p className="hero-status">
-            <span className="hero-status-badge">Disponible</span>
+            <span className="hero-status-badge">{t.available}</span>
             <span>
-              Antananarivo{time ? ` · ${time}` : ""}
-              <span className="hero-utc"> (UTC+3)</span>
+              {t.city}
+              <span className="hero-time">
+                {time ? ` · ${time}` : ""}
+                <span className="hero-utc"> (UTC+3)</span>
+              </span>
             </span>
           </p>
 
@@ -49,15 +55,12 @@ export default function Hero() {
               Nasoavina
             </h1>
             <p className="hero-tagline">
-              10 ans à livrer des produits qui doivent{" "}
-              <strong>tenir en production.</strong>
+              {t.promise}
             </p>
           </div>
 
           <p className="hero-sub">
-            Lead technique et développeur full-stack indépendant. Du brief à la
-            mise en ligne, web et mobile. Basé à Madagascar, en remote avec
-            l&apos;Europe et le Canada.
+            {t.sub}
           </p>
 
           <div className="hero-actions">
@@ -67,13 +70,13 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              Prendre RDV · 30 min
+              <span className="btn-label">{t.cta}</span>
               <span className="chip" aria-hidden="true">
                 <ArrowRight size={16} strokeWidth={2.2} />
               </span>
             </a>
             <a href="#services" className="btn-ghost">
-              Voir les services
+              <span className="btn-label">{t.secondary}</span>
             </a>
           </div>
         </div>
@@ -82,7 +85,7 @@ export default function Hero() {
           <div className="hero-media">
             <img
               src="/pro-nas.jpg"
-              alt="Safidy Nasoavina, lead technique indépendant"
+              alt={t.photoAlt}
             />
           </div>
         </div>

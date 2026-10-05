@@ -1,12 +1,10 @@
 "use client";
 
-const facts = [
-  { label: "Base", value: "Madagascar" },
-  { label: "Expérience", value: "10+ ans" },
-  { label: "Clients", value: "Europe · Canada" },
-];
+import { useI18n } from "@/i18n/I18nProvider";
 
 export default function About() {
+  const { dict } = useI18n();
+  const t = dict.about;
   return (
     <section id="apropos" className="section">
       <div className="w">
@@ -14,25 +12,19 @@ export default function About() {
           <div className="about-photo rv">
             <img
               src="/pro-nas-2.jpg"
-              alt="Safidy Nasoavina, lead technique indépendant"
+              alt={t.photoAlt}
             />
           </div>
 
           <div className="about-text rv d2">
-            <p className="sec-label">À propos</p>
-            <h2 className="sec-title">
-              Lead technique, développement de bout en bout.
-            </h2>
-            <p className="about-lead">
-              Mon rôle couvre le cadrage, les priorités et les choix techniques.
-            </p>
-            <p className="about-bio">
-              Indépendant depuis plusieurs années, après des missions en Europe
-              et au Canada. Je travaille surtout sur des produits web et mobile,
-              en lead technique ou en développement full-stack.
-            </p>
+            <p className="sec-label">{t.label}</p>
+            <h2 className="sec-title">{t.title}</h2>
+            <p className="about-lead">{t.lead}</p>
+            <p className="about-bio">{t.bio}</p>
+            {/* libellé lu avant la valeur, comme un début de phrase :
+                « Basé à Madagascar », « Clients en Europe · Canada » */}
             <dl className="about-facts">
-              {facts.map(({ label, value }) => (
+              {t.facts.map(({ label, value }) => (
                 <div key={label} className="about-fact">
                   <dt>{label}</dt>
                   <dd>{value}</dd>

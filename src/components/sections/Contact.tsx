@@ -10,6 +10,7 @@ import {
   Mail,
   MessageCircle,
 } from "lucide-react";
+import { useI18n } from "@/i18n/I18nProvider";
 
 const links = [
   {
@@ -31,8 +32,9 @@ const links = [
     icon: MessageCircle,
   },
   {
-    name: "Curriculum vitæ",
-    handle: "Télécharger le PDF",
+    // nom et sous-titre traduits (contact.cvName / contact.cvHandle)
+    name: "cv",
+    handle: "",
     href: "https://pronass.vercel.app/cv/Nasoavina-CV.pdf",
     icon: FileText,
     download: true,
@@ -40,18 +42,17 @@ const links = [
 ];
 
 export default function Contact() {
+  const { dict } = useI18n();
+  const t = dict.contact;
   return (
     <section id="contact">
       <div className="contact-halo" aria-hidden="true" />
       <div className="w contact-inner">
         <div className="contact-grid">
           <div className="contact-main rv">
-            <p className="sec-label">Contact</p>
-            <h2 className="contact-title">Parlons de votre projet.</h2>
-            <p className="contact-sub">
-              30 minutes, gratuites. On regarde le besoin, et si ça peut coller
-              entre nous. Je réponds en général sous 24 h.
-            </p>
+            <p className="sec-label">{t.label}</p>
+            <h2 className="contact-title">{t.title}</h2>
+            <p className="contact-sub">{t.sub}</p>
             <div className="contact-btns">
               <a
                 href="https://cal.com/nasoavina-manitriniaina-jo3qz1"
@@ -59,7 +60,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="btn-primary"
               >
-                Prendre RDV
+                <span className="btn-label">{t.cta}</span>
                 <span className="chip" aria-hidden="true">
                   <ArrowRight size={16} strokeWidth={2.2} />
                 </span>
@@ -72,7 +73,7 @@ export default function Contact() {
           </div>
 
           <div className="contact-card rv d2">
-            <p className="contact-card-head">Me retrouver</p>
+            <p className="contact-card-head">{t.cardHead}</p>
             <ul className="contact-links">
               {links.map(({ name, handle, href, icon: Icon, download }) => (
                 <li key={name}>
@@ -86,8 +87,12 @@ export default function Contact() {
                       <Icon size={17} strokeWidth={1.9} />
                     </span>
                     <span className="cl-text">
-                      <span className="cl-name">{name}</span>
-                      <span className="cl-handle">{handle}</span>
+                      <span className="cl-name">
+                        {download ? t.cvName : name}
+                      </span>
+                      <span className="cl-handle">
+                        {download ? t.cvHandle : handle}
+                      </span>
                     </span>
                     {download ? (
                       <Download

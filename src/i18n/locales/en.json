@@ -1,0 +1,282 @@
+{
+  "meta": {
+    "skip": "Skip to content",
+    "switchLabel": "Switch the site to French",
+    "switchCode": "FR"
+  },
+  "nav": {
+    "aria": "Main navigation",
+    "services": "Services",
+    "parcours": "Experience",
+    "tarifs": "Pricing",
+    "apropos": "About"
+  },
+  "side": {
+    "aria": "Section navigation",
+    "hero": "Home",
+    "services": "Services",
+    "methode": "Approach",
+    "parcours": "Experience",
+    "tarifs": "Pricing",
+    "apropos": "About",
+    "contact": "Contact",
+    "cta": "Book a call"
+  },
+  "hero": {
+    "available": "Available",
+    "city": "Antananarivo",
+    "timeLocale": "en-GB",
+    "taglineStart": "10 years shipping products that have to",
+    "taglineStrong": "hold up in production.",
+    "sub": "Independent tech lead and full-stack developer. From brief to launch, web and mobile. Based in Madagascar, working remotely with Europe and Canada.",
+    "cta": "Book a call · 30 min",
+    "secondary": "See services",
+    "photoAlt": "Safidy Nasoavina, independent tech lead"
+  },
+  "services": {
+    "label": "Services",
+    "title": "Five ways to move a technical project forward.",
+    "lead": "Depending on where your project stands: from the first brief to taking over code that's become hard to maintain.",
+    "popular": "Most requested",
+    "cta": "Review your project with me",
+    "items": {
+      "ai-ship": {
+        "label": "AI & delivery",
+        "short": "Shipping with AI",
+        "title": "“Ship it with AI” support",
+        "description": "You got far with Cursor, v0 or Claude, but going to production or security is the blocker. I take over to finish the job.",
+        "points": [
+          "Security & secrets",
+          "Auth & payments",
+          "Error handling",
+          "Essential tests",
+          "CI/CD & deployment",
+          "Performance"
+        ]
+      },
+      "product": {
+        "label": "Product journey",
+        "short": "Product end to end",
+        "title": "End-to-end product development",
+        "description": "Scoping, development and integrations (payments, third-party APIs, automations), all the way to production.",
+        "points": [
+          "Scoping & specs",
+          "Payments (Stripe)",
+          "APIs & integrations",
+          "Going to production"
+        ]
+      },
+      "cto": {
+        "label": "Architecture",
+        "short": "Tech lead / CTO",
+        "title": "Part-time tech lead / CTO",
+        "description": "Stack choices, architecture and technical priorities. If the project grows, I can build and lead a small team.",
+        "points": [
+          "Stack choices",
+          "Architecture & code reviews",
+          "Technical priorities",
+          "Hiring & team lead"
+        ]
+      },
+      "audit": {
+        "label": "Audit",
+        "short": "Audit & recovery",
+        "title": "Audit & recovery",
+        "description": "Project running late or code that's become hard to maintain: an audit, a cleanup and clear recommendations for what's next.",
+        "points": [
+          "Code audit",
+          "Security & performance",
+          "Prioritized action plan",
+          "Cleanup"
+        ]
+      },
+      "mobile": {
+        "label": "Mobile",
+        "short": "React Native apps",
+        "title": "React Native / Expo apps",
+        "description": "From design all the way to the Play Store and TestFlight, certificates, builds and Apple / Google review included.",
+        "points": [
+          "iOS & Android",
+          "EAS builds",
+          "TestFlight & Play Store",
+          "Apple / Google review"
+        ]
+      }
+    },
+    "art": {
+      "diffTodo": "// TODO: handle errors",
+      "deployed": "deployed to production",
+      "steps": ["Scoping", "Development", "Integrations"],
+      "stepsWhen": ["wk 1", "wk 2–5", "wk 6"],
+      "stepsDone": "In production",
+      "archHead": "architecture",
+      "archTag": "target",
+      "auditTag": "report",
+      "auditRows": [
+        ["Security", "to fix"],
+        ["Performance", "to review"],
+        ["Tests", "missing"],
+        ["Action plan", "ready"]
+      ],
+      "mobileReview": "in review · App Store"
+    }
+  },
+  "method": {
+    "label": "Approach",
+    "title": "How I work.",
+    "items": [
+      {
+        "title": "Scoping first",
+        "description": "I understand the need before writing code, to avoid needless back-and-forth."
+      },
+      {
+        "title": "Clear technical choices",
+        "description": "I propose them, document them, and stay accountable for them all the way to production."
+      },
+      {
+        "title": "Clear communication",
+        "description": "Regular progress updates, so you always know where the project stands."
+      },
+      {
+        "title": "Maintainable code",
+        "description": "Readable and documented, so another team can pick it up without trouble."
+      }
+    ],
+    "art": {
+      "briefTag": "scoping",
+      "briefQuestions": ["For whom?", "What problem?", "Priority #1?"],
+      "briefReady": "ready to build",
+      "adrStatus": "accepted",
+      "adrKept": "chosen",
+      "adrDropped": "dropped",
+      "adrReason": "reason: transactions",
+      "weeklyHead": "Weekly update",
+      "weeklyWhen": "Mon 09:00",
+      "weeklyDone": "Payments shipped",
+      "weeklyDoing": "Auth in progress",
+      "weeklyWaiting": "Waiting on API access",
+      "weeklyNext": "next update: Mon",
+      "repoCoverage": "coverage"
+    }
+  },
+  "experience": {
+    "label": "Experience",
+    "title": "Experience.",
+    "lead": "Ten years across agencies, products and freelance missions, in Europe and Canada.",
+    "cv": "Download my resume",
+    "see": "Go to {company}",
+    "jobs": {
+      "fluentech": {
+        "period": "2025 — present",
+        "role": "Senior front-end developer",
+        "description": "SPA/SSR interfaces with the Next.js App Router. Monorepo architecture, Storybook design system at scale."
+      },
+      "neoshore": {
+        "period": "2022 — 2025",
+        "role": "Front-end developer (Feelin)",
+        "description": "React + GraphQL/Apollo interfaces, performance optimization, WCAG compliance on high-traffic applications."
+      },
+      "ctrlweb": {
+        "period": "2021 — 2022",
+        "role": "Front-end developer",
+        "description": "SEO-optimized responsive interfaces, in an agile team in Canada."
+      },
+      "freelance": {
+        "period": "2017 — 2021",
+        "role": "Independent front-end developer",
+        "description": "React/Gatsby JAMstack applications, GraphQL integrations for international clients."
+      },
+      "medialibs": {
+        "period": "2016 — 2017",
+        "role": "Junior front-end developer",
+        "description": "Building and maintaining WordPress sites and custom CMSs."
+      }
+    }
+  },
+  "pricing": {
+    "label": "Pricing",
+    "title": "What's your situation?",
+    "lead": "No fixed rate card. Pick what sounds like you, and I'll point you to the right engagement.",
+    "tablist": "Your situation",
+    "cta": "Let's talk · free 30 min",
+    "note": "Pricing is set after the call, once the scope is clear.",
+    "situations": [
+      {
+        "question": "Finish an AI prototype",
+        "formula": "Audit / short mission",
+        "billing": "Fixed price",
+        "why": "You got far with Cursor, v0 or Claude. I take over the code, secure it and ship it to production.",
+        "includes": [
+          "Review of the existing code",
+          "Security, errors, essential tests",
+          "Going to production"
+        ]
+      },
+      {
+        "question": "Launch a new product",
+        "formula": "Fixed-price project",
+        "billing": "Quote",
+        "why": "I take the product from scoping to launch, on a clear scope.",
+        "includes": [
+          "Scoping and stack choice",
+          "Web or mobile development",
+          "Integrations and going live"
+        ]
+      },
+      {
+        "question": "Rescue a struggling project",
+        "formula": "Audit / short mission",
+        "billing": "Fixed price",
+        "why": "Project running late or code that's hard to maintain: an audit to understand what's blocking, then a cleanup.",
+        "includes": [
+          "Technical audit",
+          "Cleanup plan",
+          "Prioritized recommendations"
+        ]
+      },
+      {
+        "question": "Get a part-time CTO",
+        "formula": "Monthly retainer",
+        "billing": "Monthly",
+        "why": "I act as your tech lead: architecture, priorities, and leading a small team if needed.",
+        "includes": [
+          "Technical choices and architecture",
+          "Prioritizing with you",
+          "Flexible commitment"
+        ]
+      },
+      {
+        "question": "Extra hands for a while",
+        "formula": "Time-and-materials mission",
+        "billing": "Day rate",
+        "why": "I join your team for a set period, billed by the day.",
+        "includes": [
+          "Quick onboarding into your team",
+          "Billed by the day",
+          "Duration that fits your needs"
+        ]
+      }
+    ]
+  },
+  "about": {
+    "label": "About",
+    "title": "Tech lead, end-to-end development.",
+    "lead": "My role covers scoping, priorities and technical choices.",
+    "bio": "Independent for several years, after missions in Europe and Canada. I mostly work on web and mobile products, as a tech lead or full-stack developer.",
+    "photoAlt": "Safidy Nasoavina, independent tech lead",
+    "facts": [
+      { "label": "Based in", "value": "Madagascar" },
+      { "label": "Experience", "value": "10+ years" },
+      { "label": "Clients in", "value": "Europe · Canada" }
+    ]
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Let's talk about your project.",
+    "sub": "30 minutes, free. We look at what you need, and whether we're a good fit. I usually reply within 24 hours.",
+    "cta": "Book a call",
+    "cardHead": "Find me",
+    "cvName": "Resume",
+    "cvHandle": "Download the PDF"
+  }
+}
