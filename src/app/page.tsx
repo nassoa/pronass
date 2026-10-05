@@ -1,6 +1,7 @@
 "use client";
 
 import Nav from "@/components/Nav";
+import SideNav from "@/components/SideNav";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 import HowIWork from "@/components/sections/HowIWork";
@@ -12,27 +13,22 @@ import Animations from "@/components/ui/Animations";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <a href="#hero" className="skip-link">
         Aller au contenu
       </a>
       <Animations />
       <Nav />
-      <Hero />
-      <Services />
-      <HowIWork />
-      <Experience />
-      <Pricing />
-      <About />
-      <Contact />
-      <footer>
-        <div className="w footer-i">
-          <span className="footer-copy">
-            © 2026 Manitriniaina Safidy Nasoavina
-          </span>
-          <span className="footer-r">Disponible en remote</span>
-        </div>
-      </footer>
-    </main>
+      <SideNav />
+      <main>
+        <Hero />
+        <Services />
+        <HowIWork />
+        <Experience />
+        <Pricing />
+        <About />
+        <Contact />
+      </main>
+    </>
   );
 }

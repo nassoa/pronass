@@ -1,46 +1,56 @@
 export type Service = {
-  id: string;
-  number: string;
+  id: "ai-ship" | "product" | "cto" | "audit" | "mobile";
+  label: string;
   title: string;
   description: string;
   featured?: boolean;
 };
 
+// L'ordre correspond à la grille : IA (large) + Produit, puis Architecture, Audit, Mobile.
 export const services: Service[] = [
   {
+    id: "ai-ship",
+    label: "IA & livraison",
+    title: "Accompagnement « shipper avec l'IA »",
+    description:
+      "Vous avez avancé avec Cursor, v0 ou Claude, mais la mise en production ou la sécurité bloque. Je prends le relais pour finaliser.",
+    featured: true,
+  },
+  {
     id: "product",
-    number: "01",
+    label: "Parcours produit",
     title: "Développement produit de A à Z",
     description:
       "Cadrage, développement et intégrations (paiement, API tierces, automatisations), jusqu'à la mise en production.",
   },
   {
     id: "cto",
-    number: "02",
+    label: "Architecture",
     title: "Lead technique / CTO à temps partiel",
     description:
-      "Choix de stack, architecture et priorités techniques. Si le projet grossit, possibilité de monter et piloter une petite équipe.",
+      "Choix de stack, architecture et priorités techniques. Si le projet grossit, je peux monter et piloter une petite équipe.",
   },
   {
     id: "audit",
-    number: "03",
-    title: "Audit & remise en état de projets existants",
+    label: "Audit",
+    title: "Audit & remise en état",
     description:
-      "Pour un projet en retard ou un code devenu difficile à maintenir : audit, remise à plat, et recommandations claires sur la suite.",
-  },
-  {
-    id: "ai-ship",
-    number: "04",
-    title: 'Accompagnement "shipper avec l\'IA"',
-    description:
-      "Vous avez avancé avec Cursor, v0 ou Claude, mais la mise en production ou la sécurité bloque. Je peux prendre le relais pour finaliser.",
-    featured: true,
+      "Projet en retard ou code devenu difficile à maintenir : audit, remise à plat et recommandations claires sur la suite.",
   },
   {
     id: "mobile",
-    number: "05",
-    title: "Applications mobiles (React Native / Expo)",
+    label: "Mobile",
+    title: "Apps React Native / Expo",
     description:
-      "React Native / Expo, de la conception jusqu'au Play Store et TestFlight, y compris certificats, builds et validation Apple/Google.",
+      "De la conception jusqu'au Play Store et TestFlight, certificats, builds et validation Apple / Google compris.",
   },
+];
+
+export const aiShipChecks = [
+  "Sécurité & secrets",
+  "Auth & paiements",
+  "Gestion des erreurs",
+  "Tests essentiels",
+  "CI/CD & déploiement",
+  "Performance",
 ];

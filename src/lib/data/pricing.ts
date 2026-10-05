@@ -3,7 +3,7 @@ export const pricingOptions = [
     id: "discovery",
     title: "Prise de RDV",
     description:
-      "30 min, pour comprendre le besoin et voir si on est faits pour travailler ensemble.",
+      "30 min pour comprendre le besoin et voir si on est faits pour travailler ensemble.",
     tag: "Gratuit",
   },
   {
@@ -22,13 +22,13 @@ export const pricingOptions = [
   {
     id: "project",
     title: "Projet au forfait",
-    description: "Développement complet d'un produit, devis sur mesure.",
+    description: "Développement complet d'un produit.",
     tag: "Sur mesure",
   },
   {
     id: "daily",
     title: "Mission ponctuelle",
-    description: "TJM sur demande.",
-    tag: "TJM",
+    description: "En régie, à la journée.",
+    tag: "TJM sur demande",
   },
 ] as const;

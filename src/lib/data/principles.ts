@@ -3,13 +3,13 @@ export const principles = [
     number: "01",
     title: "Cadrage avant tout",
     description:
-      "Je préfère comprendre le besoin avant de coder, pour éviter les allers-retours inutiles.",
+      "Je comprends le besoin avant de coder, pour éviter les allers-retours inutiles.",
   },
   {
     number: "02",
     title: "Des choix techniques clairs",
     description:
-      "Je propose des choix techniques, je les documente, et j'en reste responsable jusqu'à leur validation en production.",
+      "Je les propose, je les documente, et j'en reste responsable jusqu'en production.",
   },
   {
     number: "03",
