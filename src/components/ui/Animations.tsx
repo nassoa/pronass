@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { sectionFromHash, sectionHash } from "@/lib/sections";
 
 export default function Animations() {
   useEffect(() => {
@@ -78,6 +79,15 @@ export default function Animations() {
       root.style.scrollBehavior = "auto";
       window.scrollTo({ top, behavior: "instant" as ScrollBehavior });
       root.style.scrollBehavior = "";
+    };
+    // Remplace l'ancre de l'URL sans ajouter d'entrée à l'historique
+    const setHash = (hash: string) => {
+      if (window.location.hash === hash) return;
+      history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${window.location.search}${hash}`,
+      );
     };
     // Position dans la page d'après la mise en page (offsetTop), pas
     // d'après l'affichage : le décalage du fondu (translate) ne la fausse pas
@@ -253,7 +263,7 @@ export default function Animations() {
       if (index === -1) return;
       event.preventDefault();
       goToSection(index, index > currentIndex() ? 1 : -1);
-      history.replaceState(null, "", `#${id}`);
+      setHash(sectionHash(id!, root.lang));
     };
 
     /* Tactile : on fait défiler la section nous-mêmes (avec un élan qui
@@ -353,6 +363,31 @@ export default function Animations() {
       if (performance.now() - current.lastT < 80) glide(current.velocity);
     };
 
+    /* Ancre de l'URL qui suit la section affichée (#services, #apropos…),
+       sans ajouter d'entrée à l'historique ; sur l'accueil, pas d'ancre.
+       Mise à jour après la fin du défilement (attente courte). */
+    // L'ancre est traduite selon la langue de la page (#apropos / #about).
+    let hashTimer = 0;
+    const syncHash = () => {
+      window.clearTimeout(hashTimer);
+      hashTimer = window.setTimeout(() => {
+        const id = blocks[currentIndex()]?.id;
+        if (id) setHash(sectionHash(id, root.lang));
+      }, 150);
+    };
+    window.addEventListener("scroll", syncHash, { passive: true });
+    // changement de langue : l'ancre suit tout de suite
+    const langObs = new MutationObserver(syncHash);
+    langObs.observe(root, { attributes: true, attributeFilter: ["lang"] });
+
+    // Arrivée sur une ancre de l'autre langue (#about en français, ou une
+    // ancre traduite sans id dans la page) : on va à la bonne section.
+    const initial = sectionFromHash(window.location.hash);
+    const initialEl = initial ? document.getElementById(initial) : null;
+    if (initialEl && `#${initial}` !== window.location.hash) {
+      jumpTo(topOf(initialEl));
+    }
+
     if (fullpage) {
       window.addEventListener("touchstart", onTouchStart, { passive: true });
       window.addEventListener("touchmove", onTouchMove, { passive: false });
@@ -417,6 +452,9 @@ export default function Animations() {
     ───────────────────────────────────────────── */
     return () => {
       window.removeEventListener("scroll", handleNavScroll);
+      window.removeEventListener("scroll", syncHash);
+      langObs.disconnect();
+      window.clearTimeout(hashTimer);
       window.removeEventListener("resize", handleNavScroll);
       navObs.disconnect();
       window.clearTimeout(outTimer);
