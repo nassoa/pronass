@@ -79,6 +79,20 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Avant le premier affichage :
+            - « fx » : les éléments des sections restent invisibles jusqu'à
+              leur fondu d'apparition (sinon ils s'affichent, disparaissent
+              puis reviennent). Filet de sécurité : si le script principal
+              ne démarre pas, tout s'affiche au bout de 4 s.
+            - « fp-restoring » : arrivée ou rechargement sur une ancre
+              (#apropos…), page masquée le temps de la replacer sur la bonne
+              section (sinon le hero s'affiche un instant), 1,5 s au plus. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "if(!matchMedia('(prefers-reduced-motion: reduce)').matches){var r=document.documentElement;r.classList.add('fx');setTimeout(function(){if(!r.classList.contains('fx-ready'))r.classList.remove('fx')},4000);if(location.hash.length>1){r.classList.add('fp-restoring');setTimeout(function(){r.classList.remove('fp-restoring')},1500)}}",
+          }}
+        />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-icon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

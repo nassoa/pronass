@@ -54,6 +54,18 @@
 html {
   scroll-behavior: smooth;
   background: var(--bg);
+  /* barre de défilement du navigateur masquée partout (la page défile
+     toujours à la molette, au clavier et au doigt ; la navigation de droite
+     indique où l'on est) */
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
+* {
+  scrollbar-width: none;
 }
 
 body {
@@ -2448,6 +2460,27 @@ html.fullpage body {
 .fullpage main > section[data-fp="out-up"] {
   opacity: 0;
   translate: 0 40px;
+}
+/* fondu d'apparition des éléments : invisibles tant que leur section n'est
+   pas apparue une première fois (data-fx="done" posé par Animations au
+   début du fondu ; le fondu lui-même part de l'opacité 0). Mêmes éléments
+   que FX_SELECTOR dans Animations. */
+html.fx main > section:not([data-fx="done"])
+  :is(h1, h2, h3, p, li, dt, dd, img, svg, .win, .photo-guides, .btn-primary, .btn-ghost, .text-link, .pill) {
+  opacity: 0;
+}
+/* rechargement sur une ancre : contenu masqué le temps du repositionnement
+   (classe posée dans <head>, retirée par Animations), puis fondu d'entrée */
+html.fp-restoring main,
+html.fp-restoring #nav,
+html.fp-restoring .side-nav,
+html.fp-restoring .side-lang,
+html.fp-restoring .side-cta {
+  opacity: 0 !important;
+  transition: none !important;
+}
+main {
+  transition: opacity 0.25s ease;
 }
 /* saut d'une section à une autre : les sections autres que celle d'arrivée
    restent masquées tant que la page se repositionne, pour qu'aucune section

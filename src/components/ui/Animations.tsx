@@ -380,13 +380,41 @@ export default function Animations() {
     const langObs = new MutationObserver(syncHash);
     langObs.observe(root, { attributes: true, attributeFilter: ["lang"] });
 
-    // Arrivée sur une ancre de l'autre langue (#about en français, ou une
-    // ancre traduite sans id dans la page) : on va à la bonne section.
+    // Arrivée ou rechargement sur une ancre (#apropos, ou #about en
+    // français) : le navigateur s'y place trop tôt, avant que les sections à
+    // étapes (Services, Parcours) prennent leur hauteur et que les polices
+    // soient chargées ; la page se décale et on se retrouvait une section
+    // plus haut. On se replace donc sur la bonne section une fois la mise en
+    // page stable, tant que le visiteur n'a pas lui-même fait défiler.
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
     const initial = sectionFromHash(window.location.hash);
     const initialEl = initial ? document.getElementById(initial) : null;
-    if (initialEl && `#${initial}` !== window.location.hash) {
-      jumpTo(topOf(initialEl));
+    const initialTimers: number[] = [];
+    let userMoved = false;
+    const markMoved = () => {
+      userMoved = true;
+    };
+    const settleOnInitial = () => {
+      if (initialEl && !userMoved) jumpTo(topOf(initialEl));
+    };
+    if (initialEl) {
+      window.addEventListener("wheel", markMoved, { passive: true, once: true });
+      window.addEventListener("touchstart", markMoved, { passive: true, once: true });
+      window.addEventListener("keydown", markMoved, { once: true });
+      settleOnInitial();
+      [100, 400, 900].forEach((ms) =>
+        initialTimers.push(window.setTimeout(settleOnInitial, ms)),
+      );
+      document.fonts?.ready.then(settleOnInitial);
     }
+    // page masquée pendant le repositionnement (cf. layout) : on la montre
+    // dès qu'elle est placée sur la bonne section (mise en page stabilisée)
+    const reveal = () => {
+      settleOnInitial();
+      root.classList.remove("fp-restoring");
+    };
+    if (initialEl) initialTimers.push(window.setTimeout(reveal, 150));
+    else root.classList.remove("fp-restoring");
 
     if (fullpage) {
       window.addEventListener("touchstart", onTouchStart, { passive: true });
@@ -405,15 +433,20 @@ export default function Animations() {
        chacun par un fondu court, l'un après l'autre. Une seule fois par
        section ; rien si les animations sont désactivées.
     ───────────────────────────────────────────── */
-    const FX_SELECTOR =
-      "h1, h2, h3, p, li, dt, dd, img, svg, .win, .btn-primary, .btn-ghost, .text-link, .pill";
+    // Blocs animés d'un seul tenant : la photo avec son cadre et ses lignes
+    // (sinon le cadre s'affiche avant l'image) et les fenêtres d'illustration
+    const FX_WHOLE = ".photo-guides, .win";
+    const FX_SELECTOR = `h1, h2, h3, p, li, dt, dd, img, svg, .btn-primary, .btn-ghost, .text-link, .pill, ${FX_WHOLE}`;
     const fxTargets = (section: HTMLElement) => {
       const all = Array.from(section.querySelectorAll<HTMLElement>(FX_SELECTOR));
       return all.filter((el) => {
         // les icônes des boutons et liens suivent leur bouton
         if (el.tagName === "svg" && el.closest("a, button, kbd")) return false;
-        // ne garder que les éléments les plus fins (pas un conteneur dont un
-        // enfant est déjà animé) et ceux qui occupent de la place
+        // un bloc d'un seul tenant est animé en entier, pas son contenu
+        if (el.parentElement?.closest(FX_WHOLE)) return false;
+        if (el.matches(FX_WHOLE)) return el.getClientRects().length > 0;
+        // sinon, ne garder que les éléments les plus fins (pas un conteneur
+        // dont un enfant est déjà animé) et ceux qui occupent de la place
         if (all.some((other) => other !== el && el.contains(other))) return false;
         return el.getClientRects().length > 0;
       });
@@ -433,7 +466,15 @@ export default function Animations() {
           },
         );
       });
+      // les fondus sont lancés (ils partent de 0) : la règle CSS qui gardait
+      // ces éléments invisibles avant l'apparition peut être levée
+      section.dataset.fx = "done";
     };
+    // éléments masqués avant le premier affichage (classe « fx » posée dans
+    // <head>) : le script a démarré, on garde ce masquage ; sans animations,
+    // on le retire tout de suite
+    if (fullpage) root.classList.add("fx-ready");
+    else root.classList.remove("fx");
     const fxObs = fullpage
       ? new IntersectionObserver(
           (entries) => {
@@ -504,6 +545,10 @@ export default function Animations() {
       window.removeEventListener("scroll", handleNavScroll);
       window.removeEventListener("scroll", syncHash);
       langObs.disconnect();
+      initialTimers.forEach((t) => window.clearTimeout(t));
+      window.removeEventListener("wheel", markMoved);
+      window.removeEventListener("touchstart", markMoved);
+      window.removeEventListener("keydown", markMoved);
       fxObs?.disconnect();
       window.clearTimeout(hashTimer);
       window.removeEventListener("resize", handleNavScroll);
