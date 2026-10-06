@@ -8,8 +8,8 @@ export const sectionIds = [
   "methode",
   "formules",
   "partenariats",
-  "parcours",
   "apropos",
+  "parcours",
   "contact",
 ] as const;
 

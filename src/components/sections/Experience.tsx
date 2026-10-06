@@ -153,8 +153,8 @@ export default function Experience() {
                 rel="noopener noreferrer"
                 className="btn-ghost btn-sm"
               >
-                <Download size={16} strokeWidth={2} aria-hidden />
                 <span className="btn-label">{t.cv}</span>
+                <Download size={16} strokeWidth={2} aria-hidden />
               </a>
 
               {enabled && (

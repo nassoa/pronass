@@ -21,6 +21,8 @@ export default function About() {
             <h2 className="sec-title">{t.title}</h2>
             <p className="about-lead">{t.lead}</p>
             <p className="about-bio">{t.bio}</p>
+            {/* l'équipe : relais quand je suis pris, ou un développeur du réseau */}
+            <p className="about-team">{t.team}</p>
             {/* libellé lu avant la valeur, comme un début de phrase :
                 « Basé à Madagascar », « Clients en Europe · Canada » */}
             <dl className="about-facts">

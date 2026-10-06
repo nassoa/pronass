@@ -35,8 +35,9 @@ export default function Home() {
         <HowIWork />
         <Pricing />
         <Partners />
-        <Experience />
+        {/* À propos (organisation) puis Parcours (expériences) */}
         <About />
+        <Experience />
         <Contact />
       </main>
     </I18nProvider>

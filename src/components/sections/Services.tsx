@@ -19,7 +19,7 @@ function SectionHead({ className = "" }: { className?: string }) {
     <div className={`sec-head ${className}`}>
       <p className="sec-label">{t.label}</p>
       <h2 className="sec-title">{t.title}</h2>
-      <p className="sec-lead">{t.lead}</p>
+      {t.lead && <p className="sec-lead">{t.lead}</p>}
     </div>
   );
 }
@@ -39,14 +39,16 @@ function PoleSheet({
   const t = useI18n().dict.services;
   return (
     <>
-      {/* titre et position (« 01 / 04 ») sur la même ligne */}
+      {/* à gauche le titre et sa promesse, à droite la position (« 01 / 04 ») */}
       <div className="svc-sheet-head">
-        <h3 className="card-title">{pole.need}</h3>
+        <div className="svc-sheet-titles">
+          <h3 className="card-title">{pole.need}</h3>
+          <p className="svc-sheet-promise">{pole.promise}</p>
+        </div>
         <span className="svc-sheet-pos">
           {pad(index + 1)} / {pad(count)}
         </span>
       </div>
-      <p className="svc-sheet-promise">{pole.promise}</p>
       <dl className="svc-sheet-fields">
         <div>
           <dt>{t.fields.useful}</dt>

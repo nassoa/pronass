@@ -358,7 +358,7 @@ html.lang-anim
     .svc-cat-btn, .svc-sheet-pos, .svc-sheet-list li,
     .exp-period, .price-sit-q, .price-panel-billing, .price-panel-list li,
     .price-panel-note, .cl-text, .win-head span, .art-row, .art-foot,
-    .partners-steps button, .partners-roles li, .partners-who,
+    .partners-col-title, .partners-col-text,
     .nav-links a, .lang-text
   ) {
   transition: opacity 0.18s ease !important;
@@ -370,7 +370,7 @@ html.lang-fading
     .svc-cat-btn, .svc-sheet-pos, .svc-sheet-list li,
     .exp-period, .price-sit-q, .price-panel-billing, .price-panel-list li,
     .price-panel-note, .cl-text, .win-head span, .art-row, .art-foot,
-    .partners-steps button, .partners-roles li, .partners-who,
+    .partners-col-title, .partners-col-text,
     .nav-links a, .lang-text
   ) {
   opacity: 0 !important;
@@ -706,11 +706,30 @@ html.lang-fading
   flex-wrap: wrap;
   gap: 12px;
 }
+/* mobile : boutons l'un sous l'autre, centrés, de la même largeur (celle
+   du plus large des deux) */
+@media (max-width: 899px) {
+  .hero-actions {
+    display: grid;
+    grid-template-columns: max-content;
+    justify-content: center;
+    margin-top: 40px; /* de l'air sous le texte */
+  }
+  .hero-actions > a {
+    justify-content: center;
+  }
+}
 .hero-visual {
   position: relative;
   justify-self: center;
   width: 100%;
   max-width: 440px;
+}
+/* mobile : pas de photo dans le hero (elle reste dans À propos) */
+@media (max-width: 899px) {
+  .hero-visual {
+    display: none;
+  }
 }
 /* Photos (hero, À propos) : cadre décalé aux coins arrondis parallèles, et
    lignes de construction derrière la photo qui prolongent ses bords comme
@@ -1082,7 +1101,7 @@ html.lang-fading
 }
 .card-title {
   font-size: 22px;
-  line-height: 1.2;
+  line-height: 1.12;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -1211,14 +1230,21 @@ html.lang-fading
 .svc-sheet-head {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
+  align-items: flex-start;
+  gap: 28px;
+}
+/* titre + promesse, groupés à gauche */
+.svc-sheet-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
 }
 .svc-sheet-pos {
   flex-shrink: 0;
+  padding-top: 6px; /* calé sur la première ligne du titre */
 }
 .svc-sheet-promise {
-  margin-top: -4px;
   font-size: 15px;
   color: var(--muted);
 }
@@ -1514,6 +1540,7 @@ html.lang-fading
 }
 .method-title {
   font-size: 18px;
+  line-height: 1.25;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -1580,6 +1607,7 @@ html.lang-fading
 }
 .exp-head {
   font-size: 20px;
+  line-height: 1.25;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -1843,7 +1871,7 @@ html.lang-fading
 }
 .price-panel-title {
   font-size: 24px; /* même taille que les titres des fiches Services */
-  line-height: 1.15;
+  line-height: 1.1;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -1921,224 +1949,113 @@ html.lang-fading
 }
 
 /* ── PARTENARIATS ── */
-.partners-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: 40px clamp(40px, 6vw, 96px);
-  align-items: center;
-}
+/* En-tête (étiquette, titre, introduction), puis trois points dans une
+   seule carte, comme Méthode */
 .partners-head {
-  margin-bottom: 0;
+  max-width: 720px;
+  margin-bottom: 40px;
 }
-/* le chemin vers un partenariat durable, sous l'introduction */
-.partners-path {
-  padding-left: 14px;
-  border-left: 2px solid var(--accent);
-  font-size: 15px;
-  color: var(--soft);
-}
-.partners-head .btn-primary {
-  align-self: flex-start;
-  margin-top: 12px;
-}
-.partners-panel {
+.partners-title {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 24px;
+  gap: 14px;
+}
+.partners-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-radius: 20px;
   border: 1px solid var(--line);
   background: var(--surface);
+  overflow: hidden;
 }
-/* Les trois formes, comme les étapes d'un chemin : reliées par un trait,
-   la forme choisie avec son numéro en orange */
-.partners-steps {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-}
-/* trait qui relie une étape à la suivante, avec un écart de chaque côté
-   des numéros (il part après le numéro et s'arrête avant le suivant) */
-.partners-steps button:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 20px;
-  left: 38px;
-  right: -10px;
-  height: 1px;
-  background: var(--line-strong);
-}
-.partners-steps button {
-  position: relative;
+.partners-col {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 10px 12px 12px;
-  border-radius: 12px;
-  border: 1px solid transparent;
-  background: none;
-  font: inherit;
-  text-align: left;
-  color: var(--faint);
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+  gap: 12px;
+  padding: 28px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
-.partners-steps button:hover {
-  color: var(--ink);
+.partners-col:last-child {
+  border-right: none;
 }
-.partners-steps button.on {
-  color: #fff;
+/* illustration en tête de chaque point */
+.partners-art {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin: 0 auto 8px; /* centrée dans sa colonne */
 }
-.partners-steps button:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 2px;
+/* titre précédé de son numéro, dans une petite pastille ronde */
+.partners-col-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-/* calé à gauche, aligné avec le texte */
 .partners-step-num {
-  align-self: flex-start;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
   font-family: var(--mono);
   font-size: 11px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--faint);
 }
-.partners-steps button.on .partners-step-num {
-  color: var(--accent);
-}
-.partners-step-title {
-  font-size: 14px;
+.partners-col-title {
+  font-size: 18px;
   line-height: 1.25;
   font-weight: 600;
   letter-spacing: -0.01em;
+  color: var(--ink);
 }
-.partners-step-duration {
-  font-size: 12px;
-  color: var(--faint);
-}
-/* les trois vues empilées dans la même case (hauteur stable) */
-.partners-stack {
-  display: grid;
-}
-.partners-view {
-  grid-area: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  visibility: hidden;
-  opacity: 0;
-}
-.partners-view.is-on {
-  visibility: visible;
-  opacity: 1;
-  animation: price-in 0.35s var(--ease);
-}
-.partners-desc {
+.partners-col-text {
   font-size: 15px;
+  line-height: 1.55;
   color: var(--muted);
 }
-/* illustrations : même famille que celles de Méthode */
-.partners-art .art-body {
-  padding: 10px 0;
+/* lien vers les formats, sous la carte */
+.partners-formats {
+  margin-top: 20px;
 }
-.partners-status {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 8px;
-  border-radius: 999px;
-  border: 1px solid var(--faint);
-  vertical-align: 1px;
-}
-.partners-status.is-done {
-  border-color: var(--green);
-  background: var(--green);
-}
-.partners-status.is-doing {
-  border-color: var(--accent);
-  background: var(--accent);
-}
-/* qui fait l'étape : couleur seule, violet pour vous, orange pour moi */
-.partners-who {
-  color: var(--violet);
-}
-.partners-who.is-me {
-  color: var(--accent);
-}
-.partners-timeline .art-row {
-  position: relative;
-}
-.partners-tl-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 8px;
-  border-radius: 999px;
-  background: var(--violet);
-  vertical-align: 1px;
-}
-/* ce que vous gardez ↔ ce que je prends en charge */
-.partners-roles {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  gap: 12px;
-  align-items: stretch; /* les deux encadrés à la même hauteur */
-}
-.partners-roles > div {
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-}
-.partners-roles > div.is-me {
-  border-color: var(--accent-border);
-  background: rgba(255, 122, 47, 0.04);
-}
-.partners-roles-sep {
-  align-self: center;
-  color: var(--faint);
-}
-.partners-role-label {
-  margin-bottom: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--faint);
-}
-.partners-roles > div.is-me .partners-role-label {
-  color: var(--accent);
-}
-.partners-roles ul {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 14px;
-  line-height: 1.45;
-  color: var(--soft);
-}
-.partners-note {
-  font-size: 13px;
-  color: var(--muted);
-}
+/* mobile : l'en-tête passe en colonne, les points en carrousel horizontal
+   (défilement par aimantation, le point suivant dépasse) */
 @media (max-width: 860px) {
-  .partners-layout {
-    grid-template-columns: minmax(0, 1fr);
+  .partners-head {
+    margin-bottom: 28px;
   }
-}
-@media (max-width: 560px) {
-  .partners-panel {
-    padding: 16px;
+  .partners-cols {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 84%;
+    gap: 12px;
+    margin: 0 calc(-1 * var(--px));
+    padding: 0 var(--px);
+    border: 0;
+    border-radius: 0;
+    background: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--px);
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
   }
-  .partners-steps {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .partners-steps button::after {
+  .partners-cols::-webkit-scrollbar {
     display: none;
   }
-  .partners-roles {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .partners-roles-sep {
-    justify-self: center;
-    rotate: 90deg;
+  /* chaque point redevient une carte à part entière */
+  .partners-col,
+  .partners-col:last-child {
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--surface);
+    scroll-snap-align: start;
   }
 }
 
@@ -2185,24 +2102,27 @@ html.lang-fading
   line-height: 1.5;
   color: var(--soft);
 }
-.about-bio {
+.about-bio,
+.about-team {
   font-size: 17px;
   color: var(--muted);
 }
-/* Chiffres clés en ligne, séparés par des filets */
+/* Chiffres clés en grille 2 × 2, séparés par des filets */
 .about-facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  row-gap: 18px;
+  margin-top: 8px;
 }
 .about-fact {
   display: flex;
   flex-direction: column; /* libellé au-dessus, puis la valeur */
   gap: 4px;
-  padding: 22px 20px 0;
+  padding: 0 20px;
   border-left: 1px solid var(--line);
 }
-.about-fact:first-child {
+/* première case de chaque ligne : collée au bord, sans filet */
+.about-fact:nth-child(odd) {
   padding-left: 0;
   border-left: 0;
 }
@@ -2217,12 +2137,39 @@ html.lang-fading
   font-size: 12px;
   color: var(--faint);
 }
+/* écrans d'ordinateur peu hauts : Partenariats (4 formes) et À propos se
+   resserrent pour tenir dans l'écran */
+@media (min-width: 900px) and (max-height: 780px) {
+  #partenariats .partners-head {
+    margin-bottom: 24px;
+  }
+  #partenariats .partners-title {
+    gap: 10px;
+  }
+  #partenariats .partners-col {
+    padding: 22px;
+  }
+  #partenariats .partners-art {
+    max-width: 190px;
+  }
+  #apropos .about-text {
+    gap: 14px;
+  }
+  #apropos .about-lead {
+    font-size: 17px;
+  }
+  #apropos .about-bio,
+  #apropos .about-team {
+    font-size: 15px;
+  }
+}
 @media (max-width: 860px) {
   .about-layout {
     grid-template-columns: minmax(0, 1fr);
   }
+  /* photo sur toute la largeur du contenu */
   .about-visual {
-    max-width: 360px;
+    max-width: none;
   }
 }
 @media (max-width: 520px) {

@@ -24,15 +24,15 @@
     "city": "Antananarivo",
     "timeLocale": "en-GB",
     "promise": "Your technical partner to build your applications and bring AI into your business.",
-    "sub": "I design web and mobile products, automate your processes with AI and support your technical decisions. Ten years of experience, from scoping to production, working remotely with Europe and Canada.",
+    "sub": "For ten years, I've been building web and mobile apps for teams in Europe and Canada, working remotely. Today I add AI to them when it genuinely saves time.",
     "cta": "Talk about your project",
-    "secondary": "Explore the services",
+    "secondary": "Explore my services",
     "photoAlt": "Safidy Nasoavina, independent technical partner"
   },
   "services": {
     "label": "Services",
-    "title": "Technical solutions for your products and your business.",
-    "lead": "Web and mobile applications, AI tools, automation and technical guidance. I step in where you need me, from scoping to production.",
+    "title": "What I can do for you.",
+    "lead": "",
     "polesAria": "Service areas",
     "fields": {
       "useful": "Useful if",
@@ -43,42 +43,42 @@
       {
         "id": "creer",
         "need": "Build an application or an AI tool",
-        "promise": "Create and grow your digital products and internal tools.",
+        "promise": "A product or internal tool built around the way you work.",
         "useful": "you are launching a product, or your team needs a tool that fits the way it works.",
         "items": [
           "Web applications and SaaS",
-          "React Native / Expo mobile apps",
-          "Custom internal tools, with AI where it helps",
-          "Assistants over your internal documents, with sources and access control"
+          "iOS and Android mobile apps",
+          "Custom internal tools",
+          "AI assistants that search and summarize your documents, with sources and access control"
         ],
         "receive": "a product in production, its source code and the documentation to keep it moving.",
-        "note": "An AI tool assists a person. It searches, summarizes or suggests, and the person makes the call.",
+        "note": "",
         "cta": "Talk about your project"
       },
       {
         "id": "automatiser",
         "need": "Automate a business process",
-        "promise": "Cut repetitive work and make your processes run smoother.",
+        "promise": "Less copy-pasting between your tools, and fewer mistakes.",
         "useful": "repetitive tasks keep your team busy across several tools.",
         "items": [
           "Connecting your tools and moving data between them",
           "Automatic handling of requests and documents",
-          "AI agents with well-defined actions, and human approval where needed"
+          "Automated chains of tasks, with human approval where needed"
         ],
         "receive": "documented automations that you can monitor and adjust.",
-        "note": "An automation runs a chain of steps for you, following rules we define together.",
+        "note": "",
         "cta": "Talk about your process"
       },
       {
         "id": "debloquer",
         "need": "Get a stuck project moving",
-        "promise": "Put a project back on track and make an application usable.",
+        "promise": "Pick up a project that's stuck and get it all the way to production.",
         "useful": "the project is running late, the code is hard to change, or a prototype won't make it to production.",
         "items": [
           "Technical audit and fix plan",
           "Taking over and evolving an existing application",
           "Finishing prototypes built with Claude, Cursor or v0",
-          "Going to production and handover"
+          "Going to production"
         ],
         "receive": "a clear diagnosis, a prioritized fix plan and, if needed, its delivery.",
         "note": "",
@@ -87,15 +87,16 @@
       {
         "id": "accompagner",
         "need": "Support you over time",
-        "promise": "Structure your technical decisions and support your team.",
+        "promise": "Someone who knows your code and helps you make the call.",
         "useful": "you need a technical lead over time, without hiring someone full time.",
         "items": [
           "Tech lead, for architecture, code quality and mentoring developers",
           "Part-time CTO, for the roadmap, priorities and technical trade-offs",
+          "Extra capacity for your team over a set period",
           "Scoping AI projects and choosing the right solutions",
-          "Maintenance and ongoing improvements, within an agreed scope"
+          "Maintenance and improvements, at a pace we agree on"
         ],
-        "receive": "a regular technical contact, well-argued decisions and follow-up within a clear frame.",
+        "receive": "someone who follows your project closely, and technical choices explained in writing.",
         "note": "",
         "cta": "Talk about ongoing support"
       }
@@ -107,7 +108,7 @@
     "items": [
       {
         "title": "Understand the need",
-        "description": "We talk through your goals and constraints, then agree on the scope together."
+        "description": "We talk through your goals and constraints, then decide together what to build."
       },
       {
         "title": "Propose a solution",
@@ -118,11 +119,11 @@
         "description": "The work moves forward in stages, with regular check-ins."
       },
       {
-        "title": "Review, deliver and hand over",
-        "description": "You review, I deliver, then I hand over the code, the documentation and the access you need for what comes next."
+        "title": "Deliver and hand over",
+        "description": "Once you've approved it, I hand over the code, the documentation and the access. You're free to carry on with me or without me."
       }
     ],
-    "pilot": "For an AI project, we can start with a pilot on a limited scope, to measure usefulness, output quality and costs before a wider rollout.",
+    "pilot": "For an AI project, we can first test it on a small real case. You see what it does and what it costs, then decide whether to go further.",
     "art": {
       "briefTag": "scoping",
       "briefQuestions": [
@@ -181,49 +182,45 @@
   "formulas": {
     "label": "Engagements",
     "title": "Ways to work together",
-    "lead": "No fixed rate card. Each engagement is priced after a first conversation, once the scope is clear.",
+    "lead": "No price list. Each engagement is quoted once the need is clear.",
     "tablist": "Ways to work together",
     "aiNote": "For AI work, any API fees, subscriptions and hosting costs are kept separate from my fees and shown to you on their own.",
     "cta": "Talk about your project · free 30 min",
-    "note": "Pricing is set after our conversation, once the scope is clear.",
+    "note": "The first 30-minute conversation is free, with no commitment. The work is then billed according to the format we choose.",
     "items": [
       {
         "name": "Diagnosis / audit",
-        "billing": "Fixed price, based on scope",
-        "when": "To take stock of a project, an existing codebase or a use of AI before going further.",
+        "billing": "Fixed price",
+        "when": "To take stock before going further.",
         "includes": [
-          "Review of what exists",
-          "Report with prioritized recommendations",
-          "Walkthrough of the findings together"
+          "Fixed price, set in the quote",
+          "Written report and a walkthrough together"
         ]
       },
       {
         "name": "Project or pilot",
         "billing": "Fixed price, paid in stages",
-        "when": "To build an application, a feature, an automation or an AI pilot within a defined scope.",
+        "when": "For a piece of work defined at the start.",
         "includes": [
-          "Scope and deliverables agreed together",
-          "Payments split into stages",
-          "Delivery and handover"
+          "Deliverables agreed before we begin",
+          "Payments split into stages"
         ]
       },
       {
         "name": "Short-term support",
         "billing": "By the day, rate on request",
-        "when": "To add capacity to your team or agency for a set period.",
+        "when": "To add capacity to a team for a set period.",
         "includes": [
-          "Joining your team and your tools",
-          "Billed at an agreed day rate",
-          "Duration that fits your needs"
+          "Day rate agreed in advance",
+          "Duration agreed together"
         ]
       },
       {
-        "name": "Ongoing support / part-time CTO",
+        "name": "Ongoing support",
         "billing": "Monthly fee",
-        "when": "For a tech lead or a part-time CTO over the long run.",
+        "when": "For technical follow-up, month after month.",
         "includes": [
           "An agreed scope and number of days each month",
-          "Roadmap and technical trade-offs",
           "Flexible commitment"
         ]
       }
@@ -231,126 +228,31 @@
   },
   "partners": {
     "label": "Partnerships",
-    "title": "Looking for a technical partner?",
-    "lead": "You are an agency, a designer, a consultant or a founder. You own the client relationship or the product vision, and you need someone reliable for the technical side.",
-    "path": "We can start with short-term support or a project, then build a lasting partnership.",
-    "cta": "Talk about working together",
-    "formsAria": "Ways to collaborate",
-    "youLabel": "You keep",
-    "meLabel": "I take on",
-    "forms": [
+    "title": "You have the client. I handle the tech.",
+    "lead": "Agency, design studio, consultant or founder, you own the client relationship or the product vision. I take care of the development.",
+    "pointsAria": "How we work together",
+    "points": [
       {
-        "title": "Extra capacity",
-        "duration": "A few weeks",
-        "description": "I join your team for a set period, to take on workload or bring in a skill.",
-        "you": [
-          "The client relationship",
-          "Project management",
-          "Your tools and your ways of working"
-        ],
-        "me": [
-          "Development inside your team",
-          "Getting up to speed quickly",
-          "A duration we agree on together"
-        ],
-        "note": "",
-        "art": {
-          "head": "current sprint",
-          "tag": "+1 developer",
-          "rows": [
-            [
-              "Payment form",
-              "shipped"
-            ],
-            [
-              "Quote API",
-              "in progress"
-            ],
-            [
-              "End-to-end tests",
-              "to do"
-            ]
-          ],
-          "foot": "extra capacity · set duration"
-        }
+        "title": "Clear roles",
+        "text": "You keep the client relationship, the design and the project management. I handle the development."
       },
       {
-        "title": "Technical delivery",
-        "duration": "One project",
-        "description": "You keep the client relationship and the design. I handle the development, from mockup to launch.",
-        "you": [
-          "The client relationship",
-          "Design and mockups",
-          "Presenting to the client"
-        ],
-        "me": [
-          "The full development",
-          "Integrations and going live",
-          "Documentation and handover"
-        ],
-        "note": "",
-        "art": {
-          "head": "who does what, step by step",
-          "tag": "you ↔ me",
-          "rows": [
-            [
-              "Mockups approved by your client",
-              "you"
-            ],
-            [
-              "Development and integrations",
-              "me"
-            ],
-            [
-              "Going live",
-              "me"
-            ]
-          ],
-          "foot": "final presentation to the client, by you"
-        }
+        "title": "Inside your team",
+        "text": "I join your team for a set period, with your tools and your ways of working. If I'm not available, I can suggest an associate developer."
       },
       {
-        "title": "Lasting partnership",
-        "duration": "Over time",
-        "description": "A technical contact over the long run, to advise, review and step in on your projects.",
-        "you": [
-          "Your projects and priorities",
-          "The relationship with your clients",
-          "The final decisions"
-        ],
-        "me": [
-          "Advice and technical choices",
-          "Code reviews",
-          "Hands-on work within an agreed scope"
-        ],
-        "note": "Over time, I get to know your projects, your tools and your standards, and each new mission starts faster.",
-        "art": {
-          "head": "partnership · follow-up",
-          "tag": "ongoing",
-          "rows": [
-            [
-              "Review of the existing code",
-              "month 1"
-            ],
-            [
-              "New feature",
-              "month 3"
-            ],
-            [
-              "Code review",
-              "month 6"
-            ]
-          ],
-          "foot": "a dedicated technical contact"
-        }
+        "title": "A whole project",
+        "text": "I can also take on the full development of a project, from approved mockups to launch. Applications, automations or taking over an existing project, as in my services."
       }
-    ]
+    ],
+    "formatsLink": "See the ways to work together"
   },
   "about": {
     "label": "About",
-    "title": "A direct contact, from scoping to delivery.",
-    "lead": "I get involved in the whole technical side, from understanding the need to the handover, including choosing the solutions and building them.",
-    "bio": "Depending on the project, I work as a developer, as a tech lead alongside a team, or as a part-time CTO. I stay your direct contact, and I document decisions so the project doesn't depend on me.",
+    "title": "One technical point of contact.",
+    "lead": "I'm your direct contact and the project's technical lead. No middleman or project manager between us.",
+    "bio": "Depending on the project, I build on my own or with associate developers. I work remotely from Madagascar, with regular check-ins and decisions in writing.",
+    "team": "I work with a small team of associate developers. If I'm already committed to other projects, I can suggest one of them, or a developer from my network.",
     "photoAlt": "Safidy Nasoavina, independent technical partner",
     "facts": [
       {
@@ -358,12 +260,16 @@
         "value": "Madagascar"
       },
       {
-        "label": "Experience",
-        "value": "10+ years"
+        "label": "Work",
+        "value": "Remote"
       },
       {
-        "label": "Clients in",
-        "value": "Europe · Canada"
+        "label": "Time zone",
+        "value": "UTC+3"
+      },
+      {
+        "label": "Team",
+        "value": "Associate developers"
       }
     ]
   },

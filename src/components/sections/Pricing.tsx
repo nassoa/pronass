@@ -6,8 +6,8 @@ import { useI18n } from "@/i18n/I18nProvider";
 
 const CAL_URL = "https://cal.com/nasoavina-manitriniaina-jo3qz1";
 
-// Formules de collaboration : à gauche, les formules en grand (clic pour
-// choisir) ; à droite, la fiche de la formule choisie.
+// Formats de collaboration : à gauche, les formats en grand (clic pour
+// choisir) ; à droite, la fiche du format choisi (modalités et facturation).
 export default function Pricing() {
   const { dict } = useI18n();
   const t = dict.formulas;
