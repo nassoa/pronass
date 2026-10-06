@@ -309,3 +309,8 @@ Un rôle par section : Services = problèmes et livrables, Formats = modalités 
 **Cohérence Services / Partenariats**
 - Services, « Vous accompagner dans la durée », nouvelle prestation (3ᵉ) : Renfort de votre équipe sur une période donnée
 - Partenariats, « Un projet complet » : Je peux aussi prendre en charge tout le développement d'un projet, des maquettes validées à la mise en ligne. Applications, automatisations ou reprise d'un projet existant, comme dans mes services.
+
+## Parcours : activité actuelle (octobre 2026)
+
+- **Nouvelle première ligne :** Aujourd'hui · Indépendant · Partenaire technique — Applications web et mobiles, outils IA et automatisations pour des entreprises et des agences, avec des développeurs associés selon les projets. (Next.js · React Native · TypeScript · LLM)
+- **Fluentech, période :** 2025 — missions ponctuelles (au lieu de « 2025 — aujourd'hui »)

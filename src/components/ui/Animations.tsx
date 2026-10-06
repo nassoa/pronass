@@ -399,6 +399,56 @@ export default function Animations() {
     }
 
     /* ─────────────────────────────────────────────
+       FONDU DES ÉLÉMENTS À LA PREMIÈRE APPARITION
+       La première fois qu'une section entre à l'écran, ses éléments
+       (titres, textes, puces, images, illustrations, boutons) apparaissent
+       chacun par un fondu court, l'un après l'autre. Une seule fois par
+       section ; rien si les animations sont désactivées.
+    ───────────────────────────────────────────── */
+    const FX_SELECTOR =
+      "h1, h2, h3, p, li, dt, dd, img, svg, .win, .btn-primary, .btn-ghost, .text-link, .pill";
+    const fxTargets = (section: HTMLElement) => {
+      const all = Array.from(section.querySelectorAll<HTMLElement>(FX_SELECTOR));
+      return all.filter((el) => {
+        // les icônes des boutons et liens suivent leur bouton
+        if (el.tagName === "svg" && el.closest("a, button, kbd")) return false;
+        // ne garder que les éléments les plus fins (pas un conteneur dont un
+        // enfant est déjà animé) et ceux qui occupent de la place
+        if (all.some((other) => other !== el && el.contains(other))) return false;
+        return el.getClientRects().length > 0;
+      });
+    };
+    const playFx = (section: HTMLElement) => {
+      fxTargets(section).forEach((el, i) => {
+        el.animate(
+          [
+            { opacity: 0, transform: "translateY(6px)" },
+            { opacity: 1, transform: "none" },
+          ],
+          {
+            duration: 380,
+            delay: Math.min(i * 35, 420), // cascade courte, plafonnée
+            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+            fill: "backwards",
+          },
+        );
+      });
+    };
+    const fxObs = fullpage
+      ? new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              fxObs?.unobserve(entry.target);
+              playFx(entry.target as HTMLElement);
+            });
+          },
+          { threshold: 0.15 },
+        )
+      : null;
+    blocks.forEach((block) => fxObs?.observe(block));
+
+    /* ─────────────────────────────────────────────
        SCROLL REVEAL
        IMPORTANT : on utilise un MutationObserver en plus
        pour observer les éléments ajoutés dynamiquement
@@ -454,6 +504,7 @@ export default function Animations() {
       window.removeEventListener("scroll", handleNavScroll);
       window.removeEventListener("scroll", syncHash);
       langObs.disconnect();
+      fxObs?.disconnect();
       window.clearTimeout(hashTimer);
       window.removeEventListener("resize", handleNavScroll);
       navObs.disconnect();

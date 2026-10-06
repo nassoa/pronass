@@ -8,13 +8,26 @@ import { format, useI18n } from "@/i18n/I18nProvider";
 // Données fixes ici ; période, poste et description sont traduits
 // (experience.jobs.<key> dans les fichiers de langue)
 type Job = {
-  key: "fluentech" | "neoshore" | "ctrlweb" | "freelance" | "medialibs";
+  key:
+    | "independent"
+    | "fluentech"
+    | "neoshore"
+    | "ctrlweb"
+    | "freelance"
+    | "medialibs";
   company: string;
   url?: string;
   tags: string[];
 };
 
 const jobs: Job[] = [
+  // activité actuelle : partenaire technique indépendant (nom traduit,
+  // cf. experience.jobs.independent.company)
+  {
+    key: "independent",
+    company: "Indépendant",
+    tags: ["Next.js", "React Native", "TypeScript", "LLM"],
+  },
   {
     key: "fluentech",
     company: "Fluentech",
@@ -126,6 +139,12 @@ export default function Experience() {
     useScrollSteps(jobs.length);
   const { dict } = useI18n();
   const t = dict.experience;
+  // nom affiché : traduit si le fichier de langue en fournit un
+  // (activité actuelle « Indépendant / Independent »), sinon celui ci-dessus
+  const companyOf = (job: Job) => {
+    const entry = t.jobs[job.key];
+    return "company" in entry ? entry.company : job.company;
+  };
   const swipeActive = useSwipeActive(itemRefs, !enabled);
   const current = enabled ? active : swipeActive;
 
@@ -169,7 +188,7 @@ export default function Experience() {
                         key={job.company}
                         type="button"
                         className={i === active ? "on" : undefined}
-                        aria-label={format(t.see, { company: job.company })}
+                        aria-label={format(t.see, { company: companyOf(job) })}
                         aria-current={i === active ? "step" : undefined}
                         onClick={() => goTo(i)}
                       />
@@ -194,6 +213,7 @@ export default function Experience() {
                 }
               >
                 {jobs.map((job, i) => {
+                  const company = companyOf(job);
                   const classes = [
                     "exp-row",
                     enabled ? "" : `rv d${i + 1}`,
@@ -216,10 +236,10 @@ export default function Experience() {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            {job.company}
+                            {company}
                           </a>
                         ) : (
-                          job.company
+                          company
                         )}{" "}
                         <span className="exp-role">· {t.jobs[job.key].role}</span>
                       </h3>

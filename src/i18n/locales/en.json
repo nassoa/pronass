@@ -152,8 +152,14 @@
     "cv": "Download my resume",
     "see": "Go to {company}",
     "jobs": {
+      "independent": {
+        "company": "Independent",
+        "period": "Today",
+        "role": "Technical partner",
+        "description": "Web and mobile apps, AI tools and automations for companies and agencies, with associate developers depending on the project."
+      },
       "fluentech": {
-        "period": "2025 — present",
+        "period": "2025 — occasional assignments",
         "role": "Senior front-end developer",
         "description": "SPA/SSR interfaces with the Next.js App Router. Monorepo architecture, Storybook design system at scale."
       },

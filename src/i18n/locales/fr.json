@@ -152,8 +152,14 @@
     "cv": "Télécharger le CV",
     "see": "Voir {company}",
     "jobs": {
+      "independent": {
+        "company": "Indépendant",
+        "period": "Aujourd'hui",
+        "role": "Partenaire technique",
+        "description": "Applications web et mobiles, outils IA et automatisations pour des entreprises et des agences, avec des développeurs associés selon les projets."
+      },
       "fluentech": {
-        "period": "2025 — aujourd'hui",
+        "period": "2025 — missions ponctuelles",
         "role": "Développeur front-end senior",
         "description": "Interfaces SPA/SSR avec Next.js App Router. Architecture monorepo, design system Storybook à l'échelle."
       },
