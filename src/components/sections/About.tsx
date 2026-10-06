@@ -7,14 +7,13 @@ export default function About() {
   const t = dict.about;
   return (
     <section id="apropos" className="section has-pat">
-      <div className="pat pat-plus" aria-hidden="true" />
+      <div className="pat pat-glow" aria-hidden="true" />
       <div className="w">
         <div className="about-layout">
-          <div className="about-photo rv">
-            <img
-              src="/pro-nas-2.jpg"
-              alt={t.photoAlt}
-            />
+          <div className="about-visual photo-guides rv">
+            <div className="about-photo">
+              <img src="/pro-nas-2.jpg" alt={t.photoAlt} />
+            </div>
           </div>
 
           <div className="about-text rv d2">

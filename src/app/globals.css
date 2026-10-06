@@ -712,6 +712,46 @@ html.lang-fading
   width: 100%;
   max-width: 440px;
 }
+/* Photos (hero, À propos) : cadre décalé aux coins arrondis parallèles, et
+   lignes de construction derrière la photo qui prolongent ses bords comme
+   des repères de mise en page, en s'estompant vers l'extérieur */
+.photo-guides {
+  --guide: rgba(255, 255, 255, 0.12);
+  --guide-out: 72px; /* longueur des lignes au-delà de la photo */
+  position: relative;
+  isolation: isolate;
+  border-radius: 22px;
+  outline: 1px solid var(--guide);
+  outline-offset: 14px;
+}
+.photo-guides::before,
+.photo-guides::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+.photo-guides::before {
+  inset: 0 calc(-1 * var(--guide-out));
+  background:
+    linear-gradient(var(--guide), var(--guide)) top / 100% 1px no-repeat,
+    linear-gradient(var(--guide), var(--guide)) bottom / 100% 1px no-repeat;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--guide-out), #000 calc(100% - var(--guide-out)), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 var(--guide-out), #000 calc(100% - var(--guide-out)), transparent);
+}
+.photo-guides::after {
+  inset: calc(-1 * var(--guide-out)) 0;
+  background:
+    linear-gradient(var(--guide), var(--guide)) left / 1px 100% no-repeat,
+    linear-gradient(var(--guide), var(--guide)) right / 1px 100% no-repeat;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 var(--guide-out), #000 calc(100% - var(--guide-out)), transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 var(--guide-out), #000 calc(100% - var(--guide-out)), transparent);
+}
+@media (max-width: 899px) {
+  .photo-guides {
+    --guide-out: 24px;
+  }
+}
 /* grand écran : photo calée à droite, alignée sur le bord du contenu */
 @media (min-width: 900px) {
   .hero-visual {
@@ -788,12 +828,12 @@ html.lang-fading
   -webkit-mask-image: radial-gradient(ellipse 55% 60% at 30% 50%, #000 10%, transparent 70%);
   mask-image: radial-gradient(ellipse 55% 60% at 30% 50%, #000 10%, transparent 70%);
 }
-/* À propos : petites croix espacées (même intensité que --pat-ink) */
-.pat-plus {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M18 13v10M13 18h10' stroke='%23fff' stroke-opacity='.035'/%3E%3C/svg%3E");
-  background-size: 36px 36px;
-  -webkit-mask-image: radial-gradient(ellipse 55% 60% at 60% 50%, #000 10%, transparent 70%);
-  mask-image: radial-gradient(ellipse 55% 60% at 60% 50%, #000 10%, transparent 70%);
+/* À propos : pas de motif (la photo porte déjà ses lignes), juste un halo
+   diffus derrière la photo */
+.pat-glow {
+  background:
+    radial-gradient(ellipse 75% 85% at 25% 50%, rgba(120, 104, 255, 0.08), transparent 75%),
+    radial-gradient(ellipse 60% 70% at 30% 70%, rgba(255, 122, 47, 0.035), transparent 75%);
 }
 /* Contact : cercles concentriques autour du centre */
 .pat-rings {
@@ -2110,10 +2150,14 @@ html.lang-fading
   gap: clamp(40px, 7vw, 112px);
   align-items: center;
 }
+/* cadre de la photo (porte les lignes de construction) */
+.about-visual {
+  width: 100%;
+  max-width: 440px;
+}
 .about-photo {
   position: relative;
   width: 100%;
-  max-width: 440px;
   aspect-ratio: 4 / 5;
   border-radius: 22px;
   border: 1px solid var(--line-strong);
@@ -2177,7 +2221,7 @@ html.lang-fading
   .about-layout {
     grid-template-columns: minmax(0, 1fr);
   }
-  .about-photo {
+  .about-visual {
     max-width: 360px;
   }
 }
@@ -2457,6 +2501,13 @@ html.fullpage body {
 .fullpage main > section[data-fp="out-up"] {
   opacity: 0;
   translate: 0 40px;
+}
+/* saut d'une section à une autre : les sections autres que celle d'arrivée
+   restent masquées tant que la page se repositionne, pour qu'aucune section
+   intermédiaire ne s'affiche si le navigateur traverse la page */
+html.fp-jumping.fullpage main > section:not([data-fp]) {
+  opacity: 0;
+  transition: none;
 }
 /* entrée : point de départ (sans transition), puis retour à la normale */
 .fullpage main > section[data-fp="enter-down"],

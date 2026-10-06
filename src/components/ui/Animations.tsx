@@ -70,8 +70,15 @@ export default function Animations() {
     let gestureFromEdge = false;
     let outTimer = 0;
 
-    const jumpTo = (top: number) =>
+    // Saut immédiat : le scroll-behavior: smooth du CSS est coupé le temps du
+    // saut, sinon certains navigateurs défilent en douceur à travers toutes
+    // les sections intermédiaires
+    const root = document.documentElement;
+    const jumpTo = (top: number) => {
+      root.style.scrollBehavior = "auto";
       window.scrollTo({ top, behavior: "instant" as ScrollBehavior });
+      root.style.scrollBehavior = "";
+    };
     // Position dans la page d'après la mise en page (offsetTop), pas
     // d'après l'affichage : le décalage du fondu (translate) ne la fausse pas
     const topOf = (el: HTMLElement) => {
@@ -108,16 +115,35 @@ export default function Animations() {
       busy = true;
       from.dataset.fp = dir > 0 ? "out-down" : "out-up";
       outTimer = window.setTimeout(() => {
-        delete from.dataset.fp;
         const top = topOf(to); // mesuré avant le décalage d'entrée
-        jumpTo(dir > 0 ? top : top + to.offsetHeight - window.innerHeight);
+        // pendant le saut, toutes les sections sont masquées : même si le
+        // navigateur traverse la page, aucune section intermédiaire ne s'affiche
+        root.classList.add("fp-jumping");
         to.dataset.fp = dir > 0 ? "enter-down" : "enter-up";
+        delete from.dataset.fp;
+        // borné à ce que la page permet (sinon « arrivé » n'est jamais vrai)
+        const maxY = root.scrollHeight - window.innerHeight;
+        const target = Math.min(
+          maxY,
+          Math.max(0, dir > 0 ? top : top + to.offsetHeight - window.innerHeight),
+        );
+        jumpTo(target);
         to.getBoundingClientRect(); // applique l'état de départ avant le fondu
-        outTimer = window.setTimeout(() => {
+        // on attend que la page soit vraiment arrivée (au plus 1,5 s) avant de
+        // faire apparaître la section d'arrivée et de réafficher les autres
+        const started = performance.now();
+        const settle = () => {
+          const arrived = Math.abs(window.scrollY - target) < 2;
+          if (!arrived && performance.now() - started < 1500) {
+            outTimer = window.setTimeout(settle, 30);
+            return;
+          }
+          root.classList.remove("fp-jumping");
           delete to.dataset.fp;
           busy = false;
           lockedUntil = performance.now() + LOCK_MS - OUT_MS;
-        }, 20);
+        };
+        outTimer = window.setTimeout(settle, 20);
       }, OUT_MS);
     };
 
@@ -402,7 +428,7 @@ export default function Animations() {
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("keydown", onKey);
       document.removeEventListener("click", onAnchorClick);
-      document.documentElement.classList.remove("fullpage");
+      document.documentElement.classList.remove("fullpage", "fp-jumping");
       revealObs.disconnect();
       mutObs.disconnect();
     };

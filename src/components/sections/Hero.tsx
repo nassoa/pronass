@@ -49,7 +49,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-visual">
+        <div className="hero-visual photo-guides">
           <div className="hero-media">
             <img src="/pro-nas.jpg" alt={t.photoAlt} />
           </div>
