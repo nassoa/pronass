@@ -6,7 +6,8 @@ export default function About() {
   const { dict } = useI18n();
   const t = dict.about;
   return (
-    <section id="apropos" className="section">
+    <section id="apropos" className="section has-pat">
+      <div className="pat pat-plus" aria-hidden="true" />
       <div className="w">
         <div className="about-layout">
           <div className="about-photo rv">

@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════
    DARK PRODUCT — v3
-   Une seule famille (Mona Sans) + mono pour le code (JetBrains Mono).
+   Titres en Montserrat, texte en Geist, mono pour le code
+   (JetBrains Mono).
    Surfaces en aplats, pas de verre ni de reflets.
 ═══════════════════════════════════════════════ */
 :root {
@@ -25,7 +26,8 @@
   --green-soft: rgba(74, 222, 128, 0.12);
   --red-soft: rgba(248, 113, 113, 0.08);
 
-  --sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif;
+  --sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --mono: var(--font-mono), ui-monospace, monospace;
 
   --max: 1200px;
@@ -95,7 +97,7 @@ ol {
 }
 
 .display {
-  font-stretch: 112%;
+  font-family: var(--display);
   letter-spacing: -0.03em;
 }
 
@@ -120,44 +122,55 @@ ol {
 }
 
 /* ── BOUTONS ── */
+/* Bouton principal « touche Entrée » : rectangle orange aux coins doux et,
+   à droite du texte, une touche de clavier ↵ qui s'enfonce au survol */
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  min-height: 52px;
-  padding: 0 6px 0 22px;
-  border-radius: 999px;
+  gap: 14px;
+  min-height: 50px;
+  padding: 0 10px 0 20px;
+  border-radius: 10px;
   font-size: 15px;
   font-weight: 600;
   color: #0b0b0e;
   background: var(--accent);
   transition: background 0.2s ease;
 }
-.btn-primary .chip {
+.btn-key {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  background: #0b0b0e;
-  color: #fff;
-  transition: transform 0.2s ease;
+  min-width: 28px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: rgba(11, 11, 14, 0.22);
+  box-shadow: inset 0 -2px 0 rgba(11, 11, 14, 0.28);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: #0b0b0e;
+  transition:
+    translate 0.12s ease,
+    box-shadow 0.12s ease;
 }
 .btn-primary:hover {
   background: color-mix(in srgb, var(--accent) 88%, #ffffff);
 }
-.btn-primary:hover .chip {
-  transform: translateX(3px);
+.btn-primary:hover .btn-key {
+  translate: 0 1px;
+  box-shadow: inset 0 -1px 0 rgba(11, 11, 14, 0.28);
 }
 
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  min-height: 52px;
-  padding: 0 22px;
-  border-radius: 999px;
+  min-height: 50px;
+  padding: 0 20px;
+  border-radius: 10px;
   font-size: 15px;
   font-weight: 500;
   color: var(--ink);
@@ -178,12 +191,11 @@ ol {
   font-size: 14px;
 }
 .btn-primary.btn-sm {
-  padding: 0 5px 0 18px;
-  gap: 10px;
+  padding: 0 8px 0 16px;
+  gap: 12px;
 }
-.btn-primary.btn-sm .chip {
-  width: 34px;
-  height: 34px;
+.btn-primary.btn-sm .btn-key {
+  height: 24px;
 }
 .btn-ghost.btn-sm {
   padding: 0 18px;
@@ -200,8 +212,8 @@ ol {
   z-index: 50;
   padding: 18px 0;
   transition:
-    opacity 0.35s ease,
-    translate 0.45s var(--ease);
+    opacity 0.25s ease,
+    translate 0.32s var(--ease);
 }
 @media (min-width: 900px) {
   #nav {
@@ -211,6 +223,25 @@ ol {
     opacity: 0;
     translate: 0 -10px;
     pointer-events: none;
+  }
+}
+/* mobile : la barre reste en haut de l'écran. Transparente sur l'accueil,
+   elle prend un fond flouté dès qu'on passe aux autres sections. */
+@media (max-width: 899px) {
+  #nav {
+    position: fixed;
+    border-bottom: 1px solid transparent;
+    transition:
+      padding 0.3s ease,
+      background-color 0.3s ease,
+      border-color 0.3s ease;
+  }
+  #nav.on {
+    padding: 4px 0;
+    background: rgba(11, 11, 14, 0.82);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-bottom-color: var(--line);
   }
 }
 .nav-i {
@@ -243,8 +274,14 @@ ol {
 /* mobile : icônes un peu plus serrées pour laisser la place à la ligne
    « Disponible · Antananarivo » */
 @media (max-width: 899px) {
-  .nav-social a {
-    width: 40px;
+  .nav-i {
+    gap: 10px;
+  }
+  #nav .nav-social {
+    gap: 0;
+  }
+  #nav .nav-social a {
+    width: 38px;
   }
 }
 /* Interrupteur de langue FR / EN : une pastille orange glisse sous la
@@ -322,7 +359,6 @@ html.lang-anim
     .exp-period, .price-sit-q, .price-panel-billing, .price-panel-list li,
     .price-panel-note, .cl-text, .win-head span, .art-row, .art-foot,
     .partners-steps button, .partners-roles li, .partners-who,
-    .price-panel-for-label, .price-panel-for li,
     .nav-links a, .lang-text
   ) {
   transition: opacity 0.18s ease !important;
@@ -335,7 +371,6 @@ html.lang-fading
     .exp-period, .price-sit-q, .price-panel-billing, .price-panel-list li,
     .price-panel-note, .cl-text, .win-head span, .art-row, .art-foot,
     .partners-steps button, .partners-roles li, .partners-who,
-    .price-panel-for-label, .price-panel-for li,
     .nav-links a, .lang-text
   ) {
   opacity: 0 !important;
@@ -378,8 +413,8 @@ html.lang-fading
   translate: 12px -50%;
   pointer-events: none;
   transition:
-    opacity 0.35s ease,
-    translate 0.5s var(--ease);
+    opacity 0.25s ease,
+    translate 0.32s var(--ease);
 }
 .side-nav.is-visible {
   opacity: 1;
@@ -416,9 +451,8 @@ html.lang-fading
     width 0.35s var(--ease),
     background 0.25s ease;
 }
-/* libellé visible pour la section courante ; les autres n'apparaissent
-   qu'au survol (ou au focus clavier) de leur ligne */
-.side-nav a.on .side-nav-label,
+/* libellés masqués, y compris pour la section courante (repérée par son
+   trait orange) : ils n'apparaissent qu'au survol ou au focus clavier */
 .side-nav a:hover .side-nav-label,
 .side-nav a:focus-visible .side-nav-label {
   opacity: 1;
@@ -444,30 +478,88 @@ html.lang-fading
   outline-offset: 4px;
   border-radius: 4px;
 }
-/* bouton RDV détaché de la liste par un espace */
-.side-nav-cta {
-  margin-top: 10px;
+/* interrupteur de langue, en haut à droite : même bord droit que les
+   traits de navigation et le bouton de rendez-vous (la piste de 58px est
+   entourée de 4px de zone cliquable) */
+.side-lang {
+  position: fixed;
+  top: calc(clamp(20px, 3.5vh, 36px) - 9px); /* piste à la même distance du haut que le bouton RDV du bas */
+  right: calc(clamp(14px, 2.2vw, 32px) - 4px);
+  z-index: 60;
+  opacity: 0;
+  translate: 0 -10px;
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    translate 0.32s var(--ease);
 }
-.side-nav-cta .side-nav-label {
+.side-lang.is-visible {
+  opacity: 1;
+  translate: 0 0;
+  pointer-events: auto;
+}
+/* bouton de rendez-vous : rond, en bas à droite, aligné sur les traits ;
+   son libellé apparaît à gauche au survol */
+.side-cta {
+  position: fixed;
+  right: clamp(14px, 2.2vw, 32px);
+  bottom: clamp(20px, 3.5vh, 36px);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  translate: 12px 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    translate 0.32s var(--ease);
+}
+.side-cta.is-visible {
+  opacity: 1;
+  translate: 0 0;
+  pointer-events: auto;
+}
+.side-cta-label {
+  font-size: 13px;
+  white-space: nowrap;
   color: var(--ink);
+  opacity: 0;
+  translate: 6px 0;
+  transition:
+    opacity 0.25s ease,
+    translate 0.35s var(--ease);
 }
-.side-nav-cta-icon {
+.side-cta:hover .side-cta-label,
+.side-cta:focus-visible .side-cta-label {
+  opacity: 1;
+  translate: 0 0;
+}
+.side-cta-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin-right: -7px; /* centré sous les traits */
-  border-radius: 999px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   background: var(--accent);
   color: #0b0b0e;
   transition: background 0.2s ease;
 }
-.side-nav-cta:hover .side-nav-cta-icon {
+.side-cta:hover .side-cta-icon {
   background: color-mix(in srgb, var(--accent) 88%, #fff);
 }
+.side-cta:focus-visible {
+  outline: none;
+}
+.side-cta:focus-visible .side-cta-icon {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
 @media (max-width: 899px) {
-  .side-nav {
+  .side-nav,
+  .side-lang,
+  .side-cta {
     display: none;
   }
 }
@@ -531,20 +623,28 @@ html.lang-fading
   font-size: 13px;
   color: var(--soft);
 }
-/* mobile : la ligne « Disponible · Antananarivo » remonte sur la ligne du
-   menu, à gauche des icônes LinkedIn / GitHub (18 + 8 + 22 px) */
+/* la ligne « Disponible · Antananarivo » : dans le hero sur grand écran,
+   dans la barre du haut (à gauche de la langue et des icônes) sur mobile */
+.nav-status {
+  display: none;
+}
 @media (max-width: 899px) {
-  #hero .hero-status {
-    position: absolute;
-    top: 48px;
-    left: var(--px);
-    right: calc(var(--px) + 154px); /* interrupteur de langue + deux icônes */
+  .hero-status--desktop {
+    display: none;
+  }
+  .nav-status {
+    display: inline-flex;
+    align-self: center;
+    min-width: 0;
     gap: 8px;
+    margin-right: auto;
     font-size: 12px;
-    translate: 0 -50%;
     flex-wrap: nowrap;
     white-space: nowrap;
-    z-index: 51; /* au-dessus du menu, transparent */
+    overflow: hidden;
+  }
+  .nav-status + .nav-lang {
+    margin-left: 0;
   }
 }
 /* téléphones étroits : on garde « Disponible · Antananarivo », l'heure
@@ -580,16 +680,16 @@ html.lang-fading
   font-size: clamp(48px, 6.4vw, 84px);
   line-height: 0.98;
   font-weight: 600;
-  font-stretch: 112%;
-  letter-spacing: -0.035em;
+  font-family: var(--display);
+  letter-spacing: -0.02em;
 }
 .hero-tagline {
   max-width: 520px;
   font-size: clamp(22px, 2.3vw, 30px);
   line-height: 1.2;
   font-weight: 500;
-  font-stretch: 112%;
-  letter-spacing: -0.02em;
+  font-family: var(--display);
+  letter-spacing: -0.01em;
   color: var(--soft);
 }
 .hero-tagline strong {
@@ -654,26 +754,52 @@ html.lang-fading
   pointer-events: none;
   z-index: -1;
 }
+/* une seule intensité pour tous les motifs */
+:root {
+  --pat-ink: rgba(255, 255, 255, 0.035);
+}
 .pat-dots {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1.3px);
+  background-image: radial-gradient(var(--pat-ink) 1px, transparent 1.3px);
   background-size: 22px 22px;
   -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 45%, #000 15%, transparent 72%);
   mask-image: radial-gradient(ellipse 60% 55% at 50% 45%, #000 15%, transparent 72%);
 }
 .pat-hatch {
-  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 14px);
+  background-image: repeating-linear-gradient(135deg, var(--pat-ink) 0 1px, transparent 1px 14px);
   -webkit-mask-image: radial-gradient(ellipse 55% 60% at 50% 55%, #000 10%, transparent 70%);
   mask-image: radial-gradient(ellipse 55% 60% at 50% 55%, #000 10%, transparent 70%);
 }
 .pat-lines {
-  background-image: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 32px);
+  background-image: repeating-linear-gradient(180deg, var(--pat-ink) 0 1px, transparent 1px 32px);
   -webkit-mask-image: radial-gradient(ellipse 55% 60% at 70% 50%, #000 10%, transparent 70%);
   mask-image: radial-gradient(ellipse 55% 60% at 70% 50%, #000 10%, transparent 70%);
 }
 .pat-cols {
-  background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.028) 0 1px, transparent 1px 96px);
+  background-image: repeating-linear-gradient(90deg, var(--pat-ink) 0 1px, transparent 1px 96px);
   -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 10%, transparent 72%);
   mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 10%, transparent 72%);
+}
+/* Partenariats : quadrillage, deux pièces qui s'emboîtent */
+.pat-grid {
+  background-image:
+    linear-gradient(90deg, var(--pat-ink) 1px, transparent 1px),
+    linear-gradient(180deg, var(--pat-ink) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 55% 60% at 30% 50%, #000 10%, transparent 70%);
+  mask-image: radial-gradient(ellipse 55% 60% at 30% 50%, #000 10%, transparent 70%);
+}
+/* À propos : petites croix espacées (même intensité que --pat-ink) */
+.pat-plus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M18 13v10M13 18h10' stroke='%23fff' stroke-opacity='.035'/%3E%3C/svg%3E");
+  background-size: 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 55% 60% at 60% 50%, #000 10%, transparent 70%);
+  mask-image: radial-gradient(ellipse 55% 60% at 60% 50%, #000 10%, transparent 70%);
+}
+/* Contact : cercles concentriques autour du centre */
+.pat-rings {
+  background-image: repeating-radial-gradient(circle at 50% 50%, transparent 0 39px, var(--pat-ink) 39px 40px);
+  -webkit-mask-image: radial-gradient(ellipse 50% 60% at 50% 50%, #000 10%, transparent 70%);
+  mask-image: radial-gradient(ellipse 50% 60% at 50% 50%, #000 10%, transparent 70%);
 }
 
 /* ── SECTIONS ── */
@@ -699,8 +825,8 @@ html.lang-fading
   font-size: var(--h2-size);
   line-height: 1.05;
   font-weight: 600;
-  font-stretch: 112%;
-  letter-spacing: -0.03em;
+  font-family: var(--display);
+  letter-spacing: -0.02em;
 }
 .sec-lead {
   font-size: 17px;
@@ -918,8 +1044,7 @@ html.lang-fading
   font-size: 22px;
   line-height: 1.2;
   font-weight: 600;
-  font-stretch: 112%;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 .card-desc {
   font-size: 15px;
@@ -1010,7 +1135,6 @@ html.lang-fading
   font: inherit;
   font-size: 18px;
   font-weight: 600;
-  font-stretch: 112%;
   letter-spacing: -0.01em;
   text-align: left;
   /* pôles non affichés : comme les formules non choisies (gris, opacité 0,5) */
@@ -1078,7 +1202,6 @@ html.lang-fading
   background: var(--violet);
 }
 .svc-sheet-pos {
-  font-family: var(--mono);
   font-size: 12px;
   color: var(--faint);
 }
@@ -1092,8 +1215,8 @@ html.lang-fading
 }
 .svc-sheet-fields dt {
   margin-bottom: 2px;
-  font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 500;
   color: var(--violet);
 }
 .svc-sheet-fields dd {
@@ -1238,6 +1361,10 @@ html.lang-fading
   #methode .method-art {
     height: 134px;
   }
+  #methode .method-art .art-body {
+    height: 66px;
+    padding: 6px 0;
+  }
   #methode .method-pilot {
     margin-top: 12px;
   }
@@ -1256,13 +1383,41 @@ html.lang-fading
   height: 150px;
   margin-bottom: 10px;
 }
+/* en-tête et pied de hauteur fixe, lignes calées en haut : les quatre
+   fenêtres restent alignées quel que soit leur contenu (pastille, flèche,
+   barre de progression, nombre de lignes) */
+.method-art .win-head,
+.method-art .art-foot {
+  flex: none;
+  align-items: center;
+  height: 34px;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 18px;
+}
+.method-art .art-foot {
+  line-height: 33px; /* centré verticalement (34px moins la bordure) */
+}
+.method-art .art-pill {
+  line-height: 18px;
+}
+/* 3 lignes de 18px + marges : la hauteur ne dépend plus du nombre de lignes
+   (sinon une fenêtre à 3 lignes déborde et pousse son pied plus bas) */
+.method-art .art-body {
+  flex: none;
+  height: 82px;
+  padding: 14px 0;
+}
 .art-body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 8px 0;
   color: var(--muted);
+}
+.art-row {
+  line-height: 18px;
 }
 .art-row {
   display: flex;
@@ -1320,7 +1475,6 @@ html.lang-fading
 .method-title {
   font-size: 18px;
   font-weight: 600;
-  font-stretch: 112%;
   letter-spacing: -0.01em;
 }
 .method-desc {
@@ -1387,7 +1541,6 @@ html.lang-fading
 .exp-head {
   font-size: 20px;
   font-weight: 600;
-  font-stretch: 112%;
   letter-spacing: -0.01em;
 }
 .exp-head a:hover {
@@ -1406,7 +1559,6 @@ html.lang-fading
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  font-family: var(--mono);
   font-size: 11px;
   color: var(--soft);
 }
@@ -1603,10 +1755,9 @@ html.lang-fading
   flex: 1;
   min-width: 0;
   font-size: 18px; /* même taille que la liste des pôles de Services */
-  line-height: 1.05;
+  line-height: 1.2;
   font-weight: 600;
-  font-stretch: 112%;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
 }
 .price-sit-arrow {
   flex-shrink: 0;
@@ -1652,10 +1803,9 @@ html.lang-fading
 }
 .price-panel-title {
   font-size: 24px; /* même taille que les titres des fiches Services */
-  line-height: 1.05;
+  line-height: 1.15;
   font-weight: 600;
-  font-stretch: 112%;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
 }
 /* mode de facturation : étiquette violette en tête de fiche */
 .price-panel-billing {
@@ -1664,32 +1814,10 @@ html.lang-fading
   border-radius: 999px;
   border: 1px solid rgba(169, 156, 255, 0.25);
   background: rgba(169, 156, 255, 0.12);
-  font-family: var(--mono);
   font-size: 12px;
+  font-weight: 500;
   line-height: 1.5;
   color: var(--violet);
-}
-.price-panel-for {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.price-panel-for-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--faint);
-}
-.price-panel-for ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.price-panel-for li {
-  padding: 2px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  font-size: 12px;
-  color: var(--soft);
 }
 .price-panel-why {
   font-size: 16px;
@@ -1842,7 +1970,6 @@ html.lang-fading
   font-size: 14px;
   line-height: 1.25;
   font-weight: 600;
-  font-stretch: 112%;
   letter-spacing: -0.01em;
 }
 .partners-step-duration {
@@ -1932,8 +2059,8 @@ html.lang-fading
 }
 .partners-role-label {
   margin-bottom: 8px;
-  font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 500;
   color: var(--faint);
 }
 .partners-roles > div.is-me .partners-role-label {
@@ -2039,12 +2166,10 @@ html.lang-fading
   font-size: clamp(18px, 1.7vw, 22px);
   white-space: nowrap;
   font-weight: 600;
-  font-stretch: 112%;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.2;
 }
 .about-fact dt {
-  font-family: var(--mono);
   font-size: 12px;
   color: var(--faint);
 }
@@ -2113,8 +2238,8 @@ html.lang-fading
   font-size: var(--h2-size);
   line-height: 1;
   font-weight: 600;
-  font-stretch: 112%;
-  letter-spacing: -0.035em;
+  font-family: var(--display);
+  letter-spacing: -0.02em;
 }
 .contact-sub {
   max-width: 460px;
@@ -2191,7 +2316,6 @@ html.lang-fading
   transition: color 0.2s ease;
 }
 .cl-handle {
-  font-family: var(--mono);
   font-size: 12px;
   color: var(--faint);
   overflow: hidden;
@@ -2357,7 +2481,7 @@ html.fullpage body {
     transform: none !important;
     transition: none !important;
   }
-  .btn-primary .chip,
+  .btn-primary .btn-key,
   .btn-primary,
   .btn-ghost,
   .card {

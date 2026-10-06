@@ -5,146 +5,131 @@
     "switchCode": "FR"
   },
   "nav": {
-    "aria": "Main navigation",
-    "services": "Services",
-    "parcours": "Experience",
-    "tarifs": "Pricing",
-    "apropos": "About"
+    "aria": "Main navigation"
   },
   "side": {
     "aria": "Section navigation",
     "hero": "Home",
     "services": "Services",
     "methode": "Approach",
+    "formules": "Engagements",
+    "partenariats": "Partnerships",
     "parcours": "Experience",
-    "tarifs": "Pricing",
     "apropos": "About",
     "contact": "Contact",
-    "cta": "Book a call"
+    "cta": "Talk about your project"
   },
   "hero": {
     "available": "Available",
     "city": "Antananarivo",
     "timeLocale": "en-GB",
-    "taglineStart": "10 years shipping products that have to",
-    "taglineStrong": "hold up in production.",
-    "sub": "Independent tech lead and full-stack developer. From brief to launch, web and mobile. Based in Madagascar, working remotely with Europe and Canada.",
-    "cta": "Book a call · 30 min",
-    "secondary": "See services",
-    "photoAlt": "Safidy Nasoavina, independent tech lead"
+    "promise": "Your technical partner to build your applications and bring AI into your business.",
+    "sub": "I design web and mobile products, automate your processes with AI and support your technical decisions. Ten years of experience, from scoping to production, working remotely with Europe and Canada.",
+    "cta": "Talk about your project",
+    "secondary": "Explore the services",
+    "photoAlt": "Safidy Nasoavina, independent technical partner"
   },
   "services": {
     "label": "Services",
-    "title": "Five ways to move a technical project forward.",
-    "lead": "Depending on where your project stands: from the first brief to taking over code that's become hard to maintain.",
-    "popular": "Most requested",
-    "cta": "Review your project with me",
-    "items": {
-      "ai-ship": {
-        "label": "AI & delivery",
-        "short": "Shipping with AI",
-        "title": "“Ship it with AI” support",
-        "description": "You got far with Cursor, v0 or Claude, but going to production or security is the blocker. I take over to finish the job.",
-        "points": [
-          "Security & secrets",
-          "Auth & payments",
-          "Error handling",
-          "Essential tests",
-          "CI/CD & deployment",
-          "Performance"
-        ]
-      },
-      "product": {
-        "label": "Product journey",
-        "short": "Product end to end",
-        "title": "End-to-end product development",
-        "description": "Scoping, development and integrations (payments, third-party APIs, automations), all the way to production.",
-        "points": [
-          "Scoping & specs",
-          "Payments (Stripe)",
-          "APIs & integrations",
-          "Going to production"
-        ]
-      },
-      "cto": {
-        "label": "Architecture",
-        "short": "Tech lead / CTO",
-        "title": "Part-time tech lead / CTO",
-        "description": "Stack choices, architecture and technical priorities. If the project grows, I can build and lead a small team.",
-        "points": [
-          "Stack choices",
-          "Architecture & code reviews",
-          "Technical priorities",
-          "Hiring & team lead"
-        ]
-      },
-      "audit": {
-        "label": "Audit",
-        "short": "Audit & recovery",
-        "title": "Audit & recovery",
-        "description": "Project running late or code that's become hard to maintain: an audit, a cleanup and clear recommendations for what's next.",
-        "points": [
-          "Code audit",
-          "Security & performance",
-          "Prioritized action plan",
-          "Cleanup"
-        ]
-      },
-      "mobile": {
-        "label": "Mobile",
-        "short": "React Native apps",
-        "title": "React Native / Expo apps",
-        "description": "From design all the way to the Play Store and TestFlight, certificates, builds and Apple / Google review included.",
-        "points": [
-          "iOS & Android",
-          "EAS builds",
-          "TestFlight & Play Store",
-          "Apple / Google review"
-        ]
-      }
+    "title": "Technical solutions for your products and your business.",
+    "lead": "Web and mobile applications, AI tools, automation and technical guidance. I step in where you need me, from scoping to production.",
+    "polesAria": "Service areas",
+    "fields": {
+      "useful": "Useful if",
+      "items": "What I do",
+      "receive": "What you get"
     },
-    "art": {
-      "diffTodo": "// TODO: handle errors",
-      "deployed": "deployed to production",
-      "steps": ["Scoping", "Development", "Integrations"],
-      "stepsWhen": ["wk 1", "wk 2–5", "wk 6"],
-      "stepsDone": "In production",
-      "archHead": "architecture",
-      "archTag": "target",
-      "auditTag": "report",
-      "auditRows": [
-        ["Security", "to fix"],
-        ["Performance", "to review"],
-        ["Tests", "missing"],
-        ["Action plan", "ready"]
-      ],
-      "mobileReview": "in review · App Store"
-    }
+    "poles": [
+      {
+        "id": "creer",
+        "need": "Build an application or an AI tool",
+        "promise": "Create and grow your digital products and internal tools.",
+        "useful": "you are launching a product, or your team needs a tool that fits the way it works.",
+        "items": [
+          "Web applications and SaaS",
+          "React Native / Expo mobile apps",
+          "Custom internal tools, with AI where it helps",
+          "Assistants over your internal documents, with sources and access control"
+        ],
+        "receive": "a product in production, its source code and the documentation to keep it moving.",
+        "note": "An AI tool assists a person. It searches, summarizes or suggests, and the person makes the call.",
+        "cta": "Talk about your project"
+      },
+      {
+        "id": "automatiser",
+        "need": "Automate a business process",
+        "promise": "Cut repetitive work and make your processes run smoother.",
+        "useful": "repetitive tasks keep your team busy across several tools.",
+        "items": [
+          "Connecting your tools and moving data between them",
+          "Automatic handling of requests and documents",
+          "AI agents with well-defined actions, and human approval where needed"
+        ],
+        "receive": "documented automations that you can monitor and adjust.",
+        "note": "An automation runs a chain of steps for you, following rules we define together.",
+        "cta": "Talk about your process"
+      },
+      {
+        "id": "debloquer",
+        "need": "Get a stuck project moving",
+        "promise": "Put a project back on track and make an application usable.",
+        "useful": "the project is running late, the code is hard to change, or a prototype won't make it to production.",
+        "items": [
+          "Technical audit and fix plan",
+          "Taking over and evolving an existing application",
+          "Finishing prototypes built with Claude, Cursor or v0",
+          "Going to production and handover"
+        ],
+        "receive": "a clear diagnosis, a prioritized fix plan and, if needed, its delivery.",
+        "note": "",
+        "cta": "Review your project with me"
+      },
+      {
+        "id": "accompagner",
+        "need": "Support you over time",
+        "promise": "Structure your technical decisions and support your team.",
+        "useful": "you need a technical lead over time, without hiring someone full time.",
+        "items": [
+          "Tech lead, for architecture, code quality and mentoring developers",
+          "Part-time CTO, for the roadmap, priorities and technical trade-offs",
+          "Scoping AI projects and choosing the right solutions",
+          "Maintenance and ongoing improvements, within an agreed scope"
+        ],
+        "receive": "a regular technical contact, well-argued decisions and follow-up within a clear frame.",
+        "note": "",
+        "cta": "Talk about ongoing support"
+      }
+    ]
   },
   "method": {
     "label": "Approach",
-    "title": "How I work.",
+    "title": "How a project unfolds.",
     "items": [
       {
-        "title": "Scoping first",
-        "description": "I understand the need before writing code, to avoid needless back-and-forth."
+        "title": "Understand the need",
+        "description": "We talk through your goals and constraints, then agree on the scope together."
       },
       {
-        "title": "Clear technical choices",
-        "description": "I propose them, document them, and stay accountable for them all the way to production."
+        "title": "Propose a solution",
+        "description": "An approach, clear deliverables and an estimate, before any work starts."
       },
       {
-        "title": "Clear communication",
-        "description": "Regular progress updates, so you always know where the project stands."
+        "title": "Build",
+        "description": "The work moves forward in stages, with regular check-ins."
       },
       {
-        "title": "Maintainable code",
-        "description": "Readable and documented, so another team can pick it up without trouble."
+        "title": "Review, deliver and hand over",
+        "description": "You review, I deliver, then I hand over the code, the documentation and the access you need for what comes next."
       }
     ],
+    "pilot": "For an AI project, we can start with a pilot on a limited scope, to measure usefulness, output quality and costs before a wider rollout.",
     "art": {
       "briefTag": "scoping",
-      "briefQuestions": ["For whom?", "What problem?", "Priority #1?"],
+      "briefQuestions": [
+        "Who is it for?",
+        "What's the problem?",
+        "Top priority?"
+      ],
       "briefReady": "ready to build",
       "adrStatus": "accepted",
       "adrKept": "chosen",
@@ -160,7 +145,7 @@
     }
   },
   "experience": {
-    "label": "Experience",
+    "label": "Background",
     "title": "Experience.",
     "lead": "Ten years across agencies, products and freelance missions, in Europe and Canada.",
     "cv": "Download my resume",
@@ -193,88 +178,200 @@
       }
     }
   },
-  "pricing": {
-    "label": "Pricing",
-    "title": "What's your situation?",
-    "lead": "No fixed rate card. Pick what sounds like you, and I'll point you to the right engagement.",
-    "tablist": "Your situation",
-    "cta": "Let's talk · free 30 min",
-    "note": "Pricing is set after the call, once the scope is clear.",
-    "situations": [
+  "formulas": {
+    "label": "Engagements",
+    "title": "Ways to work together",
+    "lead": "No fixed rate card. Each engagement is priced after a first conversation, once the scope is clear.",
+    "tablist": "Ways to work together",
+    "aiNote": "For AI work, any API fees, subscriptions and hosting costs are kept separate from my fees and shown to you on their own.",
+    "cta": "Talk about your project · free 30 min",
+    "note": "Pricing is set after our conversation, once the scope is clear.",
+    "items": [
       {
-        "question": "Finish an AI prototype",
-        "formula": "Audit / short mission",
-        "billing": "Fixed price",
-        "why": "You got far with Cursor, v0 or Claude. I take over the code, secure it and ship it to production.",
+        "name": "Diagnosis / audit",
+        "billing": "Fixed price, based on scope",
+        "when": "To take stock of a project, an existing codebase or a use of AI before going further.",
         "includes": [
-          "Review of the existing code",
-          "Security, errors, essential tests",
-          "Going to production"
+          "Review of what exists",
+          "Report with prioritized recommendations",
+          "Walkthrough of the findings together"
         ]
       },
       {
-        "question": "Launch a new product",
-        "formula": "Fixed-price project",
-        "billing": "Quote",
-        "why": "I take the product from scoping to launch, on a clear scope.",
+        "name": "Project or pilot",
+        "billing": "Fixed price, paid in stages",
+        "when": "To build an application, a feature, an automation or an AI pilot within a defined scope.",
         "includes": [
-          "Scoping and stack choice",
-          "Web or mobile development",
-          "Integrations and going live"
+          "Scope and deliverables agreed together",
+          "Payments split into stages",
+          "Delivery and handover"
         ]
       },
       {
-        "question": "Rescue a struggling project",
-        "formula": "Audit / short mission",
-        "billing": "Fixed price",
-        "why": "Project running late or code that's hard to maintain: an audit to understand what's blocking, then a cleanup.",
+        "name": "Short-term support",
+        "billing": "By the day, rate on request",
+        "when": "To add capacity to your team or agency for a set period.",
         "includes": [
-          "Technical audit",
-          "Cleanup plan",
-          "Prioritized recommendations"
-        ]
-      },
-      {
-        "question": "Get a part-time CTO",
-        "formula": "Monthly retainer",
-        "billing": "Monthly",
-        "why": "I act as your tech lead: architecture, priorities, and leading a small team if needed.",
-        "includes": [
-          "Technical choices and architecture",
-          "Prioritizing with you",
-          "Flexible commitment"
-        ]
-      },
-      {
-        "question": "Extra hands for a while",
-        "formula": "Time-and-materials mission",
-        "billing": "Day rate",
-        "why": "I join your team for a set period, billed by the day.",
-        "includes": [
-          "Quick onboarding into your team",
-          "Billed by the day",
+          "Joining your team and your tools",
+          "Billed at an agreed day rate",
           "Duration that fits your needs"
         ]
+      },
+      {
+        "name": "Ongoing support / part-time CTO",
+        "billing": "Monthly fee",
+        "when": "For a tech lead or a part-time CTO over the long run.",
+        "includes": [
+          "An agreed scope and number of days each month",
+          "Roadmap and technical trade-offs",
+          "Flexible commitment"
+        ]
+      }
+    ]
+  },
+  "partners": {
+    "label": "Partnerships",
+    "title": "Looking for a technical partner?",
+    "lead": "You are an agency, a designer, a consultant or a founder. You own the client relationship or the product vision, and you need someone reliable for the technical side.",
+    "path": "We can start with short-term support or a project, then build a lasting partnership.",
+    "cta": "Talk about working together",
+    "formsAria": "Ways to collaborate",
+    "youLabel": "You keep",
+    "meLabel": "I take on",
+    "forms": [
+      {
+        "title": "Extra capacity",
+        "duration": "A few weeks",
+        "description": "I join your team for a set period, to take on workload or bring in a skill.",
+        "you": [
+          "The client relationship",
+          "Project management",
+          "Your tools and your ways of working"
+        ],
+        "me": [
+          "Development inside your team",
+          "Getting up to speed quickly",
+          "A duration we agree on together"
+        ],
+        "note": "",
+        "art": {
+          "head": "current sprint",
+          "tag": "+1 developer",
+          "rows": [
+            [
+              "Payment form",
+              "shipped"
+            ],
+            [
+              "Quote API",
+              "in progress"
+            ],
+            [
+              "End-to-end tests",
+              "to do"
+            ]
+          ],
+          "foot": "extra capacity · set duration"
+        }
+      },
+      {
+        "title": "Technical delivery",
+        "duration": "One project",
+        "description": "You keep the client relationship and the design. I handle the development, from mockup to launch.",
+        "you": [
+          "The client relationship",
+          "Design and mockups",
+          "Presenting to the client"
+        ],
+        "me": [
+          "The full development",
+          "Integrations and going live",
+          "Documentation and handover"
+        ],
+        "note": "",
+        "art": {
+          "head": "who does what, step by step",
+          "tag": "you ↔ me",
+          "rows": [
+            [
+              "Mockups approved by your client",
+              "you"
+            ],
+            [
+              "Development and integrations",
+              "me"
+            ],
+            [
+              "Going live",
+              "me"
+            ]
+          ],
+          "foot": "final presentation to the client, by you"
+        }
+      },
+      {
+        "title": "Lasting partnership",
+        "duration": "Over time",
+        "description": "A technical contact over the long run, to advise, review and step in on your projects.",
+        "you": [
+          "Your projects and priorities",
+          "The relationship with your clients",
+          "The final decisions"
+        ],
+        "me": [
+          "Advice and technical choices",
+          "Code reviews",
+          "Hands-on work within an agreed scope"
+        ],
+        "note": "Over time, I get to know your projects, your tools and your standards, and each new mission starts faster.",
+        "art": {
+          "head": "partnership · follow-up",
+          "tag": "ongoing",
+          "rows": [
+            [
+              "Review of the existing code",
+              "month 1"
+            ],
+            [
+              "New feature",
+              "month 3"
+            ],
+            [
+              "Code review",
+              "month 6"
+            ]
+          ],
+          "foot": "a dedicated technical contact"
+        }
       }
     ]
   },
   "about": {
     "label": "About",
-    "title": "Tech lead, end-to-end development.",
-    "lead": "My role covers scoping, priorities and technical choices.",
-    "bio": "Independent for several years, after missions in Europe and Canada. I mostly work on web and mobile products, as a tech lead or full-stack developer.",
-    "photoAlt": "Safidy Nasoavina, independent tech lead",
+    "title": "A direct contact, from scoping to delivery.",
+    "lead": "I get involved in the whole technical side, from understanding the need to the handover, including choosing the solutions and building them.",
+    "bio": "Depending on the project, I work as a developer, as a tech lead alongside a team, or as a part-time CTO. I stay your direct contact, and I document decisions so the project doesn't depend on me.",
+    "photoAlt": "Safidy Nasoavina, independent technical partner",
     "facts": [
-      { "label": "Based in", "value": "Madagascar" },
-      { "label": "Experience", "value": "10+ years" },
-      { "label": "Clients in", "value": "Europe · Canada" }
+      {
+        "label": "Based in",
+        "value": "Madagascar"
+      },
+      {
+        "label": "Experience",
+        "value": "10+ years"
+      },
+      {
+        "label": "Clients in",
+        "value": "Europe · Canada"
+      }
     ]
   },
   "contact": {
     "label": "Contact",
     "title": "Let's talk about your project.",
     "sub": "30 minutes, free. We look at what you need, and whether we're a good fit. I usually reply within 24 hours.",
-    "cta": "Book a call",
+    "cta": "Talk about your project",
     "cardHead": "Find me",
     "cvName": "Resume",
     "cvHandle": "Download the PDF"

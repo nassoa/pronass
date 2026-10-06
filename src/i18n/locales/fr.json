@@ -5,11 +5,7 @@
     "switchCode": "EN"
   },
   "nav": {
-    "aria": "Navigation principale",
-    "services": "Services",
-    "formules": "Formules",
-    "partenariats": "Partenariats",
-    "apropos": "À propos"
+    "aria": "Navigation principale"
   },
   "side": {
     "aria": "Navigation par section",
@@ -187,7 +183,6 @@
     "title": "Formules de collaboration",
     "lead": "Pas de grille figée. Chaque formule est chiffrée après un premier échange, une fois le périmètre clair.",
     "tablist": "Formules de collaboration",
-    "forLabel": "Besoins concernés",
     "aiNote": "Pour les prestations IA, les éventuels frais d'API, abonnements et hébergement sont distincts de mes honoraires et vous sont présentés séparément.",
     "cta": "Discuter de votre projet · 30 min gratuites",
     "note": "Le prix se fixe après l'échange, une fois le périmètre clair.",
@@ -195,10 +190,6 @@
       {
         "name": "Diagnostic / audit",
         "billing": "Forfait selon le périmètre",
-        "for": [
-          "Débloquer un projet existant",
-          "Accompagnement dans la durée"
-        ],
         "when": "Pour faire le point sur un projet, un code existant ou un usage de l'IA avant d'aller plus loin.",
         "includes": [
           "Analyse de l'existant",
@@ -209,11 +200,6 @@
       {
         "name": "Projet ou pilote",
         "billing": "Forfait, avec paiements par étapes",
-        "for": [
-          "Créer une application ou un outil IA",
-          "Automatiser un processus métier",
-          "Débloquer un projet existant"
-        ],
         "when": "Pour réaliser une application, une fonctionnalité, une automatisation ou un pilote IA sur un périmètre défini.",
         "includes": [
           "Périmètre et livrables définis ensemble",
@@ -224,9 +210,6 @@
       {
         "name": "Renfort ponctuel",
         "billing": "À la journée, tarif sur demande",
-        "for": [
-          "Tous les besoins"
-        ],
         "when": "Pour renforcer votre équipe ou votre agence sur une période donnée.",
         "includes": [
           "Intégration à votre équipe et à vos outils",
@@ -237,9 +220,6 @@
       {
         "name": "Accompagnement régulier / CTO à temps partagé",
         "billing": "Forfait mensuel",
-        "for": [
-          "Accompagnement dans la durée"
-        ],
         "when": "Pour un lead technique ou un CTO à temps partagé sur la durée.",
         "includes": [
           "Un périmètre et un nombre de jours convenus chaque mois",

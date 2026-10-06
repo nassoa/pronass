@@ -1,8 +1,8 @@
 "use client";
 
 import {
-  ArrowRight,
   ArrowUpRight,
+  CornerDownLeft,
   Download,
   FileText,
   Github,
@@ -45,7 +45,8 @@ export default function Contact() {
   const { dict } = useI18n();
   const t = dict.contact;
   return (
-    <section id="contact">
+    <section id="contact" className="has-pat">
+      <div className="pat pat-rings" aria-hidden="true" />
       <div className="contact-halo" aria-hidden="true" />
       <div className="w contact-inner">
         <div className="contact-grid">
@@ -61,9 +62,9 @@ export default function Contact() {
                 className="btn-primary"
               >
                 <span className="btn-label">{t.cta}</span>
-                <span className="chip" aria-hidden="true">
-                  <ArrowRight size={16} strokeWidth={2.2} />
-                </span>
+                <kbd className="btn-key" aria-hidden="true">
+                  <CornerDownLeft size={15} strokeWidth={2.8} />
+                </kbd>
               </a>
               <a href="mailto:hello@nasoavina.com" className="contact-mail">
                 <Mail size={16} strokeWidth={1.8} aria-hidden />

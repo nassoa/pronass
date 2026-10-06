@@ -7,8 +7,8 @@ import GoogleAnalytics from "@/app/GoogleAnalytics";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
 
-// Mona Sans (texte + titres) est chargée via Google Fonts dans <head> :
-// elle a un axe de largeur (wdth) utilisé pour les titres.
+// Montserrat (titres) et Geist (texte), une association de fontpair.co,
+// sont chargées via Google Fonts dans <head>.
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
@@ -89,7 +89,7 @@ export default function RootLayout({
         />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..700&family=Geist:wght@400..700&display=swap"
         />
         <JsonLd />
         <GoogleAnalytics measurementId="G-PTBTRS6KVX" />

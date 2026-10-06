@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeftRight, ArrowRight } from "lucide-react";
+import { ArrowLeftRight, CornerDownLeft } from "lucide-react";
 import { useI18n, type Dictionary } from "@/i18n/I18nProvider";
 
 const CAL_URL = "https://cal.com/nasoavina-manitriniaina-jo3qz1";
@@ -111,7 +111,8 @@ export default function Partners() {
   const [selected, setSelected] = useState(t.forms.length - 1);
 
   return (
-    <section id="partenariats" className="section">
+    <section id="partenariats" className="section has-pat">
+      <div className="pat pat-grid" aria-hidden="true" />
       <div className="w partners-layout">
         <div className="sec-head partners-head rv">
           <p className="sec-label">{t.label}</p>
@@ -125,9 +126,9 @@ export default function Partners() {
             className="btn-primary"
           >
             <span className="btn-label">{t.cta}</span>
-            <span className="chip" aria-hidden="true">
-              <ArrowRight size={16} strokeWidth={2.2} />
-            </span>
+            <kbd className="btn-key" aria-hidden="true">
+              <CornerDownLeft size={15} strokeWidth={2.8} />
+            </kbd>
           </a>
         </div>
 

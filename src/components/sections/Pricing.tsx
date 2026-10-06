@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CornerDownLeft } from "lucide-react";
 import { useI18n } from "@/i18n/I18nProvider";
 
 const CAL_URL = "https://cal.com/nasoavina-manitriniaina-jo3qz1";
@@ -74,15 +74,6 @@ export default function Pricing() {
                 >
                   <span className="price-panel-billing">{f.billing}</span>
                   <h3 className="price-panel-title">{f.name}</h3>
-                  {/* besoins de la section Services auxquels la formule répond */}
-                  <div className="price-panel-for">
-                    <span className="price-panel-for-label">{t.forLabel}</span>
-                    <ul>
-                      {f.for.map((need) => (
-                        <li key={need}>{need}</li>
-                      ))}
-                    </ul>
-                  </div>
                   <p className="price-panel-why">{f.when}</p>
                   <ul className="price-panel-list">
                     {f.includes.map((item) => (
@@ -100,9 +91,9 @@ export default function Pricing() {
                 className="btn-primary btn-sm"
               >
                 <span className="btn-label">{t.cta}</span>
-                <span className="chip" aria-hidden="true">
-                  <ArrowRight size={15} strokeWidth={2.2} />
-                </span>
+                <kbd className="btn-key" aria-hidden="true">
+                  <CornerDownLeft size={15} strokeWidth={2.8} />
+                </kbd>
               </a>
               <span className="price-panel-note">{t.note}</span>
               <p className="price-panel-ai">{t.aiNote}</p>

@@ -46,9 +46,13 @@ function withFallback(base: unknown, override: unknown): unknown {
   return typeof override === typeof base ? override : base;
 }
 
+// en.json doit avoir exactement la même structure que fr.json : toute clé
+// manquante ou de forme différente est signalée par TypeScript ici.
+const enChecked: Dictionary = en;
+
 const dictionaries: Record<Locale, Dictionary> = {
   fr,
-  en: withFallback(fr, en) as Dictionary,
+  en: withFallback(fr, enChecked) as Dictionary,
 };
 const STORAGE_KEY = "lang";
 // durée du fondu de sortie avant de changer les textes (cf. globals.css)
